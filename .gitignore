@@ -1,0 +1,15 @@
+# Java stuff to ignore
+*.class
+*.jar
+*.war
+*.ear
+
+# Generic files to ignore
+*~
+*.lock
+*.DS_Store
+*.swp
+*.out
+ehthumbs.db
+Icon?
+Thumbs.db

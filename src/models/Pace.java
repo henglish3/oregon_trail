@@ -5,5 +5,7 @@ public class Pace {
     this.pace = pace;
   }
 
-  public int getPace() { }
+  public int getPace() { 
+    return this.pace;
+  }
 }

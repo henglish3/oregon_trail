@@ -136,7 +136,7 @@ public class NewGameCharInterface {
 		JRadioButton rdbtnSlow = new JRadioButton("Slow");
 		JRadioButton rdbtnNormal = new JRadioButton("Normal");
 		rdbtnNormal.setSelected(true);
-		JRadioButton rdbtnLudicrous = new JRadioButton("Ludicrous ");
+		JRadioButton rdbtnLudicrous = new JRadioButton("Ludicrous");
 		
 		ButtonGroup paceGroup = new ButtonGroup();
 			paceGroup.add(rdbtnSlow);
@@ -155,7 +155,7 @@ public class NewGameCharInterface {
 		ButtonGroup rationGroup = new ButtonGroup();
 			rationGroup.add(rdbtnFamished);
 			rationGroup.add(rdbtnEnough);
-			rationGroup.add(rdbtnLudicrous);
+			rationGroup.add(rdbtnGluttonous);
 		
 		JButton btnReset = new JButton("Reset");
 		JButton btnDone = new JButton("Done");

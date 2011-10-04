@@ -5,47 +5,18 @@
  * @version 0.1 10/03/11
  */
 public class Character {
-  
- /**
-  * Enumerated type which identifies the character's job.
-  */
- public enum Job 
- {
-  BANKER, FARMER, CARPENTER;
- } //ends Job enum.
  
  /**
   * Enumerated type which identifies the character's status.
   */
  public enum Status 
  {
-  NORMAL, SICK, DEAD;
+  IMMORTAL, NORMAL, SICK, DEAD;
  } //ends Status enum.
  
- private Job job;
  private Status status;
  private int age;
  private boolean sex; //female = 0, male = 1
- 
- /**
-  * Method that gets the job of the character.
-  * 
-  * @return The job of the character.
-  */
- public Job getJob() 
- {
-  return job;
- } //ends getJob method.
- 
-  /**
-   * Method that sets the character's job.
-   * 
-   * @param job The job the character will have. 
-   */
-  public void setJob(Job job) {
-    this.job = job;
-  } //ends setJob method.
- 
  
  /**
   * Method that gets the character's status.

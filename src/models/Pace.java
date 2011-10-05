@@ -1,7 +1,7 @@
 public class Pace {
     private int pace;
 
-    public void Pace(int pace) {
+    public Pace(int pace) {
       this.pace = pace;
     }
 

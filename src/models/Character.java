@@ -64,7 +64,7 @@ public class Character {
     * 
     * @return The sex of the character.
     */
-    public boolean getSex() {
+    public int getSex() {
         return sex;
     } //ends getSex method.
   
@@ -73,7 +73,7 @@ public class Character {
     * 
     * @param sex The sex the character will have. 
     */
-    public void setSex(boolean sex) {
+    public void setSex(int sex) {
         this.sex = sex;
     } //ends setSex method.
   

@@ -6,7 +6,7 @@
  */
 public class Player extends Character {
     public Player(int age, int sex, Job job) {
-        super(age, sex);
+        super(age, sex, IMMORTAL);
         this.job = job;
     }
     /**

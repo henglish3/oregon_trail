@@ -3,6 +3,8 @@
 *.jar
 *.war
 *.ear
+build/
+apidoc/
 
 # Generic files to ignore
 *~

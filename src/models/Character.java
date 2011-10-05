@@ -22,7 +22,12 @@ public class Character {
         this.sex = sex;
         status = Status.NORMAL;
     }
- 
+    
+    public void Character(int age, int sex, Status status) {
+    	this.age = age;
+    	this.age = sex;
+    	this.status = status;
+    }
     /**
     * Method that gets the character's status.
     * 

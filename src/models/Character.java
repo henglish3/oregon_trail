@@ -5,7 +5,7 @@
  * @version 0.1 10/03/11
  */
 public class Character {
- 
+
  /**
   * Enumerated type which identifies the character's status.
   */
@@ -16,8 +16,15 @@ public class Character {
  
  private Status status;
  private int age;
- private boolean sex; //female = 0, male = 1
+ private int sex; //female = 0, male = 1
  
+
+ public void Character(int age, int sex) {
+ this.age = age;
+ this.sex = sex;
+ status = Status.NORMAL;
+ }
+
  /**
   * Method that gets the character's status.
   * 

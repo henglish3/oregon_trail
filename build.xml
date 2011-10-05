@@ -15,7 +15,7 @@
             <classpath>
                 <pathelement path="${build.dir}" />
             </classpath>
-        </javadoc>
+        </javac>
     </target>
     <target name="javadoc" depends="prepare" >
 

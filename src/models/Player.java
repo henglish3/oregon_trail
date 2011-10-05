@@ -25,12 +25,12 @@ public class Player extends Character {
     return job;
   } //ends getJob method.
  
-    /**
-   * Method that sets the character's job.
-   * 
-   * @param job The job the character will have. 
-   */
-    public void setJob(Job job) {
-      this.job = job;
-    } //ends setJob method.
+  /**
+  * Method that sets the character's job.
+  * 
+  * @param job The job the character will have. 
+  */
+  public void setJob(Job job) {
+    this.job = job;
+  } //ends setJob method.
 } //ends Player class.

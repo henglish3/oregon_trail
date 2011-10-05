@@ -5,6 +5,9 @@
  * @version 0.1 10/04/11
  */
 public class Player extends Character {
+  public void Player(Job job) {
+    this.job = job;
+  }
   /**
   * Enumerated type which identifies the character's job.
   */

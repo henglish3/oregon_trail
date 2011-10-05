@@ -1,4 +1,4 @@
-    /**
+/**
  * Class that represents the player.
  * 
  * @author S.H.L.A.T.

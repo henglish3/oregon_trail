@@ -5,10 +5,9 @@
  * @version 0.1 10/04/11
  */
 public class Player extends Character {
-    public void super(Job job, int age, int sex) {
+    public Player(int age, int sex, Job job) {
+        super(age, sex);
         this.job = job;
-        this.age = age;
-        this.sex = sex;
     }
     /**
     * Enumerated type which identifies the character's job.

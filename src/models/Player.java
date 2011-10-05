@@ -14,7 +14,6 @@ public class Player extends Character {
   BANKER, FARMER, CARPENTER;
  } //ends Job enum.
   
-} //ends Player class.
 
 private Job job;
 
@@ -36,3 +35,5 @@ private Job job;
   public void setJob(Job job) {
     this.job = job;
   } //ends setJob method.
+
+} //ends Player class.

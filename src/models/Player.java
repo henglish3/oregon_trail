@@ -13,8 +13,7 @@ public class Player extends Character {
     /**
     * Enumerated type which identifies the character's job.
     */
-    public enum Job 
-    {
+    public enum Job {
         BANKER, FARMER, CARPENTER;
     } //ends Job enum.
     

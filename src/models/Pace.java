@@ -1,6 +1,10 @@
 public class Pace {
     private int pace;
 
+    public void Pace(int pace) {
+      this.pace = pace;
+    }
+
     public void setPace(int pace) {
         this.pace = pace;
     }

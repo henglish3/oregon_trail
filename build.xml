@@ -1,0 +1,48 @@
+<project name="Oregon Trail" default="all" basedir="." >
+    <target name="init" >
+        <property name="src.dir" location="./src" />
+        <property name="build.dir" location="./build/" />
+        <property name="doc.dir" location="./apidoc" />
+        <property name="appname" value="OregonTrail" />
+    </target>
+    <target name="prepare" depends="init" >
+        <mkdir dir="${build.dir}" />
+        <mkdir dir="${doc.dir}" />
+    </target>
+    <target name="compile" depends="prepare" >
+        <javac destdir="${build.dir}">
+            <src path="${src.dir}" />
+            <classpath>
+                <pathelement path="${build.dir}" />
+            </classpath>
+        </javadoc>
+    </target>
+    <target name="javadoc" depends="prepare" >
+
+    </target>
+    <target name="jar" depends="compile" >
+        <jar destfile="${build.dir}/${appname}.jar" basedir="${build.dir}" excludes="${appname}.jar">
+            <manifest>
+                <attribute name="Main-Class" value="edu.gatech.cs2340.shlat.controllers.Game"/>
+            </manifest>
+        </jar>
+    </target>
+    <target name="run" depends="jar" >
+        <java jar="${build.dir}/${appname}.jar" fork="true">
+            <classpath>
+                <pathelement location="${build.dir}" />
+                <pathelement location="${jdk_lib}/j2me.jar" />
+                <pathelement location="." />
+            </classpath>
+        </java>
+    </target>
+    <target name="all" depends="javadoc,run">
+
+    </target>
+    <target name="clean">
+        <delete includeEmptyDirs="true">
+            <fileset dir="${build.dir}" />
+            <fileset dir="${doc.dir}" />
+        </delete>
+    </target>
+</project>

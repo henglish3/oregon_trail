@@ -25,6 +25,14 @@ public class NewGameCharInterface {
 	private JTextField char2AgeField;
 	private JTextField char3AgeField;
 	private JTextField char4AgeField;
+	private JComboBox mainCharJobField;		
+	private JComboBox char2JobField;	
+	private JComboBox char3JobField;		
+	private JComboBox char4JobField;
+	private JComboBox mainCharSexField;
+	private JComboBox char2SexField;
+	private JComboBox char3SexField;
+	private JComboBox char4SexField;
 
 	/**
 	 * Launch the application.
@@ -119,16 +127,16 @@ public class NewGameCharInterface {
 		
 		
 		String[] professions = { "Banker","Carpenter","Farmer" };
-		JComboBox mainCharJobField = new JComboBox(professions);		
-		JComboBox char2JobField = new JComboBox(professions);	
-		JComboBox char3JobField = new JComboBox(professions);		
-		JComboBox char4JobField = new JComboBox(professions);
+		mainCharJobField = new JComboBox(professions);		
+		char2JobField = new JComboBox(professions);	
+		char3JobField = new JComboBox(professions);		
+		char4JobField = new JComboBox(professions);
 		
 		String[] sex = { "Male","Female" };
-		JComboBox mainCharSexField = new JComboBox(sex);
-		JComboBox char2SexField = new JComboBox(sex);
-		JComboBox char3SexField = new JComboBox(sex);
-		JComboBox char4SexField = new JComboBox(sex);
+		mainCharSexField = new JComboBox(sex);
+		char2SexField = new JComboBox(sex);
+		char3SexField = new JComboBox(sex);
+		char4SexField = new JComboBox(sex);
 		
 		JLabel lblInitialPace = new JLabel("Initial Pace");
 		lblInitialPace.setFont(new Font("Lucida Grande", Font.PLAIN, 16));

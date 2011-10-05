@@ -17,13 +17,13 @@ public class Character {
     private int age;
     private int sex; //female = 0, male = 1
  
-    public void Character(int age, int sex) {
+    public Character(int age, int sex) {
         this.age = age;
         this.sex = sex;
         status = Status.NORMAL;
     }
     
-    public void Character(int age, int sex, Status status) {
+    public Character(int age, int sex, Status status) {
     	this.age = age;
     	this.age = sex;
     	this.status = status;

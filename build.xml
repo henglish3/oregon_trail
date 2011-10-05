@@ -39,7 +39,7 @@
     <target name="all" depends="javadoc,run">
 
     </target>
-    <target name="clean">
+    <target name="clean" depends="init" >
         <delete includeEmptyDirs="true">
             <fileset dir="${build.dir}" />
             <fileset dir="${doc.dir}" />

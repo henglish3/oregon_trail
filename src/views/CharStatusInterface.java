@@ -15,10 +15,16 @@ import javax.swing.JButton;
 public class CharStatusInterface {
 
     private JFrame frame;
-
+    private String[] name;
+    private String[] age;
+    private String[] sex;
+    private String[] lblStatus;
+    private String job;
+    private String lblPace;
+    private String lblRations;
     /**
      * Launch the application.
-     */
+     
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -30,15 +36,56 @@ public class CharStatusInterface {
                 }
             }
         });
+    }*/
+    /**
+    *set visibility of the window
+    */
+    public void setVisibility(boolean visibility) {
+    	frame.setVisible(visibility);
     }
-
     /**
      * Create the application.
      */
-    public CharStatusInterface() {
+    public CharStatusInterface(String[] name, String[] age, String[] sex, String job) {
+        this.name = name;
+        this.age = age;
+        this.sex = sex;
+        this.job = job;
         initialize();
     }
-
+    
+    /**
+    * Set the Status for the characters in window
+    */
+    public void setStatus(int charId, String status) {
+    	switch(charId) {
+    		case 0:
+                lblStatus[0] = status;
+                break;
+            case 1:
+                lblStatus[1] = status;
+                break;
+            case 2:
+                lblStatus[2] = status;
+                break;
+            case 3:
+                lblStatus[3] = status;
+                break;
+        }
+    }
+    
+    /**
+    * Set the Pace for the wagon in window
+    */
+    public void setPace(int pace) {
+    	lblPace = ""+pace;
+    }
+    /**
+    * Set Rations for the wagon in stat window
+    */
+    public void setRations(int ration) {
+    	lblRations= ""+ration;
+    }
     /**
      * Initialize the contents of the frame.
      */
@@ -56,11 +103,11 @@ public class CharStatusInterface {
         JLabel lblProfession = new JLabel("Profession");
         lblProfession.setFont(new Font("Lucida Grande", Font.BOLD, 16));
         
-        JLabel lblMainCharName = new JLabel("Harrison");
+        JLabel lblMainCharName = new JLabel(name[0]);
         
         JLabel lblMainCharStatus = new JLabel("Well");
         
-        JLabel lblMainCharJob = new JLabel("BadAss");
+        JLabel lblMainCharJob = new JLabel(job);
         
         JLabel lblMainCharPic = new JLabel("");
         lblMainCharPic.setIcon(new ImageIcon("/Users/harrisonenglish/Desktop/face.png"));
@@ -68,11 +115,11 @@ public class CharStatusInterface {
         JLabel lblAge = new JLabel("Age");
         lblAge.setFont(new Font("Lucida Grande", Font.BOLD, 16));
         
-        JLabel lblMainCharAge = new JLabel("24");
+        JLabel lblMainCharAge = new JLabel(age[0]);
         
-        JLabel lblChar2Name = new JLabel("Stewart");
+        JLabel lblChar2Name = new JLabel(name[1]);
         
-        JLabel lblChar2Age = new JLabel("23");
+        JLabel lblChar2Age = new JLabel(age[1]);
         
         JLabel lblChar2Status = new JLabel("Well");
         
@@ -87,17 +134,17 @@ public class CharStatusInterface {
         JLabel lblChar4Pic = new JLabel("");
         lblChar4Pic.setIcon(new ImageIcon("/Users/harrisonenglish/Desktop/face.png"));
         
-        JLabel lblChar3Name = new JLabel("Al");
+        JLabel lblChar3Name = new JLabel(name[2]);
         
-        JLabel lblCha3Age = new JLabel("21");
+        JLabel lblCha3Age = new JLabel(age[2]);
         
         JLabel lblChar3Status = new JLabel("Well");
         
         JLabel lblChar3Job = new JLabel("Banker");
         
-        JLabel lblChar4Name = new JLabel("Tomer");
+        JLabel lblChar4Name = new JLabel(name[3]);
         
-        JLabel lblChar4Age = new JLabel("16");
+        JLabel lblChar4Age = new JLabel(age[3]);
         
         JLabel lblChar4Status = new JLabel("Well");
         

@@ -30,7 +30,7 @@ public class Character {
     
     public Character(int age, int sex, String name, Status status) {
     	this.age = age;
-    	this.age = sex;
+    	this.sex = sex;
         this.name = name;
     	this.status = status;
     }

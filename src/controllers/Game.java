@@ -14,7 +14,7 @@ import edu.gatech.cs2340.shlat.views.*;
 public class Game implements ActionListener {
     //Views
     private NewGameCharInterface    newGameUI;
-    
+    private CharStatusInterface     charStat;
     //Models
     private Player                  playerCharacter;
     private Pace                    currentPace;
@@ -22,6 +22,16 @@ public class Game implements ActionListener {
     
     private edu.gatech.cs2340.shlat.models.Character[] partyCharacters;
     
+    //Just for M4 Delete and make better
+    private String[] name;
+    private String[] age;
+    private String[] Job;
+    private String[] sex;
+    private String[] status;
+    private String job;
+
+
+
     /*
      *Initialize all models and views
      */
@@ -121,8 +131,34 @@ public class Game implements ActionListener {
                 }
             }
         });
-    }
+        charStat = new CharStatusInterface(name, age, sex, job);
+        getInfo();
+        charStat.setRations(currentRations);
+        charStat.setPace(currentPace.getPace());       
+		//Launch the char Stat GUI
+		EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                    charStat.setVisibility(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+   }
+    
+    public void getInfo() {
+    	name[0]=playerCharacter.getName(); 
+        age[0]=""+playerCharacter.getAge();
+        //status[0]=playerCharacter.getStatus();
+        job = playerCharacter.jobString();
+        for(int i=1; i < 4; i++) {
+            name[i] = partyCharacters[i].getName();
+            age[i] = ""+partyCharacters[i].getAge();
+            //status[i] = partyCharacters[i].getStatus();
+        }
 
+    }
     /*
      *Application entry point
      */

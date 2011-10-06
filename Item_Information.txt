@@ -1,0 +1,45 @@
+//name all variables singular just encase.
+
+private int money; 
+
+final int MAX_WEIGHT = 3500;
+
+//GENERAL FORMAT
+private int ;
+final int PRICE_ = ;
+final int MAX_ = ;
+final int WEIGHT_ = ;
+
+//Ox
+private int yoke;
+final int PRICE_YOKE = 40;
+final int MAX_YOKE = 18;
+
+//Food
+private int food; //original game recommends 200 per person.
+final int PRICE_FOOD = 1;
+final int MAX_FOOD = 2000;
+final int WEIGHT_FOOD = 5;
+
+//Clothing
+private int clothing; //original game recommends 2 per person.
+final int PRICE_CLOTHING = 10.00;
+final int MAX_CLOHTING = 99;
+final int WEIGHT_CLOTHING = 2;
+
+//Ammo
+private int ammo; //each ammo bought = 20 rounds.
+private int round;
+final int PRICE_AMMO = 2.00;
+final int MAX_AMMO = 99;
+final int WEIGHT_AMMO = 3;
+
+//Spare Parts
+private int wheel;
+private int axle;
+private int tongue;
+final int PRICE_PARTS = 10;
+final int MAX_PARTS = 3; //you can only carry 3 of each part.
+final int WEIGHT_WHEEL = 75;
+final int WEIGHT_AXLE = 125;
+final int WEIGHT_TONGUE = 100;

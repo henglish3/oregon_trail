@@ -18,6 +18,7 @@ public class Game implements ActionListener {
     //Models
     private Player                  playerCharacter;
     private Pace                    currentPace;
+    private int                     currentRations;
     
     private edu.gatech.cs2340.shlat.models.Character[] partyCharacters;
     
@@ -36,6 +37,7 @@ public class Game implements ActionListener {
             partyCharacters[i] = new edu.gatech.cs2340.shlat.models.Character(18, 0, "Bob");
         }
         currentPace = new Pace(0);
+        currentRations = 1;
     }
 
     /*
@@ -77,10 +79,13 @@ public class Game implements ActionListener {
             temp = newGameUI.getInitialRations();
             switch(temp) {
                 case 0:
+                    currentRations = 0;
                     break;
                 case 1:
+                    currentRations = 1;
                     break;
                 case 2:
+                    currentRations = 2;
                     break;
             }
             

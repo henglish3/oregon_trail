@@ -4,6 +4,9 @@
  * @author S.H.L.A.T.
  * @version 0.1 10/03/11
  */
+ 
+ package edu.gatech.cs2340.shlat.models;
+ 
 public class Character {
 
     /**
@@ -16,16 +19,19 @@ public class Character {
     private Status status;
     private int age;
     private int sex; //female = 0, male = 1
+    private String name;
  
-    public Character(int age, int sex) {
+    public Character(int age, int sex, String name) {
         this.age = age;
         this.sex = sex;
+        this.name = name;
         status = Status.NORMAL;
     }
     
-    public Character(int age, int sex, Status status) {
+    public Character(int age, int sex, String name, Status status) {
     	this.age = age;
     	this.age = sex;
+        this.name = name;
     	this.status = status;
     }
     /**
@@ -45,6 +51,24 @@ public class Character {
     public void setStatus(Status status) {
         this.status = status;
     } //ends setStatus method.
+    
+    /**
+    * Method that gets the character's name.
+    * 
+    * @return The name of the character.
+    */
+    public String getName() {
+        return name;
+    } //ends getName method.
+ 
+    /**
+    * Method that sets the character's name.
+    * 
+    * @param name The name the character will have. 
+    */
+    public void setName(String name) {
+        this.name = name;
+    } //ends setName method.
   
     /**
     * Method that gets the character's age.

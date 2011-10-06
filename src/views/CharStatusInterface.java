@@ -1,3 +1,5 @@
+package edu.gatech.cs2340.shlat.views;
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;

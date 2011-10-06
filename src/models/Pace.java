@@ -1,3 +1,5 @@
+package edu.gatech.cs2340.shlat.models;
+
 public class Pace {
     private int pace;
 

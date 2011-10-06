@@ -1,3 +1,5 @@
+package edu.gatech.cs2340.shlat.views;
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -13,6 +15,7 @@ import javax.swing.JComboBox;
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
 
+import edu.gatech.cs2340.shlat.controllers.*;
 
 public class NewGameCharInterface {
 
@@ -33,11 +36,17 @@ public class NewGameCharInterface {
     private JComboBox char2SexField;
     private JComboBox char3SexField;
     private JComboBox char4SexField;
+    private JRadioButton rdbtnSlow;
+    private JRadioButton rdbtnNormal;
+    private JRadioButton rdbtnLudicrous; 
+    private JRadioButton rdbtnFamished;        
+    private JRadioButton rdbtnEnough;
+    private JRadioButton rdbtnGluttonous;
 
     /**
      * Launch the application.
      */
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
@@ -48,19 +57,150 @@ public class NewGameCharInterface {
                 }
             }
         });
-    }
+    }*/
 
     /**
      * Create the application.
      */
-    public NewGameCharInterface() {
-        initialize();
+    public NewGameCharInterface(Game gameController) {
+        initialize(gameController);
+    }
+    
+    /**
+     *Set visibility of the window
+     */
+    public void setVisibility(boolean visibility) {
+        frame.setVisible(visibility);
+    }
+    
+    /**
+     *Get the main character name
+     */
+    public String getMainCharacterName() {
+        return mainCharNameField.getText();
+    }
+    
+    /**
+     *Get a character name
+     */
+    public String getCharacterName(int charId) {
+        switch(charId) {
+            case 0:
+                return char2NameField.getText();
+            case 1:
+                return char3NameField.getText();
+            case 2:
+                return char4NameField.getText();
+        }
+        
+        return "";
+    }
+    
+    /**
+     *Get the main character age
+     */
+    public int getMainCharacterAge() {
+        return Integer.parseInt(mainCharAgeField.getText());
+    }
+    
+    /**
+     *Get character age
+     */
+    public int getCharacterAge(int charId) {
+        JTextField ageField;
+        switch(charId) {
+            case 0:
+                ageField = char2AgeField;
+                break;
+            case 1:
+                ageField = char3AgeField;
+                break;
+            case 2:
+                ageField = char4AgeField;
+                break;
+            default:
+                return 0;
+        }
+        
+        return Integer.parseInt(ageField.getText());
+    }
+    
+    /**
+     *Get the main character sex
+     */
+    public int getMainCharacterSex() {
+        if(((String)(mainCharJobField.getSelectedItem())).equals("Male"))
+            return 0;
+        
+        return 1;
+    }
+    
+    /**
+     *Get character sex
+     */
+    public int getCharacterSex(int charId) {
+        JComboBox sexCombo;
+        switch(charId) {
+            case 0:
+                sexCombo = char2SexField;
+                break;
+            case 1:
+                sexCombo = char3SexField;
+                break;
+            case 2:
+                sexCombo = char4SexField;
+                break;
+            default:
+                return 0;
+        }
+        
+        if(((String)(sexCombo.getSelectedItem())).equals("Male"))
+            return 0;
+        
+        return 1;
+    }
+    
+    /**
+     *Get the main character job
+     */
+    public int getMainCharacterJob() {
+        String selection =(String)(mainCharJobField.getSelectedItem());
+        if(selection.equals("Banker"))
+            return 0;
+        else if(selection.equals("Carpenter"))
+            return 1;
+        else
+            return 2;
+    }
+    
+    /**
+     *Get initial pace
+     */
+    public int getInitialPace() {
+        if(rdbtnSlow.isSelected())
+            return 0;
+        else if(rdbtnNormal.isSelected())
+            return 1;
+        else
+            return 2;
+    }
+    
+    /**
+     *Get initial rations
+     */
+    public int getInitialRations() {
+        if(rdbtnFamished.isSelected())
+            return 0;
+        else if(rdbtnEnough.isSelected())
+            return 1;
+        else
+            return 2;
     }
 
     /**
      * Initialize the contents of the frame.
      */
-    private void initialize() {
+    private void initialize(Game gameController) {
         frame = new JFrame();
         frame.setBounds(100,100, 589, 574);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -141,10 +281,10 @@ public class NewGameCharInterface {
         JLabel lblInitialPace = new JLabel("Initial Pace");
         lblInitialPace.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
         
-        JRadioButton rdbtnSlow = new JRadioButton("Slow");
-        JRadioButton rdbtnNormal = new JRadioButton("Normal");
+        rdbtnSlow = new JRadioButton("Slow");
+        rdbtnNormal = new JRadioButton("Normal");
         rdbtnNormal.setSelected(true);
-        JRadioButton rdbtnLudicrous = new JRadioButton("Ludicrous");
+        rdbtnLudicrous = new JRadioButton("Ludicrous");
         
         ButtonGroup paceGroup = new ButtonGroup();
             paceGroup.add(rdbtnSlow);
@@ -155,10 +295,10 @@ public class NewGameCharInterface {
         JLabel lblIntialRations = new JLabel("Intial Rations");
         lblIntialRations.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
         
-        JRadioButton rdbtnFamished = new JRadioButton("Famished");        
-        JRadioButton rdbtnEnough = new JRadioButton("Enough");
+        rdbtnFamished = new JRadioButton("Famished");        
+        rdbtnEnough = new JRadioButton("Enough");
         rdbtnEnough.setSelected(true);
-        JRadioButton rdbtnGluttonous = new JRadioButton("Gluttonous");
+        rdbtnGluttonous = new JRadioButton("Gluttonous");
         
         ButtonGroup rationGroup = new ButtonGroup();
             rationGroup.add(rdbtnFamished);
@@ -166,8 +306,12 @@ public class NewGameCharInterface {
             rationGroup.add(rdbtnGluttonous);
         
         JButton btnReset = new JButton("Reset");
-        JButton btnDone = new JButton("Done");
+        btnReset.setActionCommand("ngciReset");
+        btnReset.addActionListener(gameController);
         
+        JButton btnDone = new JButton("Done");
+        btnDone.setActionCommand("ngciDone");
+        btnDone.addActionListener(gameController);
 
         
         //Layout Stuff DON'T TOUCH!!!!

@@ -1,3 +1,5 @@
+package edu.gatech.cs2340.shlat.views;
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -10,7 +12,6 @@ import java.awt.List;
 import java.awt.Choice;
 import javax.swing.JTextField;
 import javax.swing.JButton;
-
 
 public class StoreInterface {
 

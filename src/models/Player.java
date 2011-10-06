@@ -4,9 +4,12 @@
  * @author S.H.L.A.T.
  * @version 0.1 10/04/11
  */
+ 
+package edu.gatech.cs2340.shlat.models;
+ 
 public class Player extends Character {
-    public Player(int age, int sex, Job job) {
-        super(age, sex, Status.IMMORTAL);
+    public Player(int age, int sex, String name, Job job) {
+        super(age, sex, name, Status.IMMORTAL);
         this.job = job;
     }
     /**

@@ -25,7 +25,6 @@ public class Game implements ActionListener {
     //Just for M4 Delete and make better
     private String[] name;
     private String[] age;
-    private String[] Job;
     private String[] sex;
     private String[] status;
     private String job;
@@ -48,6 +47,12 @@ public class Game implements ActionListener {
         }
         currentPace = new Pace(0);
         currentRations = 1;
+
+        //Temporary initialize arrays
+        name = new String[4];
+        age = new String[4];
+        sex = new String[4];
+        status = new String[4];
     }
 
     /*
@@ -111,6 +116,14 @@ public class Game implements ActionListener {
                     currentPace.setPace(2);
                     break;
             }
+
+            //Close the new game GUI and open the character stat gui
+            getInfo();
+            charStat = new CharStatusInterface(name, age, sex, job);
+            charStat.setRations(currentRations);
+            charStat.setPace(currentPace.getPace());
+            newGameUI.setVisibility(false);
+            charStat.setVisibility(true);
         } else if(action_command.equals("ngciReset")) {
             //Reset data in GUI/models?
         }
@@ -131,20 +144,6 @@ public class Game implements ActionListener {
                 }
             }
         });
-        charStat = new CharStatusInterface(name, age, sex, job);
-        getInfo();
-        charStat.setRations(currentRations);
-        charStat.setPace(currentPace.getPace());       
-		//Launch the char Stat GUI
-		EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    charStat.setVisibility(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
    }
     
     public void getInfo() {
@@ -153,9 +152,9 @@ public class Game implements ActionListener {
         //status[0]=playerCharacter.getStatus();
         job = playerCharacter.jobString();
         for(int i=1; i < 4; i++) {
-            name[i] = partyCharacters[i].getName();
-            age[i] = ""+partyCharacters[i].getAge();
-            //status[i] = partyCharacters[i].getStatus();
+            name[i] = partyCharacters[i-1].getName();
+            age[i] = ""+partyCharacters[i-1].getAge();
+            //status[i] = partyCharacters[i-1].getStatus();
         }
 
     }

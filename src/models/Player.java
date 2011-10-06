@@ -38,4 +38,8 @@ public class Player extends Character {
     public void setJob(Job job) {
         this.job = job;
     } //ends setJob method.
+
+    public String jobString() {
+      return job.toString();
+    }
 } //ends Player class.

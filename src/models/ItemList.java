@@ -23,7 +23,7 @@ import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
 
 public class ItemList {
-  private int id;
-  private String name;
-  private String description;
+  static final String ID = "id";
+  static final String NAME = "name";
+  static final String DESC = "desc";
 }

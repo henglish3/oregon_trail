@@ -10,10 +10,10 @@ final int PRICE_ = ;
 final int MAX_ = ;
 final int WEIGHT_ = ;
 
-//Ox
-private int yoke;
-final int PRICE_YOKE = 40;
-final int MAX_YOKE = 18;
+//Oxen
+private int oxen;
+final int PRICE_OXEN = 40;
+final int MAX_OXEN = 18;
 
 //Food
 private int food; //original game recommends 200 per person.

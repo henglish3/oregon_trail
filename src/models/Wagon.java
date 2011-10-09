@@ -4,18 +4,18 @@ public class Wagon {
     private boolean wheel;
     private boolean axle;
     private boolean tongue;
-    private boolean yoke;
+    private boolean oxen;
     
     public Wagon() {
         wheel = true;
         axle = true;
         tongue = true;
-        yoke = false; //player needs to buy it
+        oxen = false; //player needs to buy it
     } //ends Wagon constructor.
     
     //alwayr run this method when player clicks to move.
     public void checkWagon() {
-        if(wheel == true && axle == true && tongue == true && yoke == true) {
+        if(wheel == true && axle == true && tongue == true && oxen == true) {
             //run method that allows wagon to move. 
             //we could also add weight check, food check and ability to drop/sell items anywhere.
         }
@@ -29,7 +29,7 @@ public class Wagon {
             System.out.println("The tongue on your Wagon is broken and needs repairs.");
         }
         else {
-            System.out.println("You need a yoke to move the wagon.");
+            System.out.println("You need oxen to move the wagon.");
         }   
     } //ends checkWagon method.
 } //ends Wagon class.

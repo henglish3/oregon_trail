@@ -1,26 +1,43 @@
+/**
+ * Enumeration that represents the statuses a character can have. 
+ * Immortal, Normal, Sick, and Dead.
+ * 
+ * @author S.H.L.A.T.
+ * @version 0.2 10/09/11
+ */
+ 
+package edu.gatech.cs2340.shlat.models;
+
 public enum Status {
-    IMMORTAL("Normal", 0),
-    NORMAL("Normal", 1),
-    SICK("Sick", 2),
-    DEAD("Dead", 3);
+    IMMORTAL(0),
+    NORMAL(1),
+    SICK(2),
+    DEAD(3);
     
-    private final String statusName;
-    private final int statusNumber;
+    private int status;
     
-    Status(String statusName, int statusNumber) {
-        this.statusName = statusName;
-        this.statusNumber = statusNumber;
-    }
+    /**
+     * Constructor that assigns the character's status
+     */
+    Status(int status) {
+        this.status = status;
+    } //ends Status constructor.
     
-    public String getstatusName() {
-        return statusName;
-    }
+    /**
+     * Method that gets the character's status.
+     *   
+     * @return The status the character has.
+     */
+    public int getstatus() {
+        return status;
+    } //ends getStatus method.
     
-    public int getstatusNumber() {
-        return statusNumber;
-    }
-    
+    /**
+     * toString method returns a string.
+     * 
+     * @return The string that is returned.
+     */
     public String toString() {
-        return "";
-    }
-}
+        return " ";
+    } //ends toString method.
+} //ends Status enumueration.

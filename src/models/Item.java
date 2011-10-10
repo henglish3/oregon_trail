@@ -14,6 +14,7 @@ public class Item {
 	private double price;
         private int id;
         private String desc;
+        private boolean start;
 	
 	/**
 	 * This constructor creates a new default Item object
@@ -71,6 +72,12 @@ public class Item {
         public void setId(String id) {
             this.id = Integer.parseInt(id);
         }
+
+        // Sets whether or not a user starts with this item.
+        public void setStart(String start) {
+            this.start = Boolean.valueOf(start);
+        }
+
 	/**
 	 * This method changes this Item's weight
 	 * @param weight
@@ -127,4 +134,8 @@ public class Item {
 	public int getMaxAmount(){
 		return MAXAMOUNT;
 	}
+
+        public boolean getStart() {
+            return start;
+        }
 }

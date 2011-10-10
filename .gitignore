@@ -10,7 +10,7 @@ apidoc/
 *~
 *.lock
 *.DS_Store
-*.swp
+*.sw?
 *.out
 ehthumbs.db
 Icon?

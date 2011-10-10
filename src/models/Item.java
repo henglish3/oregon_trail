@@ -61,6 +61,11 @@ public class Item {
 	public void setName(String name){
 		this.name = name;
 	}
+
+        // Sets the description
+        public void setDesc(String desc) {
+            this.desc = desc;
+        }
 	/**
 	 * This method changes this Item's weight
 	 * @param weight

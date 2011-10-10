@@ -19,10 +19,10 @@ public class Item {
 	 * This constructor creates a new default Item object
 	 */
 	public Item(){
+	        MAXAMOUNT = 200;//Feel free to change this amount
           /*
 		name = "";
 		amount = 0;
-		MAXAMOUNT = 200;//Feel free to change this amount
 		weight = 0;
 		price = 0;
           */

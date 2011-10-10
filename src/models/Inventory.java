@@ -33,4 +33,8 @@ public class Inventory {
       }
     }
   }
+
+  public List getList() {
+    return inventory;
+  }
 }

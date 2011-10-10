@@ -22,6 +22,8 @@ import javax.xml.stream.events.EndElement;
 import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
 
+import edu.gatech.cs2340.shlat.models.Item;
+
 public class ItemList {
   static final String ITEM = "item";
   static final String ID = "id";
@@ -64,7 +66,7 @@ public class ItemList {
           
           if (event.asStartElement().getName().getLocalPart().equals(DESC)) {
             event = eventReader.nextEvent();
-            item.setDescription(event.asCharacters().getData());
+            item.setDesc(event.asCharacters().getData());
             continue;
           }
         }

@@ -12,7 +12,7 @@ public class Store {
 
   public void purchase(int item_id, Player player) {
     Item item = null;
-    List inventoryList = inventory.getList();
+    List<Item> inventoryList = inventory.getList();
     for (Item itemTmp : inventoryList) {
       int id = item.getId();
       if (id == item_id) {

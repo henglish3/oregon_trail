@@ -8,7 +8,7 @@ public class Store {
     inventory = new Inventory();
   }
 
-  public void purchase(int item_id, Player player);
+  public void purchase(int item_id, Player player) {
     Item item = null;
     List inventoryList = inventory.getList();
     for (Item itemTmp : inventoryList) {

@@ -138,4 +138,8 @@ public class Item {
         public boolean getStart() {
             return start;
         }
+
+        public int getId() {
+            return id;
+        }
 }

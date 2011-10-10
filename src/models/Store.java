@@ -20,5 +20,14 @@ public class Store {
         break;
       }
     }
+    
+    int playerMoney = player.getMoney();
+    int price = (int)item.getPrice();
+
+    if (playerMoney > price ) {
+    
+    } else {
+      System.out.println("You cannot afford this.");
+    }
   }
 }

@@ -26,8 +26,8 @@ public class Inventory {
     ItemList list = new ItemList();
     List<Item> readConfig = list.readConfig("items.xml");
     for (Item item : readConfig) {
-      int playerStart = item.getStart();
-      if (playerStart == 1) {
+      boolean playerStart = item.getStart();
+      if (playerStart) {
         inventory.add(item);
       }
     }

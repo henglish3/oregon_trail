@@ -8,9 +8,12 @@
 package edu.gatech.cs2340.shlat.models;
  
 public class Player extends Character {
+    private int money;
+
     public Player(int age, int sex, String name, Job job) {
         super(age, sex, name, Status.IMMORTAL);
         this.job = job;
+        this.money = 1600;
     }
     /**
     * Enumerated type which identifies the character's job.
@@ -20,7 +23,7 @@ public class Player extends Character {
     } //ends Job enum.
     
     private Job job;
-
+  
     /**
     * Method that gets the job of the character.
     * 
@@ -41,5 +44,13 @@ public class Player extends Character {
 
     public String jobString() {
       return job.toString();
+    }
+
+    public void setMoney(int money) {
+      this.money = money;
+    }
+
+    public int getMoney() {
+      return money;
     }
 } //ends Player class.

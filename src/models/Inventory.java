@@ -5,6 +5,8 @@
  * @version 0.1 10/08/11
  */
 
+import java.util.List;
+
 public class Inventory {
   private List inventory;
 

@@ -10,8 +10,8 @@ package edu.gatech.cs2340.shlat.models;
 public class Character {
 
     /**
-    * Enumerated type which identifies the character's status.
-    */
+     * Enumerated type which identifies the character's status.
+     */
     public enum Status {
         IMMORTAL, NORMAL, SICK, DEAD;
     } //ends Status enum.

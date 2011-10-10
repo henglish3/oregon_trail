@@ -15,11 +15,13 @@ public class Item{
 	 * This constructor creates a new default Item object
 	 */
 	public Item(){
+          /*
 		name = "";
 		amount = 0;
 		MAXAMOUNT = 200;//Feel free to change this amount
 		weight = 0;
 		price = 0;
+          */
 	}
 	/**
 	 * This constructor creates an Item object with a name, amount, weight, and price

@@ -21,4 +21,15 @@ public class Inventory {
      inventory.add(item); 
     }
   }
+
+  public Inventory(boolean player) {
+    ItemList list = new ItemList();
+    List<Item> readConfig = list.readConfig("items.xml");
+    for (Item item : readConfig) {
+      int playerStart = item.getStart();
+      if (playerStart == 1) {
+        inventory.add(item);
+      }
+    }
+  }
 }

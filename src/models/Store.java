@@ -1,5 +1,7 @@
 package edu.gatech.cs2340.shlat.models;
 
+import java.util.List;
+
 public class Store {
   private Inventory inventory;
 

@@ -58,7 +58,7 @@ public class Item {
 	 * @param name
 	 * 		This Item's new name
 	 */
-	public void changeName(String name){
+	public void setName(String name){
 		this.name = name;
 	}
 	/**

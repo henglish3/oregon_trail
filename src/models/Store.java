@@ -27,7 +27,8 @@ public class Store {
     if (playerMoney > price ) {
       // Need to add wagon weight check.
       // if item weight exceeds wagon weight.
-
+      int amount = item.getAmount();
+      item.changeAmount(--amount);
     } else {
       System.out.println("You cannot afford this.");
     }

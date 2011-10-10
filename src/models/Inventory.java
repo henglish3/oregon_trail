@@ -18,9 +18,7 @@ public class Inventory {
     ItemList list = new ItemList();
     List<Item> readConfig = list.readConfig("items.xml");
     for (Item item : readConfig) {
-
+     inventory.add(item); 
     }
   }
-
-
 }

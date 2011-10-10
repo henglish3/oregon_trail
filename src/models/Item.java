@@ -3,8 +3,10 @@
  * @author Alfonza Lewis
  * @version 1.0 10/04/2011
  */
- 
-public class Item{
+
+package edu.gatech.cs2340.shlat.models;
+
+public class Item {
 	private String name;
 	private int amount; 
 	private final int MAXAMOUNT;

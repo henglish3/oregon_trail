@@ -10,13 +10,14 @@ import java.util.List;
 
 public class Inventory {
   private List inventory;
+  private String location = "items.xml";
 
   /**
    * Contructor for the Inventory class
    */
   public Inventory() {
     ItemList list = new ItemList();
-    List<Item> readConfig = list.readConfig("items.xml");
+    List<Item> readConfig = list.readConfig(location);
     for (Item item : readConfig) {
      inventory.add(item); 
     }
@@ -24,7 +25,7 @@ public class Inventory {
 
   public Inventory(boolean player) {
     ItemList list = new ItemList();
-    List<Item> readConfig = list.readConfig("items.xml");
+    List<Item> readConfig = list.readConfig(location);
     for (Item item : readConfig) {
       boolean playerStart = item.getStart();
       if (playerStart) {

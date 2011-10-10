@@ -66,6 +66,11 @@ public class Item {
         public void setDesc(String desc) {
             this.desc = desc;
         }
+
+        // Sets the item id
+        public void setId(String id) {
+            this.id = Integer.parseInt(id);
+        }
 	/**
 	 * This method changes this Item's weight
 	 * @param weight

@@ -12,6 +12,8 @@ public class Item {
 	private final int MAXAMOUNT;
 	private int weight;
 	private double price;
+        private int id;
+        private String desc;
 	
 	/**
 	 * This constructor creates a new default Item object

@@ -15,7 +15,11 @@ public class Inventory {
    * Contructor for the Inventory class
    */
   public Inventory() {
-    // code to iterate through the items.xml file and create a list of items
+    ItemList list = new ItemList();
+    List<Item> readConfig = list.readConfig("items.xml");
+    for (Item item : readConfig) {
+
+    }
   }
 
 

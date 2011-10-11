@@ -16,8 +16,8 @@ public class Player extends Character {
         this.money = 1600;
     }
     /**
-    * Enumerated type which identifies the character's job.
-    */
+     * Enumerated type which identifies the character's job.
+     */
     public enum Job {
         BANKER, FARMER, CARPENTER;
     } //ends Job enum.
@@ -25,10 +25,10 @@ public class Player extends Character {
     private Job job;
   
     /**
-    * Method that gets the job of the character.
-    * 
-    * @return The job of the character.
-    */
+     * Method that gets the job of the character.
+     * 
+     * @return The job of the character.
+     */
     public Job getJob() {
         return job;
     } //ends getJob method.
@@ -42,6 +42,11 @@ public class Player extends Character {
         this.job = job;
     } //ends setJob method.
 
+    /**
+     * Method that returns a string value of the player's job.
+     * 
+     * @return The string value of the player's job.
+     */    
     public String jobString() {
       return job.toString();
     }

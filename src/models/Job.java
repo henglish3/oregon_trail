@@ -1,25 +1,42 @@
+/**
+ * Enumeration that represents the jobs the player can have. 
+ * Banker, Carpenter and Farmer. 
+ * 
+ * @author S.H.L.A.T.
+ * @version 0.2 10/09/11
+ */
+ 
+package edu.gatech.cs2340.shlat.models;
+
 public enum Job {
-    BANKER("Banker", 0),
-    CARPENTER("Carpenter", 1),
-    FARMER("Farmer", 2);
+    BANKER(0),
+    CARPENTER(1),
+    FARMER(2);
     
-    private final String jobName;
-    private final int jobNumber;
+    private final int job;
     
-    Job(String jobName, int jobNumber) {
-        this.jobName = jobName;
-        this.jobNumber = jobNumber;
-    }
+    /**
+     * Constructor that assigns the jobs.
+     */
+    Job(int job) {
+        this.job = job;
+    } //ends Job constructor.
     
-    public String getJobName() {
-        return jobName;
-    }
+    /**
+     * Method that gets the player's job.
+     *   
+     * @return The job the player has.
+     */
+    public int getJob() {
+        return job;
+    } //ends getJob method.
     
-    public int getJobNumber() {
-        return jobNumber;
-    }
-    
+    /**
+     * toString method returns a string.
+     * 
+     * @return The string that is returned.
+     */
     public String toString() {
-        return "";
-    }
-}
+        return " ";
+    } //ends toString method.
+} //ends Job enumeration.

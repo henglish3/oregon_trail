@@ -11,6 +11,7 @@ import java.util.List;
 public class Inventory {
   private List inventory;
   private String location = "items.xml";
+  private int weight;
 
   /**
    * Contructor for the Inventory class
@@ -21,6 +22,7 @@ public class Inventory {
     for (Item item : readConfig) {
      inventory.add(item); 
     }
+    weight = null;
   }
 
   public Inventory(boolean player) {
@@ -32,6 +34,7 @@ public class Inventory {
         inventory.add(item);
       }
     }
+    weight = 100;
   }
 
   public List getList() {

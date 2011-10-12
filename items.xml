@@ -7,7 +7,7 @@
     <weight>10</weight>
     <price>100</price>
     <max>2</max>
-    <playerStart>True</true>
+    <start>True</start>
   </item>
   <item>
     <id>2</id>
@@ -16,6 +16,6 @@
     <weight>1000</weight>
     <price>1750</price>
     <max>1</max>
-    <playerStart>True</true>
+    <start>True</start>
   </item>
 </itemlist>

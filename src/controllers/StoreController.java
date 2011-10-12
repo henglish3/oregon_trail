@@ -37,13 +37,23 @@ public class StoreController implements ActionListener {
     public void actionPerformed(ActionEvent e) { 
         //Use the action command to determine appropriate reaction
         String action_command = e.getActionCommand();
+        int temp;
         
         if(action_command.equals("siPurchase")) {
             //Purchase button was pressed, call purchase for each selected item
-            
+            for(int i = 0; i < storeInventory.size(); i++) {
+                if((temp = storeView.getNumWant(i)) > 0)
+                    tradingAt.purchase(player, playerWagon, (Item)(storeInventory.get(i)), temp);
+            }
             
             //Reset store view
+            storeView.clearInput();
             
+            //Close window
+            storeView.setVisibility(false);
+            
+            //TEMP!!! Re-open store window to show changes to player inventory
+            run(tradingAt);
         } else if(action_command.equals("siCancel")) {
             //Close store view
             storeView.setVisibility(false);
@@ -60,7 +70,6 @@ public class StoreController implements ActionListener {
         storeInventory = tradingAt.getInventoryAsList();
         Item currentItem;
         Item playersItem;
-        System.out.println("List size: " + storeInventory.size());
         
         for(int i = 0; i < storeInventory.size(); i++) {
             currentItem = (Item)storeInventory.get(i);

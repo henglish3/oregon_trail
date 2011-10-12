@@ -447,6 +447,24 @@ public class StoreInterface implements ActionListener {
       }
       
     /**
+     *Clears user input from the view
+     */
+    public void clearInput() {
+        wantItem1.setText("");
+        wantItem2.setText("");
+        wantItem3.setText("");
+        wantItem4.setText("");
+        wantItem5.setText("");
+        wantItem6.setText("");
+        wantItem7.setText("");
+        wantItem8.setText("");
+        wantItem9.setText("");
+        wantItem10.setText("");
+        
+        setTotalCost(0);
+    }
+      
+    /**
      * Update the total transaction cost when text fields are modified
      */
     public void actionPerformed(ActionEvent e) { 

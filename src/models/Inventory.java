@@ -14,7 +14,7 @@ public class Inventory {
   private int weight;
 
   /**
-   * Contructor for the Inventory class
+   * Constructor for the Inventory class for stores.
    */
   public Inventory() {
     ItemList list = new ItemList();
@@ -25,6 +25,12 @@ public class Inventory {
     weight = 0;
   }
 
+
+  /**
+   * Constructor for the Inventory for players.
+   *
+   * @param player Whether the inventory is for a player or not.
+   */
   public Inventory(boolean player) {
     ItemList list = new ItemList();
     List<Item> readConfig = list.readConfig(location);
@@ -36,19 +42,39 @@ public class Inventory {
     }
     weight = 100;
   }
-
+  
+  /** 
+   * Method that gets the inventory's weight.
+   *
+   * @return The weight of the inventory.
+   */
   public int getWeight() {
     return weight;
   }
 
+  /**
+   * Method that gets the inventory as a List.
+   * 
+   * @return The inventory as a List.
+   */
   public List getList() {
     return inventory;
   }
 
+  /**
+   * Method that adds an item to the inventory
+   *
+   * @param item The item to be added.
+   */
   public void add(Item item) {
     inventory.add(item);
   }
 
+  /**
+   * Method to update the weight of the inventory
+   *
+   * @param weight The weight of the item to be added.
+   */
   public void setWeight(int weight) {
     this.weight += weight;
   }

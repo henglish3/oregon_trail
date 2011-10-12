@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class Inventory {
-    private List inventory;
+    private List<Item> inventory;
     private String location = "items.xml";
     private int weight;
 
@@ -44,6 +44,18 @@ public class Inventory {
             }
         }
         weight = 100;
+    }
+    
+    /**
+     *Find an item with the supplied ID and return it or null if it doesnt't exist
+     */
+    public Item getItemById(int id) {
+        for (int i = 0; i < inventory.size(); i++) {
+            if(inventory.get(i).getId() == id)
+                return inventory.get(i);
+        }
+        
+        return null;
     }
     
     /** 

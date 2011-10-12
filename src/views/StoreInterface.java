@@ -98,6 +98,7 @@ public class StoreInterface implements ActionListener {
     
     private JLabel lblCurrentMoney;
     private JLabel lblTotalCost;
+    private JLabel lblWeight;
     
     //Instance variables to hold store data
     private String[] storeMax;
@@ -126,6 +127,38 @@ public class StoreInterface implements ActionListener {
      */
     public void setStoreMax(int max, int itemID){
     	storeMax[itemID] = ""+max;	
+        switch(itemID) {
+    	    case 0:
+    	        numItem1.setText(storeMax[itemID]);
+    	        break;
+    	    case 1:
+    	        numItem2.setText(storeMax[itemID]);
+    	        break;
+    	    case 2:
+    	        numItem3.setText(storeMax[itemID]);
+    	        break;
+    	    case 3:
+    	        numItem4.setText(storeMax[itemID]);
+    	        break;
+    	    case 4:
+    	        numItem5.setText(storeMax[itemID]);
+    	        break;
+    	    case 5:
+    	        numItem6.setText(storeMax[itemID]);
+    	        break;
+    	    case 6:
+    	        numItem7.setText(storeMax[itemID]);
+    	        break;
+    	    case 7:
+    	        numItem8.setText(storeMax[itemID]);
+    	        break;
+    	    case 8:
+    	        numItem9.setText(storeMax[itemID]);
+    	        break;
+    	    case 9:
+    	        numItem10.setText(storeMax[itemID]);
+    	        break;
+    	}
     }
     /**
      * Sets the amount of items you currently have
@@ -135,7 +168,38 @@ public class StoreInterface implements ActionListener {
      */
     public void setItemsHave(int items, int itemID){
     	itemHave[itemID] = ""+items;
-  	    
+  	    switch(itemID) {
+    	    case 0:
+    	        itemHave1.setText(itemHave[itemID]);
+    	        break;
+    	    case 1:
+    	        itemHave2.setText(itemHave[itemID]);
+    	        break;
+    	    case 2:
+    	        itemHave3.setText(itemHave[itemID]);
+    	        break;
+    	    case 3:
+    	        itemHave4.setText(itemHave[itemID]);
+    	        break;
+    	    case 4:
+    	        itemHave5.setText(itemHave[itemID]);
+    	        break;
+    	    case 5:
+    	        itemHave6.setText(itemHave[itemID]);
+    	        break;
+    	    case 6:
+    	        itemHave7.setText(itemHave[itemID]);
+    	        break;
+    	    case 7:
+    	        itemHave8.setText(itemHave[itemID]);
+    	        break;
+    	    case 8:
+    	        itemHave9.setText(itemHave[itemID]);
+    	        break;
+    	    case 9:
+    	        itemHave10.setText(itemHave[itemID]);
+    	        break;
+    	}
     }
     /**
      * Sets the name of the item or description
@@ -187,6 +251,38 @@ public class StoreInterface implements ActionListener {
     public void setUnitCost(int cost, int itemID){
         unitCostI[itemID] = cost;
     	unitCost[itemID] = ""+cost;
+        switch(itemID) {
+    	    case 0:
+    	        unitCost1.setText(unitCost[itemID]);
+    	        break;
+    	    case 1:
+    	        unitCost2.setText(unitCost[itemID]);
+    	        break;
+    	    case 2:
+    	        unitCost3.setText(unitCost[itemID]);
+    	        break;
+    	    case 3:
+    	        unitCost4.setText(unitCost[itemID]);
+    	        break;
+    	    case 4:
+    	        unitCost5.setText(unitCost[itemID]);
+    	        break;
+    	    case 5:
+    	        unitCost6.setText(unitCost[itemID]);
+    	        break;
+    	    case 6:
+    	        unitCost7.setText(unitCost[itemID]);
+    	        break;
+    	    case 7:
+    	        unitCost8.setText(unitCost[itemID]);
+    	        break;
+    	    case 8:
+    	        unitCost9.setText(unitCost[itemID]);
+    	        break;
+    	    case 9:
+    	        unitCost10.setText(unitCost[itemID]);
+    	        break;
+    	}
     }
     /**
      *  Sets the total Cost for the one type of item
@@ -194,8 +290,40 @@ public class StoreInterface implements ActionListener {
      * @param cost total cost for one type
      * @param itemID id for the item
      */
-    public void setCost(int cost, int itemID){
+    public void setItemCost(int cost, int itemID){
     	itemTotalCost[itemID] = ""+cost;
+        switch(itemID) {
+    	    case 0:
+    	        cost1.setText(itemTotalCost[itemID]);
+    	        break;
+    	    case 1:
+    	        cost2.setText(itemTotalCost[itemID]);
+    	        break;
+    	    case 2:
+    	        cost3.setText(itemTotalCost[itemID]);
+    	        break;
+    	    case 3:
+    	        cost4.setText(itemTotalCost[itemID]);
+    	        break;
+    	    case 4:
+    	        cost5.setText(itemTotalCost[itemID]);
+    	        break;
+    	    case 5:
+    	        cost6.setText(itemTotalCost[itemID]);
+    	        break;
+    	    case 6:
+    	        cost7.setText(itemTotalCost[itemID]);
+    	        break;
+    	    case 7:
+    	        cost8.setText(itemTotalCost[itemID]);
+    	        break;
+    	    case 8:
+    	        cost9.setText(itemTotalCost[itemID]);
+    	        break;
+    	    case 9:
+    	        cost10.setText(itemTotalCost[itemID]);
+    	        break;
+    	}
     }
     /**
      * Sets the item Weight
@@ -205,6 +333,38 @@ public class StoreInterface implements ActionListener {
      */
     public void setItemWeight(int weight, int itemID){
     	itemWeight[itemID] = ""+weight;
+        switch(itemID) {
+    	    case 0:
+    	        itemWeight1.setText(itemWeight[itemID]);
+    	        break;
+    	    case 1:
+    	        itemWeight2.setText(itemWeight[itemID]);
+    	        break;
+    	    case 2:
+    	        itemWeight3.setText(itemWeight[itemID]);
+    	        break;
+    	    case 3:
+    	        itemWeight4.setText(itemWeight[itemID]);
+    	        break;
+    	    case 4:
+    	        itemWeight5.setText(itemWeight[itemID]);
+    	        break;
+    	    case 5:
+    	        itemWeight6.setText(itemWeight[itemID]);
+    	        break;
+    	    case 6:
+    	        itemWeight7.setText(itemWeight[itemID]);
+    	        break;
+    	    case 7:
+    	        itemWeight8.setText(itemWeight[itemID]);
+    	        break;
+    	    case 8:
+    	        itemWeight9.setText(itemWeight[itemID]);
+    	        break;
+    	    case 9:
+    	        itemWeight10.setText(itemWeight[itemID]);
+    	        break;
+    	}
     }
     /**
      * Set the CurrentMoney label
@@ -213,6 +373,7 @@ public class StoreInterface implements ActionListener {
      */
      public void setCurrentMoney(int money) {
      	currentMoney = "" + money;
+        lblCurrentMoney.setText(currentMoney);
      }
      /**
       * Sets the current weight of the wagon
@@ -221,6 +382,7 @@ public class StoreInterface implements ActionListener {
       */
      public void setCurrentWeight(int weight) {
       	currentWeight = "" + weight;
+        lblWeight.setText(currentWeight);
       }
      /**
       * Set the CurrentMoney label
@@ -491,7 +653,7 @@ public class StoreInterface implements ActionListener {
         btnCancel.setActionCommand("siCancel");
         btnCancel.addActionListener(al);
         
-        JLabel lblWeight = new JLabel(currentWeight);
+        lblWeight = new JLabel(currentWeight);
         
         JLabel titleTotalWeight = new JLabel("Total Weight");
       

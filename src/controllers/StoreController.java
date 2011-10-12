@@ -18,6 +18,7 @@ public class StoreController implements ActionListener {
     private Store       tradingAt;      //The current store the player is trading with
     private Wagon       playerWagon;    //The player's wagon
     private Player      player;         //The player
+    private List        storeInventory; //List of all items at the current store
     
     /**
      *Constructs the Store Controller and initializes views
@@ -56,15 +57,28 @@ public class StoreController implements ActionListener {
         tradingAt = tradeAt;
         
         //Populate fields in the Store view
-        List storeInventory = tradingAt.getInventoryAsList();
+        storeInventory = tradingAt.getInventoryAsList();
         Item currentItem;
+        Item playersItem;
         System.out.println("List size: " + storeInventory.size());
         
         for(int i = 0; i < storeInventory.size(); i++) {
             currentItem = (Item)storeInventory.get(i);
             storeView.setItemDes(currentItem.getName(), i);
             storeView.setUnitCost((int)currentItem.getPrice(), i);
+            storeView.setStoreMax(currentItem.getAmount(), i);
+            storeView.setItemCost(0, i);
+            storeView.setItemWeight(currentItem.getWeight(), i);
+            
+            playersItem = player.getInventory().getItemById(currentItem.getId());
+            if(playersItem != null)
+                storeView.setItemsHave(playersItem.getAmount(), i);
+            else
+                storeView.setItemsHave(0, i);
         }
+        
+        storeView.setCurrentMoney((int)player.getMoney());
+        storeView.setCurrentWeight(player.getInventory().getWeight());
         
         //Display the store view
         storeView.setVisibility(true);

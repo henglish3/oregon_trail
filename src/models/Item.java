@@ -20,12 +20,10 @@ public class Item {
 	 * This constructor creates a new default Item object
 	 */
 	public Item(){
-          /*
 		name = "";
 		amount = 0;
 		weight = 0;
 		price = 0;
-          */
 	}
 
         public Item(Item item, int amount) {

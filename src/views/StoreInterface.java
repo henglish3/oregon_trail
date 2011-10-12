@@ -311,8 +311,12 @@ public class StoreInterface {
         JLabel lblTotalCost = new JLabel(totalCost);
         
         JButton btnPurchase = new JButton("Purchase");
+        //btnPurchase.setActionCommand("nsciPurchase");
+        //btnPurchase.addActionListener(storeController);
         
         JButton btnCancel = new JButton("Cancel");
+        //btnCancel.setActionCommand("nsciCancel");
+        //btnCancel.addActionListener(storeController);
         
         JLabel lblWeight = new JLabel(currentWeight);
         

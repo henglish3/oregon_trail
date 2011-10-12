@@ -22,7 +22,7 @@ public class Inventory {
     for (Item item : readConfig) {
      inventory.add(item); 
     }
-    weight = null;
+    weight = 0;
   }
 
   public Inventory(boolean player) {

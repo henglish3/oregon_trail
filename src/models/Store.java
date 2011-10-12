@@ -36,7 +36,9 @@ public class Store {
         // The wagon can hold the weight of the item 
         int currentAmount = item.getAmount();
         item.changeAmount(currentAmount - amount);
-        player.addItem(item);
+        
+        Item playerItem = new Item(item, amount);
+        player.addItem(playerItem);
         player.setMoney(playerMoney - cost);
       } else {
         System.out.println("You cannot carry this much weight.");

@@ -15,8 +15,8 @@ public class Store {
     int price = (int)item.getPrice();
 
     if (playerMoney > price ) {
-      // Need to add wagon weight check.
-      // if item weight exceeds wagon weight.
+      Inventory playerInventory = player.getInventory();
+
       int currentAmount = item.getAmount();
     } else {
       System.out.println("You cannot afford this.");

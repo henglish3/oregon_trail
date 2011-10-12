@@ -7,14 +7,15 @@
 package edu.gatech.cs2340.shlat.models;
 
 public class Item {
-    private String name;
-    private int amount; 
     private final int MAX_AMOUNT = 200;
-    private int weight;
-    private double price;
-    private int id;
+
+    private int amount; 
     private String desc;
+    private int id;
+    private String name;
+    private double price;
     private boolean start;
+    private int weight;
     
     /**
      * This constructor creates a new default Item object

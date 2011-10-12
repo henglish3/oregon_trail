@@ -48,4 +48,8 @@ public class Inventory {
   public void add(Item item) {
     inventory.add(item);
   }
+
+  public void setWeight(int weight) {
+    this.weight += weight;
+  }
 }

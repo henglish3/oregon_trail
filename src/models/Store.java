@@ -16,6 +16,12 @@ public class Store {
 
     if (playerMoney > price ) {
       Inventory playerInventory = player.getInventory();
+      
+      int weight = playerInventory.getWeight();
+      weight += item.getWeight();
+      if (weight < wagon.MAX_WEIGHT) {
+
+      }
 
       int currentAmount = item.getAmount();
     } else {

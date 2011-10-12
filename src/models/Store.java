@@ -23,8 +23,10 @@ public class Store {
   public void purchase(Player player, Wagon wagon, Item item, int amount) {   
     int playerMoney = player.getMoney();
     int price = (int)item.getPrice();
+    int cost = amount * price;
+    System.out.println(price);
 
-    if (playerMoney > price) {
+    if (playerMoney > cost) {
       // The player can afford the item
       Inventory playerInventory = player.getInventory();
       
@@ -35,7 +37,7 @@ public class Store {
         int currentAmount = item.getAmount();
         item.changeAmount(currentAmount - amount);
         player.addItem(item);
-        player.setMoney(playerMoney - price);
+        player.setMoney(playerMoney - cost);
       } else {
         System.out.println("You cannot carry this much weight.");
       }

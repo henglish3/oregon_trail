@@ -7,6 +7,7 @@
 package edu.gatech.cs2340.shlat.models;
 
 import java.util.List;
+import java.util.ArrayList;
 
 public class Inventory {
     private List inventory;
@@ -19,6 +20,7 @@ public class Inventory {
     public Inventory() {
         ItemList list = new ItemList();
         List<Item> readConfig = list.readConfig(location);
+        inventory = new ArrayList();
         for (Item item : readConfig) {
          inventory.add(item); 
         }
@@ -34,6 +36,7 @@ public class Inventory {
     public Inventory(boolean player) {
         ItemList list = new ItemList();
         List<Item> readConfig = list.readConfig(location);
+        inventory = new ArrayList();
         for (Item item : readConfig) {
             boolean playerStart = item.getStart();
             if (playerStart) {

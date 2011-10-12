@@ -8,6 +8,8 @@
     <price>40</price>
     <max>18</max>
     <start>True</start>
+    <start_amount>1</start_amount>
+    <store_quantity>10</store_quantity>
   </item>
   <item>
     <id>4</id>
@@ -17,6 +19,8 @@
     <price>1</price>
     <max>2000</max>
     <start>True</start>
+    <start_amount>10</start_amount>
+    <store_quantity>50</store_quantity>
   </item>
   <item>
     <id>5</id>
@@ -26,6 +30,8 @@
     <price>10</price>
     <max>99</max>
     <start>False</start>
+    <start_amount>5</start_amount>
+    <store_quantity>20</store_quantity>
   </item>
   <item>
     <id>1</id>
@@ -35,6 +41,8 @@
     <price>100</price>
     <max>2</max>
     <start>True</start>
+    <start_amount>0</start_amount>
+    <store_quantity>2</store_quantity>
   </item>
   <item>
     <id>2</id>
@@ -44,5 +52,7 @@
     <price>1750</price>
     <max>1</max>
     <start>True</start>
+    <start_amount>0</start_amount>
+    <store_quantity>1</store_quantity>
   </item>
 </itemlist>

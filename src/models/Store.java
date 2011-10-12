@@ -22,6 +22,8 @@ public class Store {
       if (weight < wagon.MAX_WEIGHT) {
         int currentAmount = item.getAmount();
         item.changeAmount(currentAmount - amount);
+        player.addItem(item);
+        player.setMoney(playerMoney - price);
       }
 
     } else {

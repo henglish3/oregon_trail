@@ -20,10 +20,10 @@ public class Store {
       int weight = playerInventory.getWeight();
       weight += item.getWeight();
       if (weight < wagon.MAX_WEIGHT) {
-
+        int currentAmount = item.getAmount();
+        item.changeAmount(currentAmount - amount);
       }
 
-      int currentAmount = item.getAmount();
     } else {
       System.out.println("You cannot afford this.");
     }

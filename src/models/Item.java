@@ -9,7 +9,7 @@ package edu.gatech.cs2340.shlat.models;
 public class Item {
 	private String name;
 	private int amount; 
-	private final int MAXAMOUNT;
+	private final int MAX_AMOUNT = 200;
 	private int weight;
 	private double price;
         private int id;
@@ -20,7 +20,6 @@ public class Item {
 	 * This constructor creates a new default Item object
 	 */
 	public Item(){
-	        MAXAMOUNT = 200;//Feel free to change this amount
           /*
 		name = "";
 		amount = 0;
@@ -34,7 +33,6 @@ public class Item {
           this.amount = amount;
           this.weight = item.getWeight();
           this.id = item.getId();
-          MAXAMOUNT = 200;
         }
 	/**
 	 * This constructor creates an Item object with a name, amount, weight, and price

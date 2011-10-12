@@ -10,6 +10,15 @@
     <start>True</start>
   </item>
   <item>
+    <id>4</id>
+    <name>Food</name>
+    <desc>Feast on the food of the old Greek gods and enjoy their wine.</desc>
+    <weight>5</weight>
+    <price>1</price>
+    <max>2000</max>
+    <start>True</start>
+  </item>
+  <item>
     <id>1</id>
     <name>Pimp Cane</name>
     <desc>Impress all of the people you meet during your travels with this awesome pimp cane.</desc>

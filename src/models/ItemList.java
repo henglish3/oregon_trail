@@ -33,6 +33,7 @@ public class ItemList {
   static final String PRICE = "price";
   static final String MAX = "max";
   static final String START = "start";
+  static final String START_AMOUNT = "start_amount";
 
   /**
    * This method takes a String location of an xml file and parses it into item objects and stores it in a List
@@ -111,6 +112,12 @@ public class ItemList {
           if (event.asStartElement().getName().getLocalPart().equals(START)) {
             event = eventReader.nextEvent();
             item.setStart(event.asCharacters().getData());
+            continue;
+          }
+
+          if (event.asStartElement().getName().getLocalPart().equals(START_AMOUNT)) {
+            event = eventReader.nextEvent();
+            item.setStartAmount(event.asCharacters().getData());
             continue;
           }
         }

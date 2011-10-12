@@ -9,12 +9,12 @@ package edu.gatech.cs2340.shlat.models;
 
 public class Wagon {
     
-    //private Inventory inventory = new Inventory();
     private boolean wheel; //turns to false on wagon break event, player must use 1 part from inventory to change true.
     private boolean axle;
     private boolean tongue;
     private boolean oxen; //turns false when there is no oxen on inventory, turns true when there is at least 1.
-    
+    private final int MAX_WEIGHT = 3500;    
+
     /**
      * Constructor that makes a working wagon, but requires the player to first buy oxen.
      */

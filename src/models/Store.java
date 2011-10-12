@@ -27,14 +27,14 @@ public class Store {
     int currentAmount = item.getAmount();
     System.out.println(price);
 
-    if (amount < currentAmount) {
-      if (playerMoney > cost) {
+    if (amount <= currentAmount) {
+      if (playerMoney >= cost) {
         // The player can afford the item
         Inventory playerInventory = player.getInventory();
         
         int weight = playerInventory.getWeight();
         weight += (item.getWeight() * amount);
-        if (weight < wagon.MAX_WEIGHT) { 
+        if (weight <= wagon.MAX_WEIGHT) { 
           // The wagon can hold the weight of the item 
           item.changeAmount(currentAmount - amount);
           

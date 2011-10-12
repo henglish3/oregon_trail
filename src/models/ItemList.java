@@ -34,6 +34,7 @@ public class ItemList {
   static final String MAX = "max";
   static final String START = "start";
   static final String START_AMOUNT = "start_amount";
+  static final String STORE_QUANTITY = "store_quantity";
 
   /**
    * This method takes a String location of an xml file and parses it into item objects and stores it in a List
@@ -120,6 +121,12 @@ public class ItemList {
             item.setStartAmount(event.asCharacters().getData());
             continue;
           }
+
+          if (event.asStartElement().getName().getLocalPart().equals(STORE_QUANTITY)) {
+            event = eventReader.nextEvent();
+            item.setStoreQuantity(event.asCharacters().getData());
+            continue;
+          } 
         }
         
         // If this is the closing tag for the item then add the item to the list

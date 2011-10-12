@@ -13,7 +13,7 @@ public class Wagon {
     private boolean axle;
     private boolean tongue;
     private boolean oxen; //turns false when there is no oxen on inventory, turns true when there is at least 1.
-    private final int MAX_WEIGHT = 3500;    
+    public final int MAX_WEIGHT = 3500;    
 
     /**
      * Constructor that makes a working wagon, but requires the player to first buy oxen.

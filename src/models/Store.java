@@ -24,30 +24,33 @@ public class Store {
     int playerMoney = player.getMoney();
     int price = (int)item.getPrice();
     int cost = amount * price;
+    int currentAmount = item.getAmount();
     System.out.println(price);
 
-    if (playerMoney > cost) {
-      // The player can afford the item
-      Inventory playerInventory = player.getInventory();
-      
-      int weight = playerInventory.getWeight();
-      weight += (item.getWeight() * amount);
-      if (weight < wagon.MAX_WEIGHT) { 
-        // The wagon can hold the weight of the item 
-        int currentAmount = item.getAmount();
-        item.changeAmount(currentAmount - amount);
+    if (amount < currentAmount) {
+      if (playerMoney > cost) {
+        // The player can afford the item
+        Inventory playerInventory = player.getInventory();
         
-        Item playerItem = new Item(item, amount);
-        player.addItem(playerItem);
-        player.setMoney(playerMoney - cost);
+        int weight = playerInventory.getWeight();
+        weight += (item.getWeight() * amount);
+        if (weight < wagon.MAX_WEIGHT) { 
+          // The wagon can hold the weight of the item 
+          item.changeAmount(currentAmount - amount);
+          
+          Item playerItem = new Item(item, amount);
+          player.addItem(playerItem);
+          player.setMoney(playerMoney - cost);
+        } else {
+          System.out.println("You cannot carry this much weight.");
+        }
       } else {
-        System.out.println("You cannot carry this much weight.");
+        System.out.println("You cannot afford this.");
       }
     } else {
-      System.out.println("You cannot afford this.");
+      System.out.println("You cannot purchase more than the store currently has in stock.");
     }
   }
-
   /**
    * This method returns the inventory as a list of items
    *

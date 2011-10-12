@@ -28,6 +28,14 @@ public class Item {
 		price = 0;
           */
 	}
+
+        public Item(Item item, int amount) {
+          this.name = item.getName();
+          this.amount = amount;
+          this.weight = item.getWeight();
+          this.id = item.getId();
+          MAXAMOUNT = 200;
+        }
 	/**
 	 * This constructor creates an Item object with a name, amount, weight, and price
 	 * @param name

@@ -85,6 +85,34 @@ public class ItemList {
             item.setDesc(event.asCharacters().getData());
             continue;
           }
+         
+          // If it is the weight set the item weight
+          if (event.asStartElement().getName().getLocalPart().equals(WEIGHT)) {
+            event = eventReader.nextEvent();
+            item.changeWeight(event.asCharacters().getData());
+            continue;
+          }
+          
+          // If it is the price set the item price
+          if (event.asStartElement().getName().getLocalPart().equals(PRICE)) {
+            event = eventReader.nextEvent();
+            item.changePrice(event.asCharacters().getData());
+            continue;
+          }
+
+          // if it is the max amount set the max amount
+          if (event.asStartElement().getName().getLocalPart().equals(MAX)) {
+            event = eventReader.nextEvent();
+            item.setDesc(event.asCharacters().getData());
+            continue;
+          }
+          
+          // If it is the start boolean set the item start status
+          if (event.asStartElement().getName().getLocalPart().equals(START)) {
+            event = eventReader.nextEvent();
+            item.setStart(event.asCharacters().getData());
+            continue;
+          }
         }
         
         // If this is the closing tag for the item then add the item to the list

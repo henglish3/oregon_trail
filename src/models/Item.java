@@ -109,6 +109,10 @@ public class Item {
         this.weight = weight;
     }
 
+    public void changeWeight(String weight) {
+        this.weight = Integer.parseInt(weight);
+    }
+
     /**
      * This method changes this Item's price
      *
@@ -116,6 +120,10 @@ public class Item {
      */
     public void changePrice(double price){
         this.price = price;
+    }
+
+    public void changePrice(String price) {
+        this.price = Double.parseDouble(price);
     }
     
     /**

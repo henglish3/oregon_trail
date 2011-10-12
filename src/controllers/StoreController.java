@@ -6,6 +6,7 @@ package edu.gatech.cs2340.shlat.controllers;
  */
  
 import java.awt.event.*;
+import java.util.List;
 import edu.gatech.cs2340.shlat.models.*;
 import edu.gatech.cs2340.shlat.views.*;
 
@@ -33,7 +34,19 @@ public class StoreController implements ActionListener {
      *Handles action events from the store view
      */
     public void actionPerformed(ActionEvent e) { 
+        //Use the action command to determine appropriate reaction
+        String action_command = e.getActionCommand();
         
+        if(action_command.equals("siPurchase")) {
+            //Purchase button was pressed, call purchase for each selected item
+            
+            
+            //Reset store view
+            
+        } else if(action_command.equals("siCancel")) {
+            //Close store view
+            storeView.setVisibility(false);
+        }
     }
     
     /**
@@ -43,6 +56,15 @@ public class StoreController implements ActionListener {
         tradingAt = tradeAt;
         
         //Populate fields in the Store view
+        List storeInventory = tradingAt.getInventoryAsList();
+        Item currentItem;
+        System.out.println("List size: " + storeInventory.size());
+        
+        for(int i = 0; i < storeInventory.size(); i++) {
+            currentItem = (Item)storeInventory.get(i);
+            storeView.setItemDes(currentItem.getName(), i);
+            storeView.setUnitCost((int)currentItem.getPrice(), i);
+        }
         
         //Display the store view
         storeView.setVisibility(true);

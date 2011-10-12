@@ -10,13 +10,14 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.Font;
+import java.lang.Math;
 
 
-public class StoreInterface {
+public class StoreInterface implements ActionListener {
 
     private JFrame frame;
 
-   
+    //GUI Elements - text fields to enter purchase amounts
     private JTextField wantItem1;
     private JTextField wantItem2;
     private JTextField wantItem3;
@@ -27,10 +28,83 @@ public class StoreInterface {
     private JTextField wantItem8;
     private JTextField wantItem9;
     private JTextField wantItem10;
+    
+    //GUI elements - labels
+    private JLabel itemHave1;
+    private JLabel itemHave2;
+    private JLabel itemHave3;
+    private JLabel itemHave4;
+    private JLabel itemHave5;
+    private JLabel itemHave6;
+    private JLabel itemHave7;
+    private JLabel itemHave8;
+    private JLabel itemHave9;
+    private JLabel itemHave10;
+        
+    private JLabel numItem1;
+    private JLabel numItem2;
+    private JLabel numItem3;
+    private JLabel numItem4;
+    private JLabel numItem5;
+    private JLabel numItem6;
+    private JLabel numItem7;
+    private JLabel numItem8;
+    private JLabel numItem9;
+    private JLabel numItem10;
+    
+    private JLabel itemDes1;
+    private JLabel itemDes2;
+    private JLabel itemDes3;
+    private JLabel itemDes4;
+    private JLabel itemDes5;
+    private JLabel itemDes6;
+    private JLabel itemDes7;
+    private JLabel itemDes8;
+    private JLabel itemDes9;
+    private JLabel itemDes10;
+        
+    private JLabel itemWeight1;
+    private JLabel itemWeight2;
+    private JLabel itemWeight3;
+    private JLabel itemWeight4;
+    private JLabel itemWeight5;
+    private JLabel itemWeight6;
+    private JLabel itemWeight7;
+    private JLabel itemWeight8;
+    private JLabel itemWeight9;
+    private JLabel itemWeight10;
+
+    private JLabel unitCost1;
+    private JLabel unitCost2;
+    private JLabel unitCost3;
+    private JLabel unitCost4;
+    private JLabel unitCost5;
+    private JLabel unitCost6;
+    private JLabel unitCost7;
+    private JLabel unitCost8;
+    private JLabel unitCost9;
+    private JLabel unitCost10;
+        
+    private JLabel cost1;
+    private JLabel cost2;
+    private JLabel cost3;
+    private JLabel cost4;
+    private JLabel cost5;
+    private JLabel cost6;
+    private JLabel cost7;
+    private JLabel cost8;
+    private JLabel cost9;
+    private JLabel cost10;
+    
+    private JLabel lblCurrentMoney;
+    private JLabel lblTotalCost;
+    
+    //Instance variables to hold store data
     private String[] storeMax;
     private String[] itemDes;
     private String[] itemHave;
     private String[] unitCost;
+    private int[] unitCostI;
     private String[] itemTotalCost;
     private String[] itemWeight;
     private String currentMoney = "14000";
@@ -61,7 +135,7 @@ public class StoreInterface {
      */
     public void setItemsHave(int items, int itemID){
     	itemHave[itemID] = ""+items;
-  	  
+  	    
     }
     /**
      * Sets the name of the item or description
@@ -71,6 +145,38 @@ public class StoreInterface {
      */
     public void setItemDes(String itemName, int itemID){
     	itemDes[itemID] = itemName;
+    	switch(itemID) {
+    	    case 0:
+    	        itemDes1.setText(itemDes[itemID]);
+    	        break;
+    	    case 1:
+    	        itemDes2.setText(itemDes[itemID]);
+    	        break;
+    	    case 2:
+    	        itemDes3.setText(itemDes[itemID]);
+    	        break;
+    	    case 3:
+    	        itemDes4.setText(itemDes[itemID]);
+    	        break;
+    	    case 4:
+    	        itemDes5.setText(itemDes[itemID]);
+    	        break;
+    	    case 5:
+    	        itemDes6.setText(itemDes[itemID]);
+    	        break;
+    	    case 6:
+    	        itemDes7.setText(itemDes[itemID]);
+    	        break;
+    	    case 7:
+    	        itemDes8.setText(itemDes[itemID]);
+    	        break;
+    	    case 8:
+    	        itemDes9.setText(itemDes[itemID]);
+    	        break;
+    	    case 9:
+    	        itemDes10.setText(itemDes[itemID]);
+    	        break;
+    	}
     }
     /**
      * Sets the cost per unit
@@ -79,6 +185,7 @@ public class StoreInterface {
      * @param itemID the item Number for now 1-10
      */
     public void setUnitCost(int cost, int itemID){
+        unitCostI[itemID] = cost;
     	unitCost[itemID] = ""+cost;
     }
     /**
@@ -120,9 +227,11 @@ public class StoreInterface {
       * 
       * @param amount of the total cost
       */
-      public void setTotalCost(int amount) {
-      	totalCost = ""+amount;
+     public void setTotalCost(int amount) {
+        totalCost = ""+amount;
+        lblTotalCost.setText(totalCost);
       }
+      
       /**
        *Get number of each item wanted
        *
@@ -130,6 +239,7 @@ public class StoreInterface {
        */
       public int getNumWant(int itemId) {
           JTextField itemField;
+          int result = 0;
           switch(itemId) {
               case 0:
                   itemField = wantItem1;
@@ -165,8 +275,26 @@ public class StoreInterface {
                   return 0;
           }
           
-          return Integer.parseInt(itemField.getText());
+          try {
+                result = Integer.parseInt(itemField.getText());
+          } catch(Exception e) {
+                result = 0;
+          }
+          
+          return Math.max(0, result);
       }
+      
+    /**
+     * Update the total transaction cost when text fields are modified
+     */
+    public void actionPerformed(ActionEvent e) { 
+        //Check each text field and calculate total cost
+        int runningTotalCost = 0;
+        for(int i = 0; i < 10; i++)
+            runningTotalCost += (getNumWant(i) * unitCostI[i]);
+
+        setTotalCost(runningTotalCost);
+    }
      
     /**
      * Create the application.
@@ -179,13 +307,43 @@ public class StoreInterface {
         unitCost = new String[10];
         itemTotalCost = new String[10];
         itemWeight = new String[10];
+        unitCostI = new int[10];
         
         for(int i = 0; i < 10; i++) {
             storeMax[i] = itemDes[i] = itemHave[i] = unitCost[i] = itemTotalCost[i] = itemWeight[i] = "";
+            unitCostI[i] = 0;
         }
         
         //Initialize view
         initialize(al);
+    }
+    
+    /**
+     * Updates values stored in GUI labels
+     */
+    private void updateLabels()
+    {
+        JLabel itemHave1 = new JLabel(itemHave[0]);
+        JLabel itemHave2 = new JLabel(itemHave[1]);
+        JLabel itemHave3 = new JLabel(itemHave[2]);
+        JLabel itemHave4 = new JLabel(itemHave[3]);
+        JLabel itemHave5 = new JLabel(itemHave[4]);
+        JLabel itemHave6 = new JLabel(itemHave[5]);
+        JLabel itemHave7 = new JLabel(itemHave[6]);
+        JLabel itemHave8 = new JLabel(itemHave[7]);
+        JLabel itemHave9 = new JLabel(itemHave[8]);
+        JLabel itemHave10 = new JLabel(itemHave[9]);
+        
+        JLabel numItem1 = new JLabel(storeMax[0]);
+        JLabel numItem2 = new JLabel(storeMax[1]);
+        JLabel numItem3 = new JLabel(storeMax[2]);
+        JLabel numItem4 = new JLabel(storeMax[3]);
+        JLabel numItem5 = new JLabel(storeMax[4]);
+        JLabel numItem6 = new JLabel(storeMax[5]);
+        JLabel numItem7 = new JLabel(storeMax[6]);
+        JLabel numItem8 = new JLabel(storeMax[7]);
+        JLabel numItem9 = new JLabel(storeMax[8]);
+        JLabel numItem10 = new JLabel(storeMax[9]);
     }
 
     /**
@@ -230,27 +388,27 @@ public class StoreInterface {
         
         //JLabel[] itemHave = new JLabel[1];
         //itemHave[0] = new JLabel("0");
-        JLabel itemHave1 = new JLabel(itemHave[0]);
-        JLabel itemHave2 = new JLabel(itemHave[1]);
-        JLabel itemHave3 = new JLabel(itemHave[2]);
-        JLabel itemHave4 = new JLabel(itemHave[3]);
-        JLabel itemHave5 = new JLabel(itemHave[4]);
-        JLabel itemHave6 = new JLabel(itemHave[5]);
-        JLabel itemHave7 = new JLabel(itemHave[6]);
-        JLabel itemHave8 = new JLabel(itemHave[7]);
-        JLabel itemHave9 = new JLabel(itemHave[8]);
-        JLabel itemHave10 = new JLabel(itemHave[9]);
+        itemHave1 = new JLabel(itemHave[0]);
+        itemHave2 = new JLabel(itemHave[1]);
+        itemHave3 = new JLabel(itemHave[2]);
+        itemHave4 = new JLabel(itemHave[3]);
+        itemHave5 = new JLabel(itemHave[4]);
+        itemHave6 = new JLabel(itemHave[5]);
+        itemHave7 = new JLabel(itemHave[6]);
+        itemHave8 = new JLabel(itemHave[7]);
+        itemHave9 = new JLabel(itemHave[8]);
+        itemHave10 = new JLabel(itemHave[9]);
         
-        JLabel numItem1 = new JLabel(storeMax[0]);
-        JLabel numItem2 = new JLabel(storeMax[1]);
-        JLabel numItem3 = new JLabel(storeMax[2]);
-        JLabel numItem4 = new JLabel(storeMax[3]);
-        JLabel numItem5 = new JLabel(storeMax[4]);
-        JLabel numItem6 = new JLabel(storeMax[5]);
-        JLabel numItem7 = new JLabel(storeMax[6]);
-        JLabel numItem8 = new JLabel(storeMax[7]);
-        JLabel numItem9 = new JLabel(storeMax[8]);
-        JLabel numItem10 = new JLabel(storeMax[9]);
+        numItem1 = new JLabel(storeMax[0]);
+        numItem2 = new JLabel(storeMax[1]);
+        numItem3 = new JLabel(storeMax[2]);
+        numItem4 = new JLabel(storeMax[3]);
+        numItem5 = new JLabel(storeMax[4]);
+        numItem6 = new JLabel(storeMax[5]);
+        numItem7 = new JLabel(storeMax[6]);
+        numItem8 = new JLabel(storeMax[7]);
+        numItem9 = new JLabel(storeMax[8]);
+        numItem10 = new JLabel(storeMax[9]);
         
         wantItem1 = new JTextField();
         wantItem2 = new JTextField();
@@ -262,66 +420,76 @@ public class StoreInterface {
         wantItem8 = new JTextField();
         wantItem9 = new JTextField();
         wantItem10 = new JTextField();
+        wantItem1.addActionListener(this);
+        wantItem2.addActionListener(this);
+        wantItem3.addActionListener(this);
+        wantItem4.addActionListener(this);
+        wantItem5.addActionListener(this);
+        wantItem6.addActionListener(this);
+        wantItem7.addActionListener(this);
+        wantItem8.addActionListener(this);
+        wantItem9.addActionListener(this);
+        wantItem10.addActionListener(this);
         
-        JLabel itemDes1 = new JLabel(itemDes[0]);
-        JLabel itemDes2 = new JLabel(itemDes[1]);
-        JLabel itemDes3 = new JLabel(itemDes[2]);
-        JLabel itemDes4 = new JLabel(itemDes[3]);
-        JLabel itemDes5 = new JLabel(itemDes[4]);
-        JLabel itemDes6 = new JLabel(itemDes[5]);
-        JLabel itemDes7 = new JLabel(itemDes[6]);
-        JLabel itemDes8 = new JLabel(itemDes[7]);
-        JLabel itemDes9 = new JLabel(itemDes[8]);
-        JLabel itemDes10 = new JLabel(itemDes[9]);
+        itemDes1 = new JLabel(itemDes[0]);
+        itemDes2 = new JLabel(itemDes[1]);
+        itemDes3 = new JLabel(itemDes[2]);
+        itemDes4 = new JLabel(itemDes[3]);
+        itemDes5 = new JLabel(itemDes[4]);
+        itemDes6 = new JLabel(itemDes[5]);
+        itemDes7 = new JLabel(itemDes[6]);
+        itemDes8 = new JLabel(itemDes[7]);
+        itemDes9 = new JLabel(itemDes[8]);
+        itemDes10 = new JLabel(itemDes[9]);
         
-        JLabel itemWeight1 = new JLabel(itemWeight[0]);
-        JLabel itemWeight2 = new JLabel(itemWeight[1]);
-        JLabel itemWeight3 = new JLabel(itemWeight[2]);
-        JLabel itemWeight4 = new JLabel(itemWeight[3]);
-        JLabel itemWeight5 = new JLabel(itemWeight[4]);
-        JLabel itemWeight6 = new JLabel(itemWeight[5]);
-        JLabel itemWeight7 = new JLabel(itemWeight[6]);
-        JLabel itemWeight8 = new JLabel(itemWeight[7]);
-        JLabel itemWeight9 = new JLabel(itemWeight[8]);
-        JLabel itemWeight10 = new JLabel(itemWeight[9]);
+        itemWeight1 = new JLabel(itemWeight[0]);
+        itemWeight2 = new JLabel(itemWeight[1]);
+        itemWeight3 = new JLabel(itemWeight[2]);
+        itemWeight4 = new JLabel(itemWeight[3]);
+        itemWeight5 = new JLabel(itemWeight[4]);
+        itemWeight6 = new JLabel(itemWeight[5]);
+        itemWeight7 = new JLabel(itemWeight[6]);
+        itemWeight8 = new JLabel(itemWeight[7]);
+        itemWeight9 = new JLabel(itemWeight[8]);
+        itemWeight10 = new JLabel(itemWeight[9]);
         
-        JLabel unitCost1 = new JLabel(unitCost[0]);
-        JLabel unitCost2 = new JLabel(unitCost[1]);
-        JLabel unitCost3 = new JLabel(unitCost[2]);
-        JLabel unitCost4 = new JLabel(unitCost[3]);
-        JLabel unitCost5 = new JLabel(unitCost[4]);
-        JLabel unitCost6 = new JLabel(unitCost[5]);
-        JLabel unitCost7 = new JLabel(unitCost[6]);
-        JLabel unitCost8 = new JLabel(unitCost[7]);
-        JLabel unitCost9 = new JLabel(unitCost[8]);
-        JLabel unitCost10 = new JLabel(unitCost[9]);
+        unitCost1 = new JLabel(unitCost[0]);
+        unitCost2 = new JLabel(unitCost[1]);
+        unitCost3 = new JLabel(unitCost[2]);
+        unitCost4 = new JLabel(unitCost[3]);
+        unitCost5 = new JLabel(unitCost[4]);
+        unitCost6 = new JLabel(unitCost[5]);
+        unitCost7 = new JLabel(unitCost[6]);
+        unitCost8 = new JLabel(unitCost[7]);
+        unitCost9 = new JLabel(unitCost[8]);
+        unitCost10 = new JLabel(unitCost[9]);
         
-        JLabel cost1 = new JLabel(itemTotalCost[0]);
-        JLabel cost2 = new JLabel(itemTotalCost[1]);
-        JLabel cost3 = new JLabel(itemTotalCost[2]);
-        JLabel cost4 = new JLabel(itemTotalCost[3]);
-        JLabel cost5 = new JLabel(itemTotalCost[4]);
-        JLabel cost6 = new JLabel(itemTotalCost[5]);
-        JLabel cost7 = new JLabel(itemTotalCost[6]);
-        JLabel cost8 = new JLabel(itemTotalCost[7]);
-        JLabel cost9 = new JLabel(itemTotalCost[8]);
-        JLabel cost10 = new JLabel(itemTotalCost[9]);
+        cost1 = new JLabel(itemTotalCost[0]);
+        cost2 = new JLabel(itemTotalCost[1]);
+        cost3 = new JLabel(itemTotalCost[2]);
+        cost4 = new JLabel(itemTotalCost[3]);
+        cost5 = new JLabel(itemTotalCost[4]);
+        cost6 = new JLabel(itemTotalCost[5]);
+        cost7 = new JLabel(itemTotalCost[6]);
+        cost8 = new JLabel(itemTotalCost[7]);
+        cost9 = new JLabel(itemTotalCost[8]);
+        cost10 = new JLabel(itemTotalCost[9]);
         
         JLabel titleCurrentMoney = new JLabel("You Have $");
         
-        JLabel lblCurrentMoney = new JLabel(currentMoney);
+        lblCurrentMoney = new JLabel(currentMoney);
         
         JLabel titleTotalCost = new JLabel("Total Cost $");
         
-        JLabel lblTotalCost = new JLabel(totalCost);
+        lblTotalCost = new JLabel(totalCost);
         
         JButton btnPurchase = new JButton("Purchase");
-        //btnPurchase.setActionCommand("nsciPurchase");
-        //btnPurchase.addActionListener(storeController);
+        btnPurchase.setActionCommand("siPurchase");
+        btnPurchase.addActionListener(al);
         
         JButton btnCancel = new JButton("Cancel");
-        //btnCancel.setActionCommand("nsciCancel");
-        //btnCancel.addActionListener(storeController);
+        btnCancel.setActionCommand("siCancel");
+        btnCancel.addActionListener(al);
         
         JLabel lblWeight = new JLabel(currentWeight);
         

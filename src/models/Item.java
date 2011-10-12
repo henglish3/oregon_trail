@@ -1,7 +1,7 @@
 /**
  * This class represents an Item
- * @author Alfonza Lewis
- * @version 1.0 10/04/2011
+ * @author S.H.L.A.T.
+ * @version 1.0 10/10/2011
  */
 
 package edu.gatech.cs2340.shlat.models;

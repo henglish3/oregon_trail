@@ -37,6 +37,10 @@ public class Inventory {
     weight = 100;
   }
 
+  public int getWeight() {
+    return weight;
+  }
+
   public List getList() {
     return inventory;
   }

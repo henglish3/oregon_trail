@@ -31,7 +31,7 @@ public class Store {
       Inventory playerInventory = player.getInventory();
       
       int weight = playerInventory.getWeight();
-      weight += item.getWeight();
+      weight += (item.getWeight() * amount);
       if (weight < wagon.MAX_WEIGHT) { 
         // The wagon can hold the weight of the item 
         int currentAmount = item.getAmount();

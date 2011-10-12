@@ -50,7 +50,6 @@ public class Item {
 		this.amount = amount;
 		this.weight = weight;
 		this.price = price;
-		MAXAMOUNT = 200;//Feel free to change this amount
 	}
 	/**
 	 * This method changes this Item's amount
@@ -134,11 +133,11 @@ public class Item {
 	}
 	/**
 	 * This method returns this Item's maximum amount
-	 * @return MAXAMOUNT
+	 * @return MAX_AMOUNT
 	 * 		This Item's maximum amount
 	 */
 	public int getMaxAmount(){
-		return MAXAMOUNT;
+		return MAX_AMOUNT;
 	}
 
         public boolean getStart() {

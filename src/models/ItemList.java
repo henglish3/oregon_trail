@@ -29,6 +29,10 @@ public class ItemList {
   static final String ID = "id";
   static final String NAME = "name";
   static final String DESC = "desc";
+  static final String WEIGHT = "weight";
+  static final String PRICE = "price";
+  static final String MAX = "max";
+  static final String START = "start";
 
   /**
    * This method takes a String location of an xml file and parses it into item objects and stores it in a List

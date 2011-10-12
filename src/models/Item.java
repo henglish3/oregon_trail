@@ -15,6 +15,7 @@ public class Item {
     private String name;
     private double price;
     private boolean start;
+    private int startAmount;
     private int weight;
     
     /**
@@ -187,5 +188,13 @@ public class Item {
      */
     public int getId() {
         return id;
+    }
+
+    public void setStartAmount(String start) {
+        this.startAmount = Integer.parseInt(start);
+    }
+
+    public int getStartAmount() {
+        return startAmount;
     }
 }

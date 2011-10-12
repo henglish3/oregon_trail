@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <itemlist>
   <item>
+    <id>3</id>
+    <name>Oxen</name>
+    <desc>These mighty oxen, covered in diamonds and gold, were once used by the mighty Egyptian emporers to move their goods around.</desc>
+    <weight>0</weight>
+    <price>40</price>
+    <max>18</max>
+    <start>True</start>
+  </item>
+  <item>
     <id>1</id>
     <name>Pimp Cane</name>
     <desc>Impress all of the people you meet during your travels with this awesome pimp cane.</desc>

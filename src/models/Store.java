@@ -10,25 +10,14 @@ public class Store {
     inventory = new Inventory();
   }
 
-  public void purchase(int item_id, Player player, Wagon wagon) {
-    Item item = null;
-    List<Item> inventoryList = inventory.getList();
-    for (Item itemTmp : inventoryList) {
-      int id = item.getId();
-      if (id == item_id) {
-        item = itemTmp;
-        break;
-      }
-    }
-    
+  public void purchase(Player player, Wagon wagon, Item item, int amount) {   
     int playerMoney = player.getMoney();
     int price = (int)item.getPrice();
 
     if (playerMoney > price ) {
       // Need to add wagon weight check.
       // if item weight exceeds wagon weight.
-      int amount = item.getAmount();
-      item.changeAmount(--amount);
+      int currentAmount = item.getAmount();
     } else {
       System.out.println("You cannot afford this.");
     }

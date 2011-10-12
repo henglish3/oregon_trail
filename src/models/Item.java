@@ -16,6 +16,7 @@ public class Item {
     private double price;
     private boolean start;
     private int startAmount;
+    private int storeQuantity;
     private int weight;
     
     /**
@@ -196,5 +197,13 @@ public class Item {
 
     public int getStartAmount() {
         return startAmount;
+    }
+
+    public void setStoreQuantity(String quantity) {
+        this.storeQuantity = Integer.parseInt(quantity);
+    }
+
+    public int getStoreQuantity() {
+        return storeQuantity;
     }
 }

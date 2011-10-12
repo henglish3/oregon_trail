@@ -19,6 +19,15 @@
     <start>True</start>
   </item>
   <item>
+    <id>5</id>
+    <name>Clothing</name>
+    <desc>Travel the Oregon Trail in style with the latest designer clothing.</desc>
+    <weight>2</weight>
+    <price>10</price>
+    <max>99</max>
+    <start>False</start>
+  </item>
+  <item>
     <id>1</id>
     <name>Pimp Cane</name>
     <desc>Impress all of the people you meet during your travels with this awesome pimp cane.</desc>

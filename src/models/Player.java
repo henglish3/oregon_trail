@@ -53,20 +53,40 @@ public class Player extends Character {
       return job.toString();
     }
 
+    /**
+     * This method sets the amount of money a player has
+     *
+     * @param money an amount of money to set to the player
+     */
     public void setMoney(int money) {
       this.money = money;
     }
 
+    /**
+     * This method gets the amount of money a player has
+     *
+     * @return the amount of money a player has
+     */
     public int getMoney() {
       return money;
     }
 
+    /**
+     * This method returns the players current inventory
+     *
+     * @return The players current inventory as an inventory object
+     */
     public Inventory getInventory() {
       return inventory;
     }
     
+    /**
+     * This method adds an item to the players inventory and updates the inventory's weight.
+     *
+     * @param item The item to be added to the inventory.
+     */
     public void addItem(Item item) {
-      inventory.add(item);
-      inventory.setWeight(item.getWeight());
+      inventory.add(item); // add the item
+      inventory.setWeight(item.getWeight()); // update the weight
     }
 } //ends Player class.

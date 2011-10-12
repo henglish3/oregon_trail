@@ -44,4 +44,8 @@ public class Inventory {
   public List getList() {
     return inventory;
   }
+
+  public void add(Item item) {
+    inventory.add(item);
+  }
 }

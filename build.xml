@@ -8,6 +8,7 @@
     <target name="prepare" depends="init" >
         <mkdir dir="${build.dir}" />
         <mkdir dir="${doc.dir}" />
+        <!-- <copy file="items.xml" tofile="${build.dir}/items.xml" failonerror="true"/> -->
     </target>
     <target name="compile" depends="prepare" >
         <javac destdir="${build.dir}">

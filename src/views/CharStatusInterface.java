@@ -22,21 +22,7 @@ public class CharStatusInterface {
     private String job;
     private String lblPace;
     private String lblRations;
-    /**
-     * Launch the application.
-     
-    public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    CharStatusInterface window = new CharStatusInterface();
-                    window.frame.setVisible(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }*/
+
     /**
     *set visibility of the window
     */

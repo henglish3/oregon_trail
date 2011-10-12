@@ -14,8 +14,8 @@ import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
+import java.awt.event.*;
 
-import edu.gatech.cs2340.shlat.controllers.*;
 
 public class NewGameCharInterface {
 
@@ -62,8 +62,8 @@ public class NewGameCharInterface {
     /**
      * Create the application.
      */
-    public NewGameCharInterface(Game gameController) {
-        initialize(gameController);
+    public NewGameCharInterface(ActionListener al) {
+        initialize(al);
     }
     
     /**
@@ -200,7 +200,7 @@ public class NewGameCharInterface {
     /**
      * Initialize the contents of the frame.
      */
-    private void initialize(Game gameController) {
+    private void initialize(ActionListener al) {
         frame = new JFrame();
         frame.setBounds(100,100, 589, 574);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -307,11 +307,11 @@ public class NewGameCharInterface {
         
         JButton btnReset = new JButton("Reset");
         btnReset.setActionCommand("ngciReset");
-        btnReset.addActionListener(gameController);
+        btnReset.addActionListener(al);
         
         JButton btnDone = new JButton("Done");
         btnDone.setActionCommand("ngciDone");
-        btnDone.addActionListener(gameController);
+        btnDone.addActionListener(al);
 
         
         //Layout Stuff DON'T TOUCH!!!!

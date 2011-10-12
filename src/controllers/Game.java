@@ -12,11 +12,17 @@ import edu.gatech.cs2340.shlat.models.*;
 import edu.gatech.cs2340.shlat.views.*;
 
 public class Game implements ActionListener {
+    //Sub-controllers
+    private StoreController         storeControl;
+    
     //Views
     private NewGameCharInterface    newGameUI;
     private CharStatusInterface     charStat;
+    
     //Models
     private Player                  playerCharacter;
+    private Wagon                   playerWagon;
+    private Store                   startStore;
     private Pace                    currentPace;
     private int                     currentRations;
     
@@ -39,6 +45,8 @@ public class Game implements ActionListener {
         newGameUI = new NewGameCharInterface(this);
         
         //Initialize models
+        playerWagon = new Wagon();
+        startStore = new Store();
         playerCharacter = new Player(18, 0, "Player", Player.Job.BANKER);
         partyCharacters = new edu.gatech.cs2340.shlat.models.Character[3];
         for(int i = 0; i < 3; i++)
@@ -53,6 +61,9 @@ public class Game implements ActionListener {
         age = new String[4];
         sex = new String[4];
         status = new String[4];
+        
+        //Initialize other controllers
+        storeControl = new StoreController(playerCharacter, playerWagon);
     }
 
     /*
@@ -124,6 +135,9 @@ public class Game implements ActionListener {
             charStat.setPace(currentPace.getPace());
             newGameUI.setVisibility(false);
             charStat.setVisibility(true);
+            
+            //Run the starting store
+            storeControl.run(startStore);
         } else if(action_command.equals("ngciReset")) {
             //Reset data in GUI/models?
         }

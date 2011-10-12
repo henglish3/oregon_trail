@@ -1,7 +1,7 @@
 package edu.gatech.cs2340.shlat.views;
 
 import java.awt.EventQueue;
-
+import java.awt.event.*;
 import javax.swing.JFrame;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -36,22 +36,14 @@ public class StoreInterface {
     private String currentMoney = "14000";
     private String totalCost = "0";
     private String currentWeight = "1000";
-
+    
     /**
-     * Launch the application.
+     *Set visibility of the window
      */
-    public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    StoreInterface window = new StoreInterface();
-                    window.frame.setVisible(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
+    public void setVisibility(boolean visibility) {
+        frame.setVisible(visibility);
     }
+    
     /**
      * sets the amount of items the store has
      * 
@@ -179,14 +171,27 @@ public class StoreInterface {
     /**
      * Create the application.
      */
-    public StoreInterface() {
-        initialize();
+    public StoreInterface(ActionListener al) {
+        //Temporary
+        storeMax = new String[10];
+        itemDes = new String[10];
+        itemHave = new String[10];
+        unitCost = new String[10];
+        itemTotalCost = new String[10];
+        itemWeight = new String[10];
+        
+        for(int i = 0; i < 10; i++) {
+            storeMax[i] = itemDes[i] = itemHave[i] = unitCost[i] = itemTotalCost[i] = itemWeight[i] = "";
+        }
+        
+        //Initialize view
+        initialize(al);
     }
 
     /**
      * Initialize the contents of the frame.
      */
-    private void initialize() {
+    private void initialize(ActionListener al) {
         frame = new JFrame();
         frame.setBounds(100, 100, 580, 471);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

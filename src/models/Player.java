@@ -9,11 +9,13 @@ package edu.gatech.cs2340.shlat.models;
  
 public class Player extends Character {
     private int money;
+    private Inventory inventory;
 
     public Player(int age, int sex, String name, Job job) {
         super(age, sex, name, Status.IMMORTAL);
         this.job = job;
         this.money = 1600;
+        this.inventory = new Inventory(true);
     }
     /**
      * Enumerated type which identifies the character's job.
@@ -57,5 +59,9 @@ public class Player extends Character {
 
     public int getMoney() {
       return money;
+    }
+
+    public Inventory getInventory() {
+      return inventory;
     }
 } //ends Player class.

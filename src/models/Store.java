@@ -24,8 +24,9 @@ public class Store {
         item.changeAmount(currentAmount - amount);
         player.addItem(item);
         player.setMoney(playerMoney - price);
+      } else {
+        System.out.println("You cannot carry this much weight.");
       }
-
     } else {
       System.out.println("You cannot afford this.");
     }

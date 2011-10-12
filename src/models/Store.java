@@ -43,4 +43,13 @@ public class Store {
       System.out.println("You cannot afford this.");
     }
   }
+
+  /**
+   * This method returns the inventory as a list of items
+   *
+   * @return the list of items.
+   */
+  public List getInventoryAsList() {
+    return inventory.getList();
+  }
 }

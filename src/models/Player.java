@@ -87,6 +87,6 @@ public class Player extends Character {
      */
     public void addItem(Item item) {
       inventory.add(item); // add the item
-      inventory.setWeight(item.getWeight()); // update the weight
+      inventory.setWeight(item.getWeight() * item.getAmount()); // update the weight
     }
 } //ends Player class.

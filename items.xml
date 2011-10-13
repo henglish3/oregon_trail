@@ -55,4 +55,59 @@
     <start_amount>0</start_amount>
     <store_quantity>1</store_quantity>
   </item>
+  <item>
+    <id>6</id>
+    <name>Wheel</name>
+    <desc>Wheel for the wagon. Comes with spinners</desc>
+    <weight>75</weight>
+    <price>10</price>
+    <max>20</max>
+    <start>False</start>
+    <start_amount>1</start_amount>
+    <store_quantity>20</store_quantity>
+  </item>
+  <item>
+    <id>7</id>
+    <name>Axle</name>
+    <desc>Axle for the wagon. All ready for assembly with hydralics.</desc>
+    <weight>125</weight>
+    <price>10</price>
+    <max>20</max>
+    <start>False</start>
+    <start_amount>1</start_amount>
+    <store_quantity>20</store_quantity>
+  </item>
+  <item>
+    <id>8</id>
+    <name>Tongue</name>
+    <desc>What?</desc>
+    <weight>100</weight>
+    <price>10</price>
+    <max>99</max>
+    <start>False</start>
+    <start_amount>1</start_amount>
+    <store_quantity>20</store_quantity>
+  </item>
+  <item>
+    <id>9</id>
+    <name>Hello Kitty! fortress</name>
+    <desc>Fortify your wagon with this awesome Hello Kitty! fortress modification. Your wagon will be impenetrable from the outside. Comes with Hello Kitty! swords, shields, and bows and arrows.</desc>
+    <weight>10000</weight>
+    <price>800</price>
+    <max>1</max>
+    <start>False</start>
+    <start_amount>0</start_amount>
+    <store_quantity>3</store_quantity>
+  </item>
+  <item>
+    <id>10</id>
+    <name>Hello Kitty! Notebook</name>
+    <desc>Keep track of your daily travels in this super awesome Hello Kitty! notebook. Comes in pink, pink, and pink.</desc>
+    <weight>1</weight>
+    <price>10</price>
+    <max>1</max>
+    <start>True</start>
+    <start_amount>1</start_amount>
+    <store_quantity>50</store_quantity>
+  </item>
 </itemlist>

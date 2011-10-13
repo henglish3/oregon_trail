@@ -1,5 +1,6 @@
 /**
- * Class that represents the wagon and contains the inventory. 
+ * Class that represents the wagon. It checks if the wagon has all the necessary things to move and keeps track of
+ * the maximum amount of weight it can hold.
  * 
  * @author S.H.L.A.T.
  * @version 0.2 10/09/11
@@ -34,16 +35,16 @@ public class Wagon {
             //we could also add weight check, food check and ability to drop/sell items anywhere.
         }
         else if(wheel == false) {
-            System.out.println("A wheel on your Wagon is broken and needs repairs.");
+            System.out.println("A wheel on your Wagon is broken and needs repplacement.");
         }
         else if(axle == false) {
-            System.out.println("An axle on your Wagon is broken and needs repairs.");
+            System.out.println("An axle on your Wagon is broken and needs replacement.");
         }
         else if(tongue == false) {
             System.out.println("The tongue on your Wagon is broken and needs repairs.");
         }
         else {
-            System.out.println("You need oxen to move the wagon.");
+            System.out.println("Your wagon needs oxen in order to move.");
         } 
     } //ends checkWagon method.
     

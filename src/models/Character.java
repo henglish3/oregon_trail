@@ -41,7 +41,7 @@ public class Character {
      * @param age The character's age.
      * @param sex The character's sex.
      * @param name The character's name.
-     * @param staus The character's status.
+     * @param status The character's status.
      */ 
     public Character(int age, int sex, String name, Status status) {
         this.age = age;

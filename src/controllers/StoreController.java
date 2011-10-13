@@ -22,6 +22,9 @@ public class StoreController implements ActionListener {
     
     /**
      * Constructs the Store Controller and initializes views
+     * 
+     * @param player A Player object
+     * @param playerWagon A Wagon object
      */
     public StoreController(Player player, Wagon playerWagon) {
         this.player = player;

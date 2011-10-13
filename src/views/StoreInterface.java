@@ -113,7 +113,9 @@ public class StoreInterface implements ActionListener {
     private String currentWeight = "1000";
     
     /**
-     *Set visibility of the window
+     * Set visibility of the window
+     * 
+     * @param visibility The boolean value that determines if the frame is visible or not
      */
     public void setVisibility(boolean visibility) {
         frame.setVisible(visibility);
@@ -466,6 +468,8 @@ public class StoreInterface implements ActionListener {
       
     /**
      * Update the total transaction cost when text fields are modified
+     * 
+     * @param e The action caught
      */
     public void actionPerformed(ActionEvent e) { 
         //Check each text field and calculate total cost
@@ -478,6 +482,8 @@ public class StoreInterface implements ActionListener {
      
     /**
      * Create the application.
+     * 
+     * @param al The ActionListener object that connects to the view of the store interface
      */
     public StoreInterface(ActionListener al) {
         //Temporary
@@ -528,6 +534,8 @@ public class StoreInterface implements ActionListener {
 
     /**
      * Initialize the contents of the frame.
+     * 
+     * @param al The ActionListener object that connects to the frame of the Store interface
      */
     private void initialize(ActionListener al) {
         frame = new JFrame();

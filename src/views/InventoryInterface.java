@@ -25,6 +25,8 @@ public class InventoryInterface {
 
     /**
      * Launch the application.
+     * 
+     * @param args The arguments collected from the user
      */
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {

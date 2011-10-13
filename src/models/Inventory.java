@@ -50,6 +50,9 @@ public class Inventory {
     
     /**
      *Find an item with the supplied ID and return it or null if it doesnt't exist
+     *
+     * @param id The id of the item to search for
+     * @return The instanc of the Item from this inventory
      */
     public Item getItemById(int id) {
         for (int i = 0; i < inventory.size(); i++) {

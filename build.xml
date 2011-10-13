@@ -19,7 +19,14 @@
         </javac>
     </target>
     <target name="javadoc" depends="prepare" >
-
+        <javadoc sourcepath="${src.dir}" access="public" destdir="${doc.dir}" packagenames="edu.gatech.cs2340.shlat">
+            <fileset dir="${src.dir}">
+                <include name="**/*.java" />
+            </fileset>
+            <bottom>
+                <![CDATA[<i>Copyright &#169; 2011 Team S.H.L.A.T. CS2340.  All Rights Reserved.</i>]]>
+            </bottom>
+        </javadoc>
     </target>
     <target name="jar" depends="compile" >
         <jar destfile="${build.dir}/${appname}.jar" basedir="${build.dir}" excludes="${appname}.jar">

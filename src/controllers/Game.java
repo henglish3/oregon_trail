@@ -37,8 +37,8 @@ public class Game implements ActionListener {
 
 
 
-    /*
-     *Initialize all models and views
+    /**
+     * Constructor for the Game controller. Initialize all models and views
      */
     public Game() {
         //Initialize view GUIs
@@ -66,8 +66,10 @@ public class Game implements ActionListener {
         storeControl = new StoreController(playerCharacter, playerWagon);
     }
 
-    /*
-     *Catches action events from views
+    /**
+     * Catches action events from views
+     *
+     * @param e The action caught
      */
     public void actionPerformed(ActionEvent e) { 
         //Use the action command to determine appropriate reaction
@@ -143,8 +145,8 @@ public class Game implements ActionListener {
         }
     }
     
-    /*
-     *Begin running the game controller logic
+    /**
+     * Begin running the game controller logic
      */
     public void run()
     {
@@ -160,6 +162,9 @@ public class Game implements ActionListener {
         });
    }
     
+    /**
+     * Fetch data from models for populating the view
+     */
     public void getInfo() {
     	name[0]=playerCharacter.getName(); 
         age[0]=""+playerCharacter.getAge();
@@ -172,8 +177,10 @@ public class Game implements ActionListener {
         }
 
     }
-    /*
-     *Application entry point
+    /**
+     * Application entry point
+     *
+     * @param args Command line arguments
      */
     public static void main(String[] args) {
         //Entry point

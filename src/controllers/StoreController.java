@@ -21,7 +21,7 @@ public class StoreController implements ActionListener {
     private List        storeInventory; //List of all items at the current store
     
     /**
-     *Constructs the Store Controller and initializes views
+     * Constructs the Store Controller and initializes views
      */
     public StoreController(Player player, Wagon playerWagon) {
         this.player = player;
@@ -32,7 +32,9 @@ public class StoreController implements ActionListener {
     }
     
     /**
-     *Handles action events from the store view
+     * Catches action events from views
+     *
+     * @param e The action caught
      */
     public void actionPerformed(ActionEvent e) { 
         //Use the action command to determine appropriate reaction
@@ -61,7 +63,9 @@ public class StoreController implements ActionListener {
     }
     
     /**
-     *Guides the system through a store dialog
+     * Guides the system through a store dialog
+     *
+     * @param tradeAt Store object representing the store the player is trading at
      */
     public void run(Store tradeAt) {
         tradingAt = tradeAt;

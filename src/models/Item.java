@@ -1,7 +1,7 @@
 /**
  * This class represents an Item
  * @author S.H.L.A.T.
- * @version 1.0 10/10/2011
+ * @version 3.0 10/10/2011
  */
 
 package edu.gatech.cs2340.shlat.models;
@@ -105,12 +105,16 @@ public class Item {
     /**
      * This method changes this Item's weight
      *
-         * @param weight This Item's new weight
+     * @param weight This Item's new weight
      */
     public void changeWeight(int weight){
         this.weight = weight;
     }
-
+    /**
+     * This method changes this Item's weight with a String parameter
+     * 
+     * @param weight This Item's new String weight
+     */
     public void changeWeight(String weight) {
         this.weight = Integer.parseInt(weight);
     }
@@ -123,7 +127,11 @@ public class Item {
     public void changePrice(double price){
         this.price = price;
     }
-
+    /**
+     * This method changes this Item's price
+     * 
+     * @param price This Item's new String weight
+     */
     public void changePrice(String price) {
         this.price = Double.parseDouble(price);
     }
@@ -191,18 +199,35 @@ public class Item {
         return id;
     }
 
+    /**
+     * This method sets a new starting amount for this Item
+     * 
+     * @param start This Item's new starting amount
+     */
     public void setStartAmount(String start) {
         this.startAmount = Integer.parseInt(start);
     }
-
+    /**
+     * This method returns this Item's starting amount
+     * 
+     * @return This item's starting amount
+     */
     public int getStartAmount() {
         return startAmount;
     }
-
+    /**
+     * This method sets a new store quantity
+     * 
+     * @param quantity This Item's new store quantity amount
+     */
     public void setStoreQuantity(String quantity) {
         this.storeQuantity = Integer.parseInt(quantity);
     }
-
+    /**
+     * This method returns this Item's store quantity amount
+     * 
+     * @return This Item's store quantity
+     */
     public int getStoreQuantity() {
         return storeQuantity;
     }

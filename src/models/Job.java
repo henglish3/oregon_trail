@@ -17,6 +17,8 @@ public enum Job {
     
     /**
      * Constructor that assigns the jobs.
+     * 
+     * @param job The int value for the job.
      */
     Job(int job) {
         this.job = job;

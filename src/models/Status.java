@@ -17,7 +17,9 @@ public enum Status {
     private int status;
     
     /**
-     * Constructor that assigns the character's status
+     * Constructor that assigns the character's status.
+     * 
+     * @param status The int value for the status.
      */
     Status(int status) {
         this.status = status;

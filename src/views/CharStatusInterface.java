@@ -22,6 +22,8 @@ public class CharStatusInterface {
     private String job;
     private String lblPace;
     private String lblRations;
+    private JLabel lblCurrentRations;
+    private JLabel lblCurrentPace;
 
     /**
     *set visibility of the window
@@ -64,13 +66,35 @@ public class CharStatusInterface {
     * Set the Pace for the wagon in window
     */
     public void setPace(int pace) {
-    	lblPace = ""+pace;
+    	switch(pace) {
+            case 0:
+                lblPace = "Slow";
+                break;
+            case 1:
+                lblPace = "Normal";
+                break;
+            case 2:
+                lblPace = "Ludicrous";
+                break;
+        }
+        lblCurrentPace.setText(lblPace);
     }
     /**
     * Set Rations for the wagon in stat window
     */
     public void setRations(int ration) {
-    	lblRations= ""+ration;
+    	switch(ration) {
+            case 0:
+                lblRations = "Famished";
+                break;
+            case 1:
+                lblRations = "Enough";
+                break;
+            case 2:
+                lblRations = "Gluttonous";
+                break;
+        }
+        lblCurrentRations.setText(lblRations);
     }
     /**
      * Initialize the contents of the frame.
@@ -141,13 +165,13 @@ public class CharStatusInterface {
         JLabel lblPace = new JLabel("Pace");
         lblPace.setFont(new Font("Lucida Grande", Font.BOLD, 15));
         
-        JLabel lblCurrentPace = new JLabel("Normal");
+        lblCurrentPace = new JLabel("Normal");
         lblCurrentPace.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
         
         JLabel lblRations = new JLabel("Rations");
         lblRations.setFont(new Font("Lucida Grande", Font.BOLD, 15));
         
-        JLabel lblCurrentRations = new JLabel("Enough");
+        lblCurrentRations = new JLabel("Enough");
         
         
         GroupLayout groupLayout = new GroupLayout(frame.getContentPane());

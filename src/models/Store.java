@@ -25,7 +25,7 @@ public class Store {
     int price = (int)item.getPrice();
     int cost = amount * price;
     int currentAmount = item.getAmount();
-    System.out.println(price);
+    Item playerItem;
 
     if (amount <= currentAmount) {
       if (playerMoney >= cost) {
@@ -38,9 +38,15 @@ public class Store {
           // The wagon can hold the weight of the item 
           item.changeAmount(currentAmount - amount);
           
-          Item playerItem = new Item(item, amount);
-          player.addItem(playerItem);
+          //Check if the player already has this item in his/her inventory
+          if((playerItem = playerInventory.getItemById(item.getId())) != null)
+            playerItem.changeAmount(playerItem.getAmount() + amount);
+          else {
+            playerItem = new Item(item, amount);
+            player.addItem(playerItem);
+          }
           player.setMoney(playerMoney - cost);
+          playerInventory.setWeight(weight);
         } else {
           System.out.println("You cannot carry this much weight.");
         }

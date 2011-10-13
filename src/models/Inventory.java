@@ -22,7 +22,8 @@ public class Inventory {
         List<Item> readConfig = list.readConfig(location);
         inventory = new ArrayList();
         for (Item item : readConfig) {
-         inventory.add(item); 
+            item.changeAmount(item.getStoreQuantity());
+            inventory.add(item); 
         }
         weight = 0;
     }
@@ -39,6 +40,7 @@ public class Inventory {
         inventory = new ArrayList();
         for (Item item : readConfig) {
             boolean playerStart = item.getStart();
+            item.changeAmount(item.getStartAmount());
             if (playerStart) {
                 inventory.add(item);
             }
@@ -90,7 +92,16 @@ public class Inventory {
      *
      * @param weight The weight of the item to be added.
      */
-    public void setWeight(int weight) {
+    public void addWeight(int weight) {
         this.weight += weight;
+    }
+    
+    /**
+     * Method to set the weight of the inventory
+     *
+     * @param weight The weight to set to.
+     */
+    public void setWeight(int weight) {
+        this.weight = weight;
     }
 }

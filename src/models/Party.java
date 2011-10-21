@@ -6,9 +6,10 @@
  */
 
 package edu.gatech.cs2340.shlat.models;
+
 import java.awt.event.*;
 import java.awt.EventQueue;
-import edu.gatech.cs2340.shlat.models.Character;
+
 public class Party {
     private Character[] characters;
     
@@ -50,6 +51,7 @@ public class Party {
     /**
      * Method that gets a certain character's status in the party.
      * 
+     * @param charNum The character who's status will be read.
      * @return The character's status.
      */
     public Status getCharacterStatus(int charNum) {
@@ -81,6 +83,3 @@ public class Party {
         } //ends actionPerformed method.
     } //ends Listener class.
 } //ends Party class.
-    
-
-    

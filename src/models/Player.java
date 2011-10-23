@@ -89,4 +89,12 @@ public class Player extends Character {
       inventory.add(item); // add the item
       inventory.setWeight(item.getWeight() * item.getAmount()); // update the weight
     }
+    
+    public void consumeFood(int distance) {
+        Item food = inventory.getItemById(4); // get the food in the players inventory
+        int quantity = food.getAmount();
+        quantity -= distance; // currently 1 unit of food is consumed for every unit of distance covered
+        food.changeAmount(quantity);
+        inventory.update(food);
+    }
 } //ends Player class.

@@ -107,4 +107,12 @@ public class Inventory {
     public void setWeight(int weight) {
         this.weight = weight;
     }
+
+    public void update(Item item) {
+        int id = item.getId();
+        for (int i = 0; i < inventory.size(); i++) {
+            if(inventory.get(i).getId() == id)
+                inventory.set(i, item);
+        }
+    }
 }

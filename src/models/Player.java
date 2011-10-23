@@ -97,4 +97,9 @@ public class Player extends Character {
         food.changeAmount(quantity);
         inventory.update(food);
     }
+
+    public int getFood() {
+        Item food = inventory.getItemById(4);
+        return food.getAmount();
+    }
 } //ends Player class.

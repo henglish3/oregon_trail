@@ -90,6 +90,11 @@ public class Player extends Character {
       inventory.setWeight(item.getWeight() * item.getAmount()); // update the weight
     }
     
+    /**
+     * This method updates the food in the players inventory by subtracting the distrance travled from the amount of food currently in the inventory. Currently one unit of food is consumed for every unit traveled.
+     *
+     * @param distance The distrance traveled to calculate the food consumed.
+     */
     public void consumeFood(int distance) {
         Item food = inventory.getItemById(4); // get the food in the players inventory
         int quantity = food.getAmount();
@@ -98,6 +103,11 @@ public class Player extends Character {
         inventory.update(food);
     }
 
+    /**
+     * This method returns the amount of food the player currently has in their inventory.
+     *
+     * @return The amount of food in the inventory.
+     */
     public int getFood() {
         Item food = inventory.getItemById(4);
         return food.getAmount();

@@ -108,6 +108,11 @@ public class Inventory {
         this.weight = weight;
     }
 
+    /**
+     * This updates an item in the list by replacing the old item with a new one.
+     *
+     * @param item Item to be 'updated' in the list.
+     */
     public void update(Item item) {
         int id = item.getId();
         for (int i = 0; i < inventory.size(); i++) {

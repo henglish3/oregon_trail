@@ -93,12 +93,13 @@ public class Player extends Character {
     /**
      * This method updates the food in the players inventory by subtracting the distrance travled from the amount of food currently in the inventory. Currently one unit of food is consumed for every unit traveled.
      *
-     * @param distance The distrance traveled to calculate the food consumed.
+     * @param players The amount of players currently alive
+     * @param ration  The current ration being used
      */
-    public void consumeFood(int distance) {
+    public void consumeFood(int players, int ration) {
         Item food = inventory.getItemById(4); // get the food in the players inventory
         int quantity = food.getAmount();
-        quantity -= distance; // currently 1 unit of food is consumed for every unit of distance covered
+        quantity -= (players * ration); // currently 1 unit of food is consumed for every unit of distance covered
         food.changeAmount(quantity);
         inventory.update(food);
     }

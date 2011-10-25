@@ -67,6 +67,46 @@ public class Party {
     public void setCharacterStatus(int charNum, Status statChange) {
         characters[charNum].setStatus(statChange);
     } //ends setCharacterStatus method.
+
+    /**
+     * Method that gets a certain character's name in the party.
+     * 
+     * @param charNum The character who's name will be read.
+     * @return The character's name.
+     */
+    public String getCharacterName(int charNum) {
+        return characters[charNum].getName();
+    } //ends getCharacterName method.
+
+    /**
+     * Method that sets a certain character's name in the party.
+     * 
+     * @param charNum The character who's sname will change.
+     * @param nameChange The name the character will now have.
+     */
+    public void setCharacterName(int charNum, String nameChange) {
+        characters[charNum].setName(nameChange);
+    } //ends setNameStatus method.
+    
+    /**
+     * Method that gets a certain character's age in the party.
+     * 
+     * @param charNum The character who's age will be read.
+     * @return The character's age.
+     */
+    public int getCharacterAge(int charNum) {
+        return characters[charNum].getAge();
+    } //ends getCharacterAge method.
+
+    /**
+     * Method that sets a certain character's age in the party.
+     * 
+     * @param charNum The character who's age will change.
+     * @param ageChange The age the character will now have.
+     */
+    public void setCharacterAge(int charNum, int ageChange) {
+        characters[charNum].setAge(ageChange);
+    } //ends setCharacterAge method.
     
     /**
      * Listener class implements ActionListener.

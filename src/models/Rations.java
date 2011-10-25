@@ -13,16 +13,16 @@ public class Rations {
    * Method creates a Rations object with a selected rations description
    * @param rationsSelection The rations of the player
    */
-  public Rations(String rationsSelection){
-    if(rationsSelection.equalsIgnoreCase("None"))
+  public Rations(int rationsSelection){
+    if(rationsSelection == 0)//0 == None
       ration = "None";
-    else if(rationsSelection.equalsIgnoreCase("Bare-bones"))
+    else if(rationsSelection == 1) //1 == Bare-bones
       ration = "Bare-bones";
-    else if(rationsSelection.equalsIgnoreCase("Meager"))
+    else if(rationsSelection == 2) //2 == Meager
       ration = "Meager";
-    else if(rationsSelection.equalsIgnoreCase("Normal"))
+    else if(rationsSelection == 3)//3 == Normal
       ration = "Normal";
-    else if(rationsSelection.equalsIgnoreCase("Well fed"))
+    else if(rationsSelection == 4)//4 == Well fed
       ration = "Well fed";
   }
 

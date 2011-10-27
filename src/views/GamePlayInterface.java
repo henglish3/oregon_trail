@@ -277,6 +277,8 @@ public class GamePlayInterface {
         JButton btnInventory = new JButton("Inventory");
         
         JButton btnStatus = new JButton("Status");
+        btnStatus.setActionCommand("mgiShowStatus");
+        btnStatus.addActionListener(al);
         
         JTextPane textPane = new JTextPane();
         

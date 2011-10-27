@@ -121,7 +121,6 @@ public class Game implements ActionListener {
             charStat.setRations(currentRations.getRation());
             charStat.setPace(currentPace.getPace());
             newGameUI.setVisibility(false);
-            charStat.setVisibility(true);
             
             //Run the starting store
             storeControl.run(startStore);
@@ -161,6 +160,8 @@ public class Game implements ActionListener {
             //Update GUI labels containing rations and distance traveled
             gameplayUI.setDistTravel("" + currentLocation.getCurrentDistanceTraveled() + " miles");
             gameplayUI.setFoodRemaining("" + playerCharacter.getFood());
+        } else if(action_command.equals("mgiShowStatus")) {
+            charStat.setVisibility(true);
         }
     }
     

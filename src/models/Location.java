@@ -127,6 +127,14 @@ public class Location {
     return distanceTraveled;
   }
   /**
+   * This method increases the distance traveled
+   * @param x
+   *        The int value used to increment the distance traveled by the player
+   */
+  public void travelDistance(int x) {
+    distanceTraveled += x;
+  }
+  /**
    * This method calculates and updates the distance to the next landmark and returns this new value
    * @param x
    *        The distance to the next landmark

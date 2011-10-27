@@ -36,4 +36,13 @@ public class Pace {
     public void setPace(int pace) {
         this.pace = pace;
     } //ends setPace method.
+    
+    /**
+     * Gets the distance traveled in one day at the current pace
+     *
+     * @return The number of miles traveled in one day at the given pace
+     */
+    public int getDistanceTraveled() {
+        return (pace * 10);
+    }
 } //ends Pace class.

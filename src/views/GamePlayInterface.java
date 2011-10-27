@@ -49,6 +49,13 @@ public class GamePlayInterface {
     public GamePlayInterface() {
         initialize();
     }
+    
+    /**
+     *Set visibility of the window
+     */
+    public void setVisibility(boolean visibility) {
+        frame.setVisible(visibility);
+    }
 
     /**
      * Initialize the contents of the frame.

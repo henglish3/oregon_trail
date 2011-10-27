@@ -20,15 +20,19 @@ public class StoreController implements ActionListener {
     private Player      player;         //The player
     private List        storeInventory; //List of all items at the current store
     
+    //Action Listener for the main controller
+    private ActionListener al;
+    
     /**
      * Constructs the Store Controller and initializes views
      * 
      * @param player A Player object
      * @param playerWagon A Wagon object
      */
-    public StoreController(Player player, Wagon playerWagon) {
+    public StoreController(ActionListener al, Player player, Wagon playerWagon) {
         this.player = player;
         this.playerWagon = playerWagon;
+        this.al = al;
         
         //Initialize the store view
         storeView = new StoreInterface(this);
@@ -57,8 +61,9 @@ public class StoreController implements ActionListener {
             //Close window
             storeView.setVisibility(false);
             
-            //TEMP!!! Re-open store window to show changes to player inventory
-            run(tradingAt);
+            //Signal the Game controller that the store is done
+            ActionEvent storeClosed = new ActionEvent(this, 0, "storeClosed");
+            al.actionPerformed(storeClosed);
         } else if(action_command.equals("siCancel")) {
             //Close store view
             storeView.setVisibility(false);

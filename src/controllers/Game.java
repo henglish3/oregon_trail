@@ -18,6 +18,7 @@ public class Game implements ActionListener {
     //Views
     private NewGameCharInterface    newGameUI;
     private CharStatusInterface     charStat;
+    private GamePlayInterface       gameplayUI;
     
     //Models
     private Player                  playerCharacter;
@@ -25,6 +26,7 @@ public class Game implements ActionListener {
     private Store                   startStore;
     private Pace                    currentPace;
     private int                     currentRations;
+    private Location                currentLocation;
     
     private edu.gatech.cs2340.shlat.models.Character[] partyCharacters;
     
@@ -43,10 +45,12 @@ public class Game implements ActionListener {
     public Game() {
         //Initialize view GUIs
         newGameUI = new NewGameCharInterface(this);
+        gameplayUI = new GamePlayInterface();
         
         //Initialize models
         playerWagon = new Wagon();
         startStore = new Store();
+        currentLocation = new Location("Player", "NONE");
         playerCharacter = new Player(18, 0, "Player", Player.Job.BANKER);
         partyCharacters = new edu.gatech.cs2340.shlat.models.Character[3];
         for(int i = 0; i < 3; i++)
@@ -63,7 +67,7 @@ public class Game implements ActionListener {
         status = new String[4];
         
         //Initialize other controllers
-        storeControl = new StoreController(playerCharacter, playerWagon);
+        storeControl = new StoreController(this, playerCharacter, playerWagon);
     }
 
     /**
@@ -142,6 +146,11 @@ public class Game implements ActionListener {
             storeControl.run(startStore);
         } else if(action_command.equals("ngciReset")) {
             //Reset data in GUI/models?
+        } else if(action_command.equals("storeClosed")) {
+            gameplayUI.setVisibility(true);
+        } else if(action_command.equals("makeMove")) {
+            currentLocation.travelDistance(currentPace.getDistanceTraveled());
+            //DECREASE RATIONS
         }
     }
     

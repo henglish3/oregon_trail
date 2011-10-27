@@ -7,6 +7,7 @@
 
 package edu.gatech.cs2340.shlat.controllers;
 import java.awt.event.*;
+import java.lang.*;
 import java.awt.EventQueue;
 import edu.gatech.cs2340.shlat.models.*;
 import edu.gatech.cs2340.shlat.views.*;
@@ -25,7 +26,7 @@ public class Game implements ActionListener {
     private Wagon                   playerWagon;
     private Store                   startStore;
     private Pace                    currentPace;
-    private int                     currentRations;
+    private Rations                 currentRations;
     private Location                currentLocation;
     
     private edu.gatech.cs2340.shlat.models.Character[] partyCharacters;
@@ -45,7 +46,7 @@ public class Game implements ActionListener {
     public Game() {
         //Initialize view GUIs
         newGameUI = new NewGameCharInterface(this);
-        gameplayUI = new GamePlayInterface();
+        gameplayUI = new GamePlayInterface(this);
         
         //Initialize models
         playerWagon = new Wagon();
@@ -58,7 +59,7 @@ public class Game implements ActionListener {
             partyCharacters[i] = new edu.gatech.cs2340.shlat.models.Character(18, 0, "Bob");
         }
         currentPace = new Pace(0);
-        currentRations = 1;
+        currentRations = new Rations(0);
 
         //Temporary initialize arrays
         name = new String[4];
@@ -109,35 +110,15 @@ public class Game implements ActionListener {
             
             //Initial rations/pace
             temp = newGameUI.getInitialRations();
-            switch(temp) {
-                case 0:
-                    currentRations = 0;
-                    break;
-                case 1:
-                    currentRations = 1;
-                    break;
-                case 2:
-                    currentRations = 2;
-                    break;
-            }
+            currentRations.setRation(temp);
             
             temp = newGameUI.getInitialPace();
-            switch(temp) {
-                case 0:
-                    currentPace.setPace(0);
-                    break;
-                case 1:
-                    currentPace.setPace(1);
-                    break;
-                case 2:
-                    currentPace.setPace(2);
-                    break;
-            }
+            currentPace.setPace(temp);
 
             //Close the new game GUI and open the character stat gui
             getInfo();
             charStat = new CharStatusInterface(name, age, sex, job);
-            charStat.setRations(currentRations);
+            charStat.setRations(currentRations.getRation());
             charStat.setPace(currentPace.getPace());
             newGameUI.setVisibility(false);
             charStat.setVisibility(true);
@@ -147,10 +128,39 @@ public class Game implements ActionListener {
         } else if(action_command.equals("ngciReset")) {
             //Reset data in GUI/models?
         } else if(action_command.equals("storeClosed")) {
+            //Open main game GUI and set information in the GUI
             gameplayUI.setVisibility(true);
+            gameplayUI.setRations(currentRations.getRation());
+            gameplayUI.setPace(currentPace.getPace());
+            gameplayUI.setDistTravel("" + currentLocation.getCurrentDistanceTraveled() + " miles");
+            gameplayUI.setFoodRemaining("" + playerCharacter.getFood());
+            gameplayUI.setAlertLabel("");
+            //TODO: current date
         } else if(action_command.equals("makeMove")) {
+            //Get any updates to rations and pace
+            currentRations.setRation(gameplayUI.getRations());
+            currentPace.setPace(gameplayUI.getPace());
+            
+            //Ensure that the player has enough food
+            temp = playerCharacter.getFood()/4;     //Maximum rations
+            if(currentRations.getRation() > temp) {
+                currentRations.setRation(temp);
+                gameplayUI.setRations(currentRations.getRation());
+                if(temp == 0) {
+                    gameplayUI.setAlertLabel("NO food remaining");
+                } else {
+                    gameplayUI.setAlertLabel("");
+                }
+            } else {
+                gameplayUI.setAlertLabel("");
+            }
+            
             currentLocation.travelDistance(currentPace.getDistanceTraveled());
-            //DECREASE RATIONS
+            playerCharacter.consumeFood(4, currentRations.getRation());
+            
+            //Update GUI labels containing rations and distance traveled
+            gameplayUI.setDistTravel("" + currentLocation.getCurrentDistanceTraveled() + " miles");
+            gameplayUI.setFoodRemaining("" + playerCharacter.getFood());
         }
     }
     

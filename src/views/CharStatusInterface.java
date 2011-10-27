@@ -67,13 +67,13 @@ public class CharStatusInterface {
     */
     public void setPace(int pace) {
     	switch(pace) {
-            case 0:
+            case 1:
                 lblPace = "Slow";
                 break;
-            case 1:
+            case 2:
                 lblPace = "Normal";
                 break;
-            case 2:
+            case 3:
                 lblPace = "Ludicrous";
                 break;
         }
@@ -84,13 +84,13 @@ public class CharStatusInterface {
     */
     public void setRations(int ration) {
     	switch(ration) {
-            case 0:
+            case 1:
                 lblRations = "Famished";
                 break;
-            case 1:
+            case 2:
                 lblRations = "Enough";
                 break;
-            case 2:
+            case 3:
                 lblRations = "Gluttonous";
                 break;
         }

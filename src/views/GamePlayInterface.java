@@ -39,28 +39,30 @@ public class GamePlayInterface {
     private JRadioButton rdbtnStarved;
     private JRadioButton rdbtnEnough;
     private JRadioButton rdbtnFilling;
-    
-    /**
-     * Launch the application.
-     */
-    public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    GamePlayInterface window = new GamePlayInterface();
-                    window.frame.setVisible(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
+    private JLabel lblOutofRations;
+    private JLabel lblDate;
+    private JLabel lblRemainingFood;
+    private JLabel lblDistTravel;
 
+    /**
+    *set visibility of the window
+    */
+    public void setVisibility(boolean visibility) {
+    	frame.setVisible(visibility);
+    }
     /**
      * Create the application.
      */
-    public GamePlayInterface() {
-        initialize();
+    public GamePlayInterface(ActionListener al) {
+        initialize(al);
+    }
+    /**
+     * Sets the text in the alert label
+     *
+     * @param message A string to put in the label
+     */
+    public void setAlertLabel(String message) {
+        lblOutofRations.setText(message);
     }
     /**
     * sets the rations radio button
@@ -147,6 +149,7 @@ public class GamePlayInterface {
     */
     public void setDate(String date) {
         this.date = date;
+        lblDate.setText(date);
     }
     /**
      * Sets the distance traveled
@@ -155,14 +158,16 @@ public class GamePlayInterface {
      */
      public void setDistTravel(String dist) {
          distTravel = dist;
+         lblDistTravel.setText(distTravel);
      }
      /**
       * Sets the distance traveled
       *
       *@param amount string to display as food remaining
       */
-      public void setfoodRemainingl(String amount) {
+      public void setFoodRemaining(String amount) {
           remainFood = amount;
+          lblRemainingFood.setText(remainFood);
       }
     /**
     * Sets the imageicon for the weather
@@ -175,7 +180,7 @@ public class GamePlayInterface {
     /**
      * Initialize the contents of the frame.
      */
-    private void initialize() {
+    private void initialize(ActionListener al) {
         frame = new JFrame();
         frame.setBounds(100, 100, 752, 495);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -256,10 +261,12 @@ public class GamePlayInterface {
         JLabel lblWeatherImg = new JLabel("");
         lblWeatherImg.setIcon(weatherIcon);
         
-        JLabel lblDate = new JLabel(date);
+        lblDate = new JLabel(date);
         lblDate.setFont(new Font("Lucida Grande", Font.PLAIN, 14));
         
         JButton btnGo = new JButton("GO");
+        btnGo.setActionCommand("makeMove");
+        btnGo.addActionListener(al);
         
         JButton btnMap = new JButton("Map");
         
@@ -276,16 +283,16 @@ public class GamePlayInterface {
         JLabel lblDistanceTraveled = new JLabel("Distance Traveled");
         lblDistanceTraveled.setFont(new Font("Lucida Grande", Font.BOLD, 14));
         
-        JLabel lblDistTravel = new JLabel(distTravel);
+        lblDistTravel = new JLabel(distTravel);
         lblDistTravel.setFont(new Font("Lucida Grande", Font.PLAIN, 11));
         
         JLabel lblFoodRemaining = new JLabel("Food Remaining");
         lblFoodRemaining.setFont(new Font("Lucida Grande", Font.BOLD, 14));
         
-        JLabel label = new JLabel(remainFood);
-        label.setFont(new Font("Lucida Grande", Font.PLAIN, 11));
+        lblRemainingFood = new JLabel(remainFood);
+        lblRemainingFood.setFont(new Font("Lucida Grande", Font.PLAIN, 11));
         
-        JLabel lblOutofRations = new JLabel("You have NO RATIONS!");
+        lblOutofRations = new JLabel("You have NO RATIONS!");
         lblOutofRations.setFont(new Font("Lucida Grande", Font.BOLD, 13));
         lblOutofRations.setForeground(Color.RED);
         GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
@@ -333,7 +340,7 @@ public class GamePlayInterface {
         							.addComponent(lblDistanceTraveled)
         							.addGroup(groupLayout.createSequentialGroup()
         								.addGap(27)
-        								.addComponent(label, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE))
+        								.addComponent(lblRemainingFood, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE))
         							.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
         								.addComponent(lblDistTravel, GroupLayout.PREFERRED_SIZE, 82, GroupLayout.PREFERRED_SIZE)
         								.addGap(23)))
@@ -368,7 +375,7 @@ public class GamePlayInterface {
         					.addGap(18)
         					.addComponent(lblFoodRemaining, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE)
         					.addPreferredGap(ComponentPlacement.RELATED)
-        					.addComponent(label, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE)))
+        					.addComponent(lblRemainingFood, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE)))
         			.addPreferredGap(ComponentPlacement.RELATED)
         			.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
         				.addGroup(groupLayout.createSequentialGroup()

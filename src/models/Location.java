@@ -116,14 +116,11 @@ public class Location {
     this.landmarkDistance = landmarkDistance;
   }
   /**
-   * This method calculates and updates the distance traveled by the player and returns the new value of the distance traveled
-   * @param x 
-   *        The int value used to increment the distance traveled by the player
+   * This method returns the distance traveled
    * @return
    *        The new value of the distance traveled
    */
-  public int getCurrentDistanceTraveled(int x){
-    distanceTraveled += x;
+  public int getCurrentDistanceTraveled(){
     return distanceTraveled;
   }
   /**

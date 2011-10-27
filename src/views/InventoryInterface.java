@@ -1,4 +1,4 @@
-package edu.gatech.cs2340.shlat.views;
+//package edu.gatech.cs2340.shlat.views;
 
 import java.awt.EventQueue;
 
@@ -99,7 +99,7 @@ public class InventoryInterface {
      * Initialize the contents of the frame.
      */
     private void initialize() {
-        frame = new JFrame();
+        frame = new JFrame("Inventory");
         frame.setBounds(100, 100, 349, 365);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         

@@ -200,7 +200,7 @@ public class NewGameCharInterface {
      * Initialize the contents of the frame.
      */
     private void initialize(ActionListener al) {
-        frame = new JFrame();
+        frame = new JFrame("New Game");
         frame.setBounds(100,100, 602, 607);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         

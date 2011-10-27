@@ -1,4 +1,4 @@
-package edu.gatech.cs2340.shlat.views;
+//package edu.gatech.cs2340.shlat.views;
 
 import java.awt.EventQueue;
 import java.awt.event.*;
@@ -538,7 +538,7 @@ public class StoreInterface implements ActionListener {
      * @param al The ActionListener object that connects to the frame of the Store interface
      */
     private void initialize(ActionListener al) {
-        frame = new JFrame();
+        frame = new JFrame("Shop!");
         frame.setBounds(100, 100, 580, 471);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         

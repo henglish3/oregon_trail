@@ -1,4 +1,4 @@
-//package edu.gatech.cs2340.shlat.views;
+package edu.gatech.cs2340.shlat.views;
 
 import java.awt.EventQueue;
 
@@ -177,11 +177,11 @@ public class NewGameCharInterface {
      */
     public int getInitialPace() {
         if(rdbtnSlow.isSelected())
-            return 0;
-        else if(rdbtnNormal.isSelected())
             return 1;
-        else
+        else if(rdbtnNormal.isSelected())
             return 2;
+        else
+            return 3;
     }
     
     /**
@@ -189,11 +189,11 @@ public class NewGameCharInterface {
      */
     public int getInitialRations() {
         if(rdbtnFamished.isSelected())
-            return 0;
-        else if(rdbtnEnough.isSelected())
             return 1;
-        else
+        else if(rdbtnEnough.isSelected())
             return 2;
+        else
+            return 3;
     }
 
     /**

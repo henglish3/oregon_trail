@@ -1,4 +1,4 @@
-package edu.gatech.cs2340.shlat.views;
+package edu.gatech.cs2340.shlat.models;
 /**
  * This class represents a Location object with a String name, an int distance, 
  * @author S.H.L.A.T.

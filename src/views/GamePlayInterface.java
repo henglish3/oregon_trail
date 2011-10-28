@@ -209,6 +209,8 @@ public class GamePlayInterface {
         JButton btnQuit = new JButton("Quit");
         popupMenu.add(btnQuit);
         
+        toolBar.setFloatable(false);
+        
         JLabel lblPace = new JLabel("Pace");
         lblPace.setHorizontalAlignment(SwingConstants.CENTER);
         lblPace.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
@@ -253,10 +255,13 @@ public class GamePlayInterface {
             rationGroup.add(rdbtnEnough);
             rationGroup.add(rdbtnFilling);       
 
-        JPanel panel = new JPanel();
+        MapPanel panel = new MapPanel();
+        panel.setBackground(Color.white);
         
         JLabel lblWeather = new JLabel("Weather");
         lblWeather.setHorizontalAlignment(SwingConstants.CENTER);
+        
+    	weatherIcon = new ImageIcon("img/sunny.jpg");
         
         JLabel lblWeatherImg = new JLabel("");
         lblWeatherImg.setIcon(weatherIcon);
@@ -417,12 +422,12 @@ public class GamePlayInterface {
     private static void addPopup(Component component, final JPopupMenu popup) {
         component.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
-                if (e.isPopupTrigger()) {
+                if (e.getButton() == MouseEvent.BUTTON1) {
                     showMenu(e);
                 }
             }
             public void mouseReleased(MouseEvent e) {
-                if (e.isPopupTrigger()) {
+                if (e.getButton() == MouseEvent.BUTTON1) {
                     showMenu(e);
                 }
             }

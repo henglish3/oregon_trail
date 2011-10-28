@@ -7,12 +7,16 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowListener;
+
 import javax.swing.ImageIcon;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JButton;
 
 
-public class CharStatusInterface {
+public class CharStatusInterface implements ActionListener {
 
     private JFrame frame;
     private String[] name;
@@ -41,7 +45,9 @@ public class CharStatusInterface {
         this.job = job;
         initialize();
     }
-    
+    public void actionPerformed(ActionEvent e) {
+    	frame.dispose();
+    }
     /**
     * Set the Status for the characters in window
     */
@@ -100,7 +106,7 @@ public class CharStatusInterface {
      * Initialize the contents of the frame.
      */
     private void initialize() {
-        frame = new JFrame();
+        frame = new JFrame("Stats");
         frame.setBounds(100,100, 625, 466);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
@@ -133,8 +139,6 @@ public class CharStatusInterface {
         
         JLabel lblChar2Status = new JLabel("Well");
         
-        JLabel lblChar2Job = new JLabel("Banker");
-        
         JLabel lblChar2Pic = new JLabel("");
         lblChar2Pic.setIcon(new ImageIcon("/Users/harrisonenglish/Desktop/face.png"));
         
@@ -150,17 +154,14 @@ public class CharStatusInterface {
         
         JLabel lblChar3Status = new JLabel("Well");
         
-        JLabel lblChar3Job = new JLabel("Banker");
-        
         JLabel lblChar4Name = new JLabel(name[3]);
         
         JLabel lblChar4Age = new JLabel(age[3]);
         
         JLabel lblChar4Status = new JLabel("Well");
         
-        JLabel lblChar4Job = new JLabel("Banker");
-        
         JButton btnDone = new JButton("Done");
+        btnDone.addActionListener(this);
         
         JLabel lblPace = new JLabel("Pace");
         lblPace.setFont(new Font("Lucida Grande", Font.BOLD, 15));
@@ -193,7 +194,7 @@ public class CharStatusInterface {
         						.addComponent(lblChar2Name, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         						.addComponent(lblChar3Name, GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
         						.addComponent(lblChar4Name, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        					.addPreferredGap(ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+        					.addPreferredGap(ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
         					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
         						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
         							.addComponent(lblChar4Age, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -210,18 +211,15 @@ public class CharStatusInterface {
         					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
         						.addGroup(groupLayout.createSequentialGroup()
         							.addComponent(lblRations, GroupLayout.PREFERRED_SIZE, 74, GroupLayout.PREFERRED_SIZE)
-        							.addPreferredGap(ComponentPlacement.RELATED, 20, Short.MAX_VALUE))
-        						.addComponent(lblCurrentRations, GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE))))
-        			.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+        							.addPreferredGap(ComponentPlacement.RELATED, 27, Short.MAX_VALUE))
+        						.addComponent(lblCurrentRations, GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE))))
+        			.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
         				.addGroup(groupLayout.createSequentialGroup()
         					.addGap(24)
         					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
         						.addComponent(lblProfession)
-        						.addComponent(lblMainCharJob, GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
-        						.addComponent(lblChar2Job, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        						.addComponent(lblChar3Job, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        						.addComponent(lblChar4Job, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        					.addPreferredGap(ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+        						.addComponent(lblMainCharJob, GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE))
+        					.addPreferredGap(ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
         					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
         						.addComponent(lblMainCharStatus)
         						.addComponent(lblStatus)
@@ -229,7 +227,7 @@ public class CharStatusInterface {
         						.addComponent(lblChar3Status, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
         						.addComponent(lblChar4Status, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE))
         					.addGap(89))
-        				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+        				.addGroup(groupLayout.createSequentialGroup()
         					.addComponent(btnDone)
         					.addContainerGap())))
         );
@@ -263,19 +261,16 @@ public class CharStatusInterface {
         			.addGap(77)
         			.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
         				.addComponent(lblChar2Name)
-        				.addComponent(lblChar2Job)
         				.addComponent(lblChar2Status)
         				.addComponent(lblChar2Age))
         			.addGap(79)
         			.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
         				.addComponent(lblChar3Name)
-        				.addComponent(lblChar3Job)
         				.addComponent(lblChar3Status)
         				.addComponent(lblCha3Age, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE))
         			.addGap(84)
         			.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
         				.addComponent(lblChar4Name)
-        				.addComponent(lblChar4Job)
         				.addComponent(lblChar4Status)
         				.addComponent(lblChar4Age))
         			.addPreferredGap(ComponentPlacement.RELATED, 34, Short.MAX_VALUE)

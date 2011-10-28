@@ -255,7 +255,7 @@ public class GamePlayInterface {
             rationGroup.add(rdbtnEnough);
             rationGroup.add(rdbtnFilling);       
 
-        MapPanel panel = new MapPanel();
+        JPanel panel = new JPanel();
         panel.setBackground(Color.white);
         
         JLabel lblWeather = new JLabel("Weather");

@@ -4,12 +4,15 @@ Oregon Trail (with realism mod) by SHLAT
 Running
 -------
 Before you start running the program make sure you have git, ant, and Java installed. Afterwords
+
 	git clone git://github.com/tomelm/oregon_trail.git
 
 Enter the directory
+
 	cd oregon_trail
 
 And to compile/run
+
 	ant
 
 That's all! Enjoy.

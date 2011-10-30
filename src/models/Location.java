@@ -7,9 +7,17 @@ package edu.gatech.cs2340.shlat.models;
 public class Location {
   private String name;
   private String landmark;
+  private String description;
   private int distanceTraveled;//Keeps track of how many miles the player has traveled
   private int landmarkDistance;//Keeps track of how many miles to the next landmark
   
+  public Location() {
+    name = null;
+    landmark = null;
+    description = null;
+    landmarkDistance = 0;
+  }
+
   /**
    * This constructor creates a Location object
    * @param name 
@@ -115,7 +123,11 @@ public class Location {
   public void setLandmarkDistance(int landmarkDistance){
     this.landmarkDistance = landmarkDistance;
   }
-  /**
+  
+  public void setLandmarkDistance(String landmarkDistance){
+    this.landmarkDistance = Integer.parseInt(landmarkDistance);
+  }
+ /**
    * This method returns the distance traveled
    * @return
    *        The new value of the distance traveled
@@ -146,5 +158,11 @@ public class Location {
     return landmarkDistance;
   }
   
+  public void setDesc(String desc) {
+    this.description = desc;
+  }
 
+  public String getDesc() {
+    return description;
+  }
 }

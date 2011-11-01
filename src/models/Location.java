@@ -1,4 +1,7 @@
 package edu.gatech.cs2340.shlat.models;
+
+import edu.gatech.cs2340.shlat.models.Store;
+
 /**
  * This class represents a Location object with a String name, an int distance, 
  * @author S.H.L.A.T.
@@ -6,18 +9,19 @@ package edu.gatech.cs2340.shlat.models;
  */
 public class Location {
   private String name;
+  private Store store1;
   private String landmark;
   private String description;
-  private int distanceTraveled;//Keeps track of how many miles the player has traveled
-  private int landmarkDistance;//Keeps track of how many miles to the next landmark
-  
-  public Location() {
+  private static int distanceTraveled;//Keeps track of how many miles the player has traveled
+  /**
+   * This method creates a default Location object
+   */
+  public Location(){
     name = null;
+    store1 = null;
     landmark = null;
-    description = null;
-    landmarkDistance = 0;
+    Location.distanceTraveled = 0;
   }
-
   /**
    * This constructor creates a Location object
    * @param name 
@@ -25,11 +29,11 @@ public class Location {
    * @param landmark
    *        The name of the next traveling point
    */
-  public Location (String name, String landmark){
+  public Location (String name, String landmark, Store object){
     this.name = name;
     this.landmark = landmark;
-    distanceTraveled = 0;
-    landmarkDistance = 100;//Feel free to change this value
+    store1 = object;
+    Location.distanceTraveled = 0;
   }
   /**
    * This constructor creates a Location object with specific name, landmark, and distance traveled values
@@ -40,9 +44,9 @@ public class Location {
    * @param distance
    *        The starting value of the distance traveled by the player
    */
-  public Location(String name, String landmark, int distance){
-    this(name, landmark);
-    distanceTraveled = distance;
+  public Location(String name, String landmark, int distance, Store object){
+    this(name, landmark, object);
+    Location.distanceTraveled = distance;
   }
   /**
    * This constructor creates a Location object with specific name, landmark, distance traveled, and distance to landmark values
@@ -55,9 +59,8 @@ public class Location {
    * @param land
    *        The value of the distance to the next traveling point
    */
-  public Location(String name, String landmark, int distance, int land){ 
-    this(name, landmark, distance);
-    landmarkDistance = land;
+  public Location(String name, String landmark, int distance, int land, Store object){ 
+    this(name, landmark, distance, object);
   }
   /**
    * This method returns the name of the current location
@@ -97,7 +100,7 @@ public class Location {
    *        The distance traveled
    */
   public int getDistance(){
-    return distanceTraveled;
+    return Location.distanceTraveled;
   }
   /**
    * This method sets a new distance for this object
@@ -105,64 +108,43 @@ public class Location {
    *        The new distance traveled by this object
    */
   public void setDistance(int distance){
-    this.distanceTraveled = distance;
+    Location.distanceTraveled = distance;
   }
   /**
-   * This method returns the distance to the next landmark
-   * @return
-   *        The distance to the next landmark
+   * This method determines if this location object has a store
+   * @param 
+   *        The 
+   * @return 
+   *        The boolean value that determines if this Location has a store
    */
-  public int getLandmarkDistance(){
-    return landmarkDistance;
+  public boolean hasStore(){
+    return (store1 == null);
   }
   /**
-   * This method sets a new distance to the next landmark
-   * @param landmarkDistance
-   *        The new distance value to the next landmark
-   */
-  public void setLandmarkDistance(int landmarkDistance){
-    this.landmarkDistance = landmarkDistance;
-  }
-  
-  public void setLandmarkDistance(String landmarkDistance){
-    this.landmarkDistance = Integer.parseInt(landmarkDistance);
-  }
- /**
-   * This method returns the distance traveled
+   * This method calculates and updates the distance traveled by the player and returns the new value of the distance traveled
+   * @param x 
+   *        The int value used to increment the distance traveled by the player
    * @return
    *        The new value of the distance traveled
    */
-  public int getCurrentDistanceTraveled(){
-    return distanceTraveled;
+  public int getCurrentDistanceTraveled(int x){
+    Location.distanceTraveled += x;
+    return Location.distanceTraveled;
   }
   /**
-   * This method increases the distance traveled
-   * @param x
-   *        The int value used to increment the distance traveled by the player
+   * This method creates or sets a description of this Location
+   * @param desc
+   *        The description of this Location object
    */
-  public void travelDistance(int x) {
-    distanceTraveled += x;
-  }
-  /**
-   * This method calculates and updates the distance to the next landmark and returns this new value
-   * @param x
-   *        The distance to the next landmark
-   * @return
-   *        The new value of the distance to the next landmark
-   */
-  public int getCurrentLandmarkDistance(int x){
-    if (!((landmarkDistance - x) < 0))
-      landmarkDistance -= x;
-    else
-      landmarkDistance = 0;
-    return landmarkDistance;
-  }
-  
-  public void setDesc(String desc) {
+  public void setDesc(String desc){
     this.description = desc;
   }
-
-  public String getDesc() {
+  /**
+   * This method returns the description for this Location object
+   * @return
+   *        The description of this Location object
+   */
+  public String getDesc(){
     return description;
   }
 }

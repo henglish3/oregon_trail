@@ -34,7 +34,8 @@ public class Location {
     this.name = name;
     this.landmark = landmark;
     store1 = object;
-    Location.distanceTraveled = 0;
+    distanceTraveled = 0;
+    Location.distanceTraveled = 100;
   }
   /**
    * This constructor creates a Location object with specific name, landmark, and distance traveled values
@@ -62,6 +63,7 @@ public class Location {
    */
   public Location(String name, String landmark, int distance, int land, Store object){ 
     this(name, landmark, distance, object);
+    landmarkDistance = land;
   }
   /**
    * This method returns the name of the current location
@@ -124,9 +126,39 @@ public class Location {
    * @param ld
    *        The new value for the landmark distance to the next destination
    */
-  public void setLandmarkDistance(int ld){
-    landmarkDistance = ld;
+  public void setLandmarkDistance(int landmarkDistance){
+    this.landmarkDistance = landmarkDistance;
   }
+  /**
+   * This method takes in a String and parses it as this Location's landmark Distance
+   * @param landmarkDistance
+   *        The String representation of the new landmark distance
+   */
+  public void setLandmarkDistance(String landmarkDistance){
+    this.landmarkDistance = Integer.parseInt(landmarkDistance);
+  }
+  /**
+   * This method calculates and updates the distance to the next landmark and returns this new value
+   * @param x
+   *        The distance to the next landmark
+   * @return
+   *        The new value of the distance to the next landmark
+   */
+  public int getCurrentLandmarkDistance(int x){
+    if(!((landmarkDistance - x) < 0))
+      landmarkDistance -= x;
+    else
+      landmarkDistance = 0;
+    return landmarkDistance;
+  }
+  /** This method increases the distance traveled
+   * @param x
+   *         The int value used to increment the distance traveled by the player
+   */
+  public void travelDistance(int x) {
+    Location.distanceTraveled += x;
+  }
+  
   /**
    * This method determines if this location object has a store
    * @param 
@@ -138,14 +170,11 @@ public class Location {
     return (store1 == null);
   }
   /**
-   * This method calculates and updates the distance traveled by the player and returns the new value of the distance traveled
-   * @param x 
-   *        The int value used to increment the distance traveled by the player
+   * This method returns the distance traveled
    * @return
-   *        The new value of the distance traveled
+   *        The value of the distance traveled
    */
-  public int getCurrentDistanceTraveled(int x){
-    Location.distanceTraveled += x;
+  public int getCurrentDistanceTraveled(){
     return Location.distanceTraveled;
   }
   /**

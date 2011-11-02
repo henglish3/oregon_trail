@@ -10,13 +10,19 @@ import java.util.*;
 
 public class Map {
     
-    private ArrayList<Location> locations;
-    
+    private List<Location> locations;
+    private String file = "locations.xml";
+
     /**
      * Constructor that instantiates the ArrayList for Location.
      */
     public Map() {
-        this.locations = new ArrayList<Location>();
+        LocationList list = new LocationList();
+        List<Location> readFile = list.readFile(file);
+        locations = new ArrayList();
+        for (Location location : readFile) {
+          locations.add(location);
+        }
     } //ends Map constructor.
     
     /**
@@ -24,7 +30,7 @@ public class Map {
      * 
      * @return All the locations.
      */
-    public ArrayList<Location> getAllLocations() {
+    public List<Location> getAllLocations() {
             return locations;
     } //ends getAllLocations method.
     

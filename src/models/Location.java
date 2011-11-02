@@ -12,6 +12,7 @@ public class Location {
   private Store store1;
   private String landmark;
   private String description;
+  private int landmarkDistance;
   private static int distanceTraveled;//Keeps track of how many miles the player has traveled
   /**
    * This method creates a default Location object
@@ -109,6 +110,22 @@ public class Location {
    */
   public void setDistance(int distance){
     Location.distanceTraveled = distance;
+  }
+  /**
+   * This method returns the landmark distance
+   * @return
+   *        The landmark distance to the next destination
+   */
+  public int getLandmarkDistance(){
+    return landmarkDistance;
+  }
+  /**
+   * This method sets a new landmark distance
+   * @param ld
+   *        The new value for the landmark distance to the next destination
+   */
+  public void setLandmarkDistance(int ld){
+    landmarkDistance = ld;
   }
   /**
    * This method determines if this location object has a store

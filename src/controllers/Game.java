@@ -51,7 +51,7 @@ public class Game implements ActionListener {
         //Initialize models
         playerWagon = new Wagon();
         startStore = new Store();
-        currentLocation = new Location("Player", "NONE");
+        currentLocation = new Location("Player", "NONE", null);
         playerCharacter = new Player(18, 0, "Player", Player.Job.BANKER);
         partyCharacters = new edu.gatech.cs2340.shlat.models.Character[3];
         for(int i = 0; i < 3; i++)

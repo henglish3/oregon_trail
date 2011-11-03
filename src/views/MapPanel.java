@@ -118,16 +118,16 @@ public class MapPanel extends JPanel implements Runnable {
     			coordY += 2;        
         }
         else if(distance == 120) {
-            if(coordX > 282)	
-    		    coordX -=2;
-    		if(coordY < 101) 
-    		    coordY +=2;
+            if(coordX < 282)	
+    		    coordX +=2;
+    		if(coordY > 101) 
+    		    coordY -=2;
         }
          else if(distance == 130) {
-            if(coordX > 287)	
-    		    coordX -=2;
-    		if(coordY < 67) 
-    		    coordY +=2;
+            if(coordX < 287)	
+    		    coordX +=2;
+    		if(coordY > 67) 
+    		    coordY -=2;
         }    
         else if(distance == 140) {
     		if(coordY > 35) {

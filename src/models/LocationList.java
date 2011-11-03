@@ -85,18 +85,21 @@ public class LocationList {
             continue;
           }
 
+          // If it is the distance then set the location distance
           if (event.asStartElement().getName().getLocalPart().equals(DISTANCE)) {
             event = eventReader.nextEvent();
             location.setLandmarkDistance(event.asCharacters().getData());
             continue;
-          } 
-
+          }
+          
+          // If it is a store then set store to true
           if (event.asStartElement().getName().getLocalPart().equals(STORE)) {
             event = eventReader.nextEvent();
             location.setStore(event.asCharacters().getData());
             continue;
           } 
 
+          // If it is the last location then set end to true
           if (event.asStartElement().getName().getLocalPart().equals(END)) {
             event = eventReader.nextEvent();
             location.setEnd(event.asCharacters().getData());

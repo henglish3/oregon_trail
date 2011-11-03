@@ -11,6 +11,7 @@ import java.lang.*;
 import java.awt.EventQueue;
 import edu.gatech.cs2340.shlat.models.*;
 import edu.gatech.cs2340.shlat.views.*;
+import javax.swing.*;
 
 public class Game implements ActionListener {
     //Sub-controllers
@@ -28,6 +29,7 @@ public class Game implements ActionListener {
     private Pace                    currentPace;
     private Rations                 currentRations;
     private Location                currentLocation;
+    private Map                     map;
     
     private edu.gatech.cs2340.shlat.models.Character[] partyCharacters;
     
@@ -51,6 +53,7 @@ public class Game implements ActionListener {
         //Initialize models
         playerWagon = new Wagon();
         startStore = new Store();
+        map = new Map();
         currentLocation = new Location("Player", "NONE", false);
         playerCharacter = new Player(18, 0, "Player", Player.Job.BANKER);
         partyCharacters = new edu.gatech.cs2340.shlat.models.Character[3];
@@ -140,10 +143,25 @@ public class Game implements ActionListener {
             currentRations.setRation(gameplayUI.getRations());
             currentPace.setPace(gameplayUI.getPace());
             
+            //Check if the player will encounter a location
+            Location nextLoc = map.getNextLocation(currentLocation.getCurrentDistanceTraveled());
+            int dist = nextLoc.getLandmarkDistance() - currentLocation.getCurrentDistanceTraveled();
+            int rationsUsed = 0;
+            boolean atLoc = false;
+            
+            if(dist <= currentPace.getDistanceTraveled()) {
+                rationsUsed = currentRations.getRation() * dist / currentPace.getDistanceTraveled();
+                atLoc = true;
+            } else {
+                dist = currentPace.getDistanceTraveled();
+                rationsUsed = currentRations.getRation();
+            }
+            
             //Ensure that the player has enough food
             temp = playerCharacter.getFood()/4;     //Maximum rations
-            if(currentRations.getRation() > temp) {
+            if(rationsUsed > temp) {
                 currentRations.setRation(temp);
+                rationsUsed = temp;
                 gameplayUI.setRations(currentRations.getRation());
                 if(temp == 0) {
                     gameplayUI.setAlertLabel("NO food remaining");
@@ -154,12 +172,17 @@ public class Game implements ActionListener {
                 gameplayUI.setAlertLabel("");
             }
             
-            currentLocation.travelDistance(currentPace.getDistanceTraveled());
-            playerCharacter.consumeFood(4, currentRations.getRation());
+            currentLocation.travelDistance(dist);
+            playerCharacter.consumeFood(4, rationsUsed);
             
             //Update GUI labels containing rations and distance traveled
             gameplayUI.setDistTravel("" + currentLocation.getCurrentDistanceTraveled() + " miles");
             gameplayUI.setFoodRemaining("" + playerCharacter.getFood());
+            
+            //Alert player if they reached a destination
+            if(atLoc) {
+                JOptionPane.showMessageDialog(null,"You have reached " + nextLoc.getName());
+            }
         } else if(action_command.equals("mgiShowStatus")) {
             charStat.setVisibility(true);
         }

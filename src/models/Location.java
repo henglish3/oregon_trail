@@ -35,7 +35,7 @@ public class Location {
     this.landmark = landmark;
     this.store = store;
     distanceTraveled = 0;
-    Location.distanceTraveled = 100;
+    Location.distanceTraveled = 0;
   }
   /**
    * This constructor creates a Location object with specific name, landmark, and distance traveled values
@@ -123,7 +123,7 @@ public class Location {
   }
   /**
    * This method sets a new landmark distance
-   * @param ld
+   * @param landmarkDistance
    *        The new value for the landmark distance to the next destination
    */
   public void setLandmarkDistance(int landmarkDistance){
@@ -165,8 +165,6 @@ public class Location {
   
   /**
    * This method determines if this location object has a store
-   * @param 
-   *        The 
    * @return 
    *        The boolean value that determines if this Location has a store
    */

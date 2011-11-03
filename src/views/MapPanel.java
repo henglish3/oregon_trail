@@ -41,7 +41,7 @@ public class MapPanel extends JPanel {
     /**
     * Draws map
     *
-    * @params g graphics component
+    * @param g graphics component
     */
     @Override public void paintComponent(Graphics g) {
         super.paintComponent(g);

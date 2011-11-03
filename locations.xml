@@ -6,6 +6,7 @@
     <desc>The infamous impenetrable Hello Kitty fortress. Warning: do not enter without a pimp cane.</desc>
     <distance>55</distance>
     <store>False</store>
+    <end>False</end>
   </location>
   <location>
     <name>Pimp City</name>
@@ -13,6 +14,7 @@
     <desc>The city of Pimps. Stores around here let you buy essential pimp goods. In addition, the Pimp City Institute of Pimpness is located here so feel free to sit in on some lectures.</desc>
     <distance>20</distance>
     <store>True</store>
+    <end>False</end>
   </location>
   <location>
     <name>New New York</name>
@@ -20,6 +22,7 @@
     <desc>Built upon the ruins of Old New York after aliens invaded the planet in the year 2634.</desc>
     <distance>0</distance>
     <store>True</store>
+    <end>False</end>
   </location>
   <location>
     <name>Little Bitaly</name>
@@ -27,6 +30,7 @@
     <desc>A neighborhood in NNY in which a lot of robots choose to reside. Also home of the Robot Mafia so watch out!</desc>
     <distance>110</distance>
     <store>True</store>
+    <end>False</end>
   </location>
   <location>
     <name>Crack Mansion</name>
@@ -34,5 +38,6 @@
     <desc>A very upscale crackhouse. "Very good sir. Shall I prewarm sir's crackpipe?"</desc>
     <distance>140</distance>
     <store>False</store>
+    <end>True</end>
   </location>
 </locations>

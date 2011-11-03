@@ -9,7 +9,7 @@ import edu.gatech.cs2340.shlat.models.Store;
  */
 public class Location {
   private String name;
-  private Store store1;
+  private boolean store;
   private String landmark;
   private String description;
   private int landmarkDistance;
@@ -19,7 +19,7 @@ public class Location {
    */
   public Location(){
     name = null;
-    store1 = null;
+    store = false;
     landmark = null;
     Location.distanceTraveled = 0;
   }
@@ -30,10 +30,10 @@ public class Location {
    * @param landmark
    *        The name of the next traveling point
    */
-  public Location (String name, String landmark, Store object){
+  public Location (String name, String landmark, boolean store){
     this.name = name;
     this.landmark = landmark;
-    store1 = object;
+    this.store = store;
     distanceTraveled = 0;
     Location.distanceTraveled = 100;
   }
@@ -46,8 +46,8 @@ public class Location {
    * @param distance
    *        The starting value of the distance traveled by the player
    */
-  public Location(String name, String landmark, int distance, Store object){
-    this(name, landmark, object);
+  public Location(String name, String landmark, int distance, boolean store){
+    this(name, landmark, store);
     Location.distanceTraveled = distance;
   }
   /**
@@ -61,8 +61,8 @@ public class Location {
    * @param land
    *        The value of the distance to the next traveling point
    */
-  public Location(String name, String landmark, int distance, int land, Store object){ 
-    this(name, landmark, distance, object);
+  public Location(String name, String landmark, int distance, int land, boolean store){ 
+    this(name, landmark, distance, store);
     landmarkDistance = land;
   }
   /**
@@ -167,7 +167,7 @@ public class Location {
    *        The boolean value that determines if this Location has a store
    */
   public boolean hasStore(){
-    return (store1 == null);
+    return store;
   }
   /**
    * This method returns the distance traveled

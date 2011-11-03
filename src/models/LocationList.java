@@ -30,6 +30,7 @@ public class LocationList {
   static final String LANDMARK = "landmark";
   static final String DESC = "desc";
   static final String DISTANCE = "distance";
+  static final String STORE = "store";
 
   /**
    * This method takes a String location of an xml file and parses it into location objects and stores it in a List
@@ -88,7 +89,13 @@ public class LocationList {
             location.setLandmarkDistance(event.asCharacters().getData());
             continue;
           } 
-        }
+
+          if (event.asStartElement().getName().getLocalPart().equals(STORE)) {
+            event = eventReader.nextEvent();
+            //location.setStore(event.asCharacters().getData());
+            continue;
+          } 
+       }
         
         // If this is the closing tag for the location then add the location to the list
         if (event.isEndElement()) {

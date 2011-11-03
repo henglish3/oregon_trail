@@ -134,7 +134,7 @@ public class Game implements ActionListener {
             gameplayUI.setVisibility(true);
             gameplayUI.setRations(currentRations.getRation());
             gameplayUI.setPace(currentPace.getPace());
-            gameplayUI.setDistTravel("" + currentLocation.getCurrentDistanceTraveled() + " miles");
+            gameplayUI.setDistTravel(currentLocation.getCurrentDistanceTraveled());
             gameplayUI.setFoodRemaining("" + playerCharacter.getFood());
             gameplayUI.setAlertLabel("");
             //TODO: current date
@@ -176,7 +176,7 @@ public class Game implements ActionListener {
             playerCharacter.consumeFood(4, rationsUsed);
             
             //Update GUI labels containing rations and distance traveled
-            gameplayUI.setDistTravel("" + currentLocation.getCurrentDistanceTraveled() + " miles");
+            gameplayUI.setDistTravel(currentLocation.getCurrentDistanceTraveled());
             gameplayUI.setFoodRemaining("" + playerCharacter.getFood());
             
             //Alert player if they reached a destination

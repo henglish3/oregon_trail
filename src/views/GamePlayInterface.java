@@ -43,6 +43,7 @@ public class GamePlayInterface {
     private JLabel lblDate;
     private JLabel lblRemainingFood;
     private JLabel lblDistTravel;
+    private MapPanel panel;
 
     /**
     *set visibility of the window
@@ -156,9 +157,10 @@ public class GamePlayInterface {
      *
      *@param dist string to display as distance traveled
      */
-     public void setDistTravel(String dist) {
-         distTravel = dist;
-         lblDistTravel.setText(distTravel);
+     public void setDistTravel(int dist) {
+         distTravel = "" + dist + " miles";
+        lblDistTravel.setText(distTravel);
+        panel.setDist(dist);
      }
      /**
       * Sets the distance traveled
@@ -255,9 +257,11 @@ public class GamePlayInterface {
             rationGroup.add(rdbtnEnough);
             rationGroup.add(rdbtnFilling);       
 
-        MapPanel panel = new MapPanel();
+        panel = new MapPanel();
         panel.setBackground(Color.white);
-        
+        Thread mpThread = new Thread(panel);
+        mpThread.start();
+
         JLabel lblWeather = new JLabel("Weather");
         lblWeather.setHorizontalAlignment(SwingConstants.CENTER);
         

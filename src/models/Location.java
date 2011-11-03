@@ -14,6 +14,7 @@ public class Location {
   private String description;
   private int landmarkDistance;
   private static int distanceTraveled;//Keeps track of how many miles the player has traveled
+  private boolean end;
   /**
    * This method creates a default Location object
    */
@@ -194,5 +195,13 @@ public class Location {
    */
   public String getDesc(){
     return description;
+  }
+
+  public void setEnd(String end) {
+    this.end = Boolean.valueOf(end);
+  }
+
+  public boolean getEnd() {
+    return end;
   }
 }

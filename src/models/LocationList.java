@@ -31,6 +31,7 @@ public class LocationList {
   static final String DESC = "desc";
   static final String DISTANCE = "distance";
   static final String STORE = "store";
+  static final String END = "end";
 
   /**
    * This method takes a String location of an xml file and parses it into location objects and stores it in a List
@@ -95,6 +96,13 @@ public class LocationList {
             location.setStore(event.asCharacters().getData());
             continue;
           } 
+
+          if (event.asStartElement().getName().getLocalPart().equals(END)) {
+            event = eventReader.nextEvent();
+            location.setEnd(event.asCharacters().getData());
+            continue;
+          } 
+
        }
         
         // If this is the closing tag for the location then add the location to the list

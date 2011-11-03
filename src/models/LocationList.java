@@ -92,7 +92,7 @@ public class LocationList {
 
           if (event.asStartElement().getName().getLocalPart().equals(STORE)) {
             event = eventReader.nextEvent();
-            //location.setStore(event.asCharacters().getData());
+            location.setStore(event.asCharacters().getData());
             continue;
           } 
        }

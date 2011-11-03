@@ -158,6 +158,10 @@ public class Location {
   public void travelDistance(int x) {
     Location.distanceTraveled += x;
   }
+
+  public void setStore(String bool) {
+    this.store = Boolean.valueOf(bool);
+  }
   
   /**
    * This method determines if this location object has a store

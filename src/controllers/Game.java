@@ -182,10 +182,13 @@ public class Game implements ActionListener {
             //Alert player if they reached a destination
             if(atLoc) {
                 //Check if this is the end of the 'trail'
-                if(nextLoc.getEnd())
+                if(nextLoc.getEnd()) {
                     JOptionPane.showMessageDialog(null,"Congratulations, you win! You have reached " + nextLoc.getName());
-                else
+                    System.exit(0);
+                }
+                else{
                     JOptionPane.showMessageDialog(null,"You have reached " + nextLoc.getName());
+                }
             }
         } else if(action_command.equals("mgiShowStatus")) {
             charStat.setVisibility(true);

@@ -160,6 +160,11 @@ public class Location {
     Location.distanceTraveled += x;
   }
 
+  /**
+   * This method reads and interprets a string as a boolean to determine whether or not the location is a store.
+   * 
+   * @param bool a string boolean in the form of 'True' for true or anything else for false.
+   */
   public void setStore(String bool) {
     this.store = Boolean.valueOf(bool);
   }
@@ -197,10 +202,18 @@ public class Location {
     return description;
   }
 
+  /**
+   * This method sets whether or not each location is the end location for the game.
+   *
+   * @param end A string boolean to be interpreted as a boolean primitive.
+   */
   public void setEnd(String end) {
     this.end = Boolean.valueOf(end);
   }
 
+  /**
+   * This method returns a boolean for each location saying whether or not it is the last location.
+   */
   public boolean getEnd() {
     return end;
   }

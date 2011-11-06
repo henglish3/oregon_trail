@@ -26,32 +26,51 @@ public class River extends Location {
     /**
      * Method that runs the one of the three methods chosen by the player when they encounter a river.
      * 
-     * @param choice The player's choice
+     * @param choice The player's choice.
+     * @param player The player.
      */
-    public void riverChoice(int choice, int money, Inventory inventory) {
+    public void choiceRiver(int choice, Player player) {
         if(choice == 0) {
-            payRiver(money);
+            payRiver(player);
         }
         else if(choice == 1) {
-            //fordRiver();
+            fordRiver(player);
         }
         else {
-            //caulkRiver();
+            caulkRiver(player);
         }
-    } //ends riverChoice method.
+    } //ends choiceRiver method.
     
-    public void payRiver(int money) {
-        if(money >= 50) {   
+    /**
+     * Method that checks to see if the player has $50 to cross the river. If the player does it subtracts $50 from 
+     * the player's inventory and increases the distance traveled by 10 miles. If not it does nothing.
+     * 
+     * @param player The player.
+     */
+    public void payRiver(Player player) {
+        if(player.getMoney() >= 50) {
+            player.setMoney(-50);
+            travelDistance(10);
         }
-        else{   
-        }    
     } //ends payRiver method.
     
-    public void fordRiver(Inventory inventory) {
+    /**
+     * Method that runs the river fording event and then adds 10 miles traveled.
+     * 
+     * @param player The player.
+     */
+    public void fordRiver(Player player) {
+        //event.doEvent(1, player); //the 1 represents whatever event its suppose to constue in the xml file?
+        travelDistance(10);
     } //ends fordRiver method.
     
-    public void caulkRiver(Inventory inventory) {
+    /**
+     * Method that runs the caulking the wagon to float across the river and event then adds 10 miles traveled.
+     * 
+     * @param player The player.
+     */
+    public void caulkRiver(Player player) {
+        //event.doEvent(2, player); //the 2 represents whatever event its suppose to constue in the xml file?
+        travelDistance(10);
     } //ends caulkRiver method.
-    
-    
 } //ends River class.

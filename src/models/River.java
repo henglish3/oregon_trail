@@ -1,6 +1,5 @@
 package edu.gatech.cs2340.shlat.models;
-
-import edu.gatech.cs2340.shlat.models.Store;
+import edu.gatech.cs2340.shlat.models.*;
 
 /**
  * Class represents a River Location.
@@ -12,11 +11,16 @@ public class River extends Location {
     private int depth;
     
     /**
-     * Constructor
+     * Constructor that creates a River object taht extends Location and also has depth.
+     * 
+     * @param name The name of this Location object
+     * @param landmark The name of the next traveling point
+     * @param distance The starting value of the distance traveled by the player
+     * @param depth The depth of the river.
      */
-    public River(String name, String landmark, int distance, int land, boolean store){ 
-        super(name, landmark, distance, land, store);
-        
+    public River(String name, String landmark, int distance, int depth){ 
+        super(name, landmark, distance, Boolean.FALSE);
+        this.depth = depth;
     } //ends River constructor.
     
     

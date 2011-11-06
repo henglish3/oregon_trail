@@ -49,7 +49,7 @@ public class River extends Location {
      */
     public void payRiver(Player player) {
         if(player.getMoney() >= 50) {
-            player.setMoney(-50);
+            player.setMoney(player.getMoney() - 50);
             travelDistance(10);
         }
     } //ends payRiver method.

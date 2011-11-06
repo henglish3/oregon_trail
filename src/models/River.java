@@ -33,7 +33,7 @@ public class River extends Location {
         if(choice == 0) {
             payRiver(player);
         }
-        else if(choice == 1) {
+        else if(choice == 1 && depth < 3) {
             fordRiver(player);
         }
         else {

@@ -8,7 +8,6 @@ import edu.gatech.cs2340.shlat.models.*;
  */
 public class River extends Location {
     private int depth;
-    //private Event event;
     
     /**
      * Constructor that creates a River object taht extends Location and also has depth.
@@ -29,15 +28,15 @@ public class River extends Location {
      * @param choice The player's choice.
      * @param player The player.
      */
-    public void choiceRiver(int choice, Player player) {
+    public void choiceRiver(int choice, Player player, Party party) {
         if(choice == 0) {
             payRiver(player);
         }
         else if(choice == 1 && depth < 3) {
-            fordRiver(player);
+            fordRiver(player, party);
         }
         else {
-            caulkRiver(player);
+            caulkRiver(player, party);
         }
     } //ends choiceRiver method.
     
@@ -58,9 +57,10 @@ public class River extends Location {
      * Method that runs the river fording event and then adds 10 miles traveled.
      * 
      * @param player The player.
+     * @param party The party.
      */
-    public void fordRiver(Player player) {
-        //event.doEvent(1, player); //the 1 represents whatever event its suppose to constue in the xml file?
+    public void fordRiver(Player player, Party party) {
+        //event.doEvent(1, player, party); //the 1 represents whatever event its suppose to constue in the xml file?
         travelDistance(10);
     } //ends fordRiver method.
     
@@ -68,9 +68,10 @@ public class River extends Location {
      * Method that runs the caulking the wagon to float across the river and event then adds 10 miles traveled.
      * 
      * @param player The player.
+     * @param party The party.
      */
-    public void caulkRiver(Player player) {
-        //event.doEvent(2, player); //the 2 represents whatever event its suppose to constue in the xml file?
+    public void caulkRiver(Player player, Party party) {
+        //event.doEvent(2, player, party); //the 2 represents whatever event its suppose to constue in the xml file?
         travelDistance(10);
     } //ends caulkRiver method.
 } //ends River class.

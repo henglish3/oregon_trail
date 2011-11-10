@@ -83,7 +83,7 @@ public class Event {
         item = stock.getItemById(4);
         itemLoss = item.getAmount()*(percentageValue/100);
         if (!(item.getAmount() < itemLoss)) {
-          item.changeAmount(item.getAmount() - itemLoss);
+          item.changeAmount(item.getAmount() - (int)itemLoss);
         }
         else {
           item.changeAmount(0);
@@ -94,7 +94,7 @@ public class Event {
         item = stock.getItemById(5);
         itemLoss = item.getAmount()*(percentageValue/100);
         if (!(item.getAmount() < itemLoss)) {
-          item.changeAmount(item.getAmount() - itemLoss);
+          item.changeAmount(item.getAmount() - (int)itemLoss);
         }
         else {
           item.changeAmount(0);

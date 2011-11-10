@@ -82,7 +82,7 @@ public class River extends Location {
                 return ("Attempt to ford the river was unsuccessful. You lost a " + lostItem.getName());
             } else {
                 //Party loses a member
-                return "Attempt to ford the river was unsuccessful. You lost Sally.";
+                return "Attempt to ford the river was unsuccessful. You lost Tomer.";
             }
         }
     } //ends fordRiver method.
@@ -113,7 +113,7 @@ public class River extends Location {
                 return ("Attempt to caulk the river was unsuccessful. You lost a " + lostItem.getName());
             } else {
                 //Party loses a member
-                return "Attempt to caulk the river was unsuccessful. You lost Sally.";
+                return "Attempt to caulk the river was unsuccessful. You lost Tomer.";
             }
         }
     } //ends caulkRiver method.

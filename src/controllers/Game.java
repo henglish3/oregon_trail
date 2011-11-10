@@ -30,6 +30,7 @@ public class Game implements ActionListener {
     private Rations                 currentRations;
     private Location                currentLocation;
     private Map                     map;
+    private Party                   party;
     
     private edu.gatech.cs2340.shlat.models.Character[] partyCharacters;
     
@@ -110,6 +111,9 @@ public class Game implements ActionListener {
                 partyCharacters[i].setAge(newGameUI.getCharacterAge(i));
                 partyCharacters[i].setSex(newGameUI.getCharacterSex(i));
             }
+            
+            //Create a party object
+            party = new Party(playerCharacter, partyCharacters[0], partyCharacters[1], partyCharacters[2]);
             
             //Initial rations/pace
             temp = newGameUI.getInitialRations();
@@ -221,7 +225,7 @@ public class Game implements ActionListener {
                 
                 River tempRiver = new River("river", "nile", 0, 5);
                 //String message = ((River)nextLoc).crossRiver(riverChoice, playerCharacter, null);
-                String message = tempRiver.crossRiver(riverChoice, playerCharacter, null);
+                String message = tempRiver.crossRiver(riverChoice, playerCharacter, party);
                 JOptionPane.showMessageDialog(null,message);
             }
         } else if(action_command.equals("mgiShowStatus")) {

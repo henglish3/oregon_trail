@@ -1,5 +1,6 @@
 package edu.gatech.cs2340.shlat.models;
 import edu.gatech.cs2340.shlat.models.*;
+import java.lang.Math;
 
 /**
  * Class that represents a River location.
@@ -28,29 +29,28 @@ public class River extends Location {
      * @param choice The player's choice.
      * @param player The player.
      */
-    public void choiceRiver(int choice, Player player, Party party) {
-        if(choice == 0) {
+    public String crossRiver(int choice, Player player, Party party) {
+        String message = "";        
+        if(choice == 0 && player.getMoney() >= 50) {
             payRiver(player);
+            message = "You pay 50$ to cross on a ferry";
         }
         else if(choice == 1 && depth < 3) {
-            fordRiver(player, party);
+            message = fordRiver(player, party);
         }
         else {
-            caulkRiver(player, party);
+            message = caulkRiver(player, party);
         }
+        return message;
     } //ends choiceRiver method.
     
     /**
-     * Method that checks to see if the player has $50 to cross the river. If the player does it subtracts $50 from 
-     * the player's inventory and increases the distance traveled by 10 miles. If not it does nothing.
+     * Player pays 50$ to cross the river on a ferry
      * 
      * @param player The player.
      */
     public void payRiver(Player player) {
-        if(player.getMoney() >= 50) {
-            player.setMoney(player.getMoney() - 50);
-            travelDistance(10);
-        }
+        player.setMoney(player.getMoney() - 50);
     } //ends payRiver method.
     
     /**
@@ -59,9 +59,29 @@ public class River extends Location {
      * @param player The player.
      * @param party The party.
      */
-    public void fordRiver(Player player, Party party) {
-        //event.doEvent(1, player, party); //the 1 represents whatever event its suppose to constue in the xml file?
-        travelDistance(10);
+    public String fordRiver(Player player, Party party) {
+        //Check if fording the river is successful
+        double r, s, t;
+        r = Math.random();
+        s = Math.random();
+        t = Math.random();
+        int temp;
+        Item lostItem;
+        if(r > 0.3) {
+            return "Attempt to ford the river was successful!";
+        } else {
+            //Choose whether to kill a party member or lose an item
+            if(s > 0.4) {
+                //Wagon loses an item
+                temp = (int)(t * player.getInventory().getList().size());
+                lostItem = (Item)(player.getInventory().getList().get(temp));
+                lostItem.changeAmount(lostItem.getAmount() - 1);
+                return ("Attempt to ford the river was unsuccessful. You lost a " + lostItem.getName());
+            } else {
+                //Party loses a member
+                return "Attempt to ford the river was unsuccessful. You lost Sally.";
+            }
+        }
     } //ends fordRiver method.
     
     /**
@@ -70,8 +90,28 @@ public class River extends Location {
      * @param player The player.
      * @param party The party.
      */
-    public void caulkRiver(Player player, Party party) {
-        //event.doEvent(2, player, party); //the 2 represents whatever event its suppose to constue in the xml file?
-        travelDistance(10);
+    public String caulkRiver(Player player, Party party) {
+        //Check if fording the river is successful
+        double r, s, t;
+        r = Math.random();
+        s = Math.random();
+        t = Math.random();
+        int temp;
+        Item lostItem;
+        if(r > 0.6) {
+            return "Attempt to caulk the river was successful!";
+        } else {
+            //Choose whether to kill a party member or lose an item
+            if(s > 0.4) {
+                //Wagon loses an item
+                temp = (int)(t * player.getInventory().getList().size());
+                lostItem = (Item)(player.getInventory().getList().get(temp));
+                lostItem.changeAmount(lostItem.getAmount() - 1);
+                return ("Attempt to caulk the river was unsuccessful. You lost a " + lostItem.getName());
+            } else {
+                //Party loses a member
+                return "Attempt to caulk the river was unsuccessful. You lost Sally.";
+            }
+        }
     } //ends caulkRiver method.
 } //ends River class.

@@ -197,6 +197,30 @@ public class Game implements ActionListener {
                 Store locationStore = new Store();
                 storeControl.run(locationStore);
             }
+
+            //Show player options if the current location is a river
+            if(nextLoc.getRiver()) {
+                //Get the players choice of what to do
+                Object[] possibilities = {"Pay Toll", "Ford", "Caulk"};
+                String choice = (String)JOptionPane.showInputDialog(
+                    null,
+                    "You reached a river. What would you like to do?\n",
+                    "River!",
+                    JOptionPane.PLAIN_MESSAGE,
+                    null,
+                    possibilities,
+                    "Caulk");
+                    
+                int riverChoice = 0;
+                if(choice.equals("Pay Toll"))
+                    riverChoice = 0;
+                else if(choice.equals("Ford"))
+                    riverChoice = 1;
+                else
+                    riverChoice = 2;
+                    
+                String message = ((River)nextLoc).crossRiver(riverChoice, playerCharacter, null);
+            }
         } else if(action_command.equals("mgiShowStatus")) {
             charStat.setVisibility(true);
         }

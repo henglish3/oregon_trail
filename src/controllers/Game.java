@@ -219,8 +219,11 @@ public class Game implements ActionListener {
                     riverChoice = 1;
                 else
                     riverChoice = 2;
-                    
-                String message = ((River)nextLoc).crossRiver(riverChoice, playerCharacter, null);
+                
+                River tempRiver = new River("river", "nile", 0, 5);
+                //String message = ((River)nextLoc).crossRiver(riverChoice, playerCharacter, null);
+                String message = tempRiver.crossRiver(riverChoice, playerCharacter, null);
+                JOptionPane.showMessageDialog(null,message);
             }
         } else if(action_command.equals("mgiShowStatus")) {
             charStat.setVisibility(true);

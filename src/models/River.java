@@ -117,4 +117,8 @@ public class River extends Location {
             }
         }
     } //ends caulkRiver method.
+    
+    public boolean getRiver() {
+        return true;
+    }
 } //ends River class.

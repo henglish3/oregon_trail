@@ -59,6 +59,22 @@ public enum Status {
     }//end setStatus method
     
     /**
+     * This method increases the status and the chances of the player or character getting sick
+     */
+    public void increaseStatus(){
+        if ((this.getStatus() >= 0) && (this.getStatus() < 3))
+            setStatus(this.getStatus() + 1);
+    }//ends increaseStatus method
+    
+    /**
+     * This method decreases the status and the chances of the player or character getting sick
+     */
+    public void decreaseStatus(){
+        if ((this.getStatus() <= 3) && (this.getStatus() > 0))
+            setStatus(this.getStatus() - 1);
+   }//ends decreaseStatus method
+   
+    /**
      * toString method returns a string.
      * 
      * @return The string that is returned.

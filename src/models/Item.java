@@ -9,13 +9,13 @@ package edu.gatech.cs2340.shlat.models;
 public class Item {
     private final int MAX_AMOUNT = 200;
 
-    private int amount; 
+    private double amount; 
     private String desc;
     private int id;
     private String name;
     private double price;
     private boolean start;
-    private int startAmount;
+    private double startAmount;
     private int storeQuantity;
     private int weight;
     
@@ -35,7 +35,7 @@ public class Item {
      * @param item The item being duplicated.
      * @param amount The amount to set the new item to.
      */
-    public Item(Item item, int amount) {
+    public Item(Item item, double amount) {
         this.name = item.getName();
         this.amount = amount;
         this.weight = item.getWeight();
@@ -50,7 +50,7 @@ public class Item {
      * @param weight The weight of this Item
      * @param price The price of this Item
      */
-    public Item(String name, int amount, int weight, double price){
+    public Item(String name, double amount, int weight, double price){
         this.name = name;
         this.amount = amount;
         this.weight = weight;
@@ -62,7 +62,7 @@ public class Item {
      *
      * @param amount This Item's new amount
      */
-    public void changeAmount(int amount){
+    public void changeAmount(double amount){
         this.amount = amount;
     }
     
@@ -141,7 +141,7 @@ public class Item {
      *
      * @return amount This Item's amount
      */
-    public int getAmount(){
+    public double getAmount(){
         return amount;
     }
     

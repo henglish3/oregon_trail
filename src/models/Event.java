@@ -6,17 +6,9 @@ import java.util.*;
  * @version 1.0 11/08/2011
  */
 public class Event {
-  private static int deathChance;
-  private int oxenLoss;
-  private double itemLoss;
-  private int randomInt, percentageValue;
-  private String message;
-  private Random generator;
   private Party partyMembers;
-  private Player player1;
-  private Pace pace;
-  private Item item;
-  private Inventory stock;
+  private int randChar;
+  private String message;
   /**
    * This constructor creates an Event object
    * @param int
@@ -32,9 +24,10 @@ public class Event {
    */
   public boolean checkArrest() {
   	int chance = (int) Math.random()*100;
-    int randChar = (int) Math.random()*3;
-    if(chance <=30) {
-        partyMembers.setCharacterStatus(randomInt, Status.DEAD);
+    randChar = (int) Math.random()*3;
+    if(chance <= 15 && partyMembers.getCharacterStatus(randChar) != Status.DEAD) {
+        partyMembers.setCharacterStatus(randChar, Status.DEAD);
+        message =  "" + partyMembers.getCharacterName(randChar) + " has just been arrested for prostition and cannot continue on the journey. ";
         return true;
     else {
     	return false;
@@ -44,7 +37,7 @@ public class Event {
    * This method prints out the message associated with this Event object
    */
   public String toString(){
-    return "" + partyMembers.getCharacterName(randomInt) + " has just been arrested for prostition and cannot continue on the journey. ";
+    return message;
   }
 }
 

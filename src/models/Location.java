@@ -220,7 +220,7 @@ public class Location {
   }
 
   public void setRiver(String river) {
-    this.river = Boolean.valueOf(end);
+    this.river = Boolean.valueOf(river);
   }
 
   public boolean getRiver() {

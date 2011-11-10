@@ -171,6 +171,14 @@ public class GamePlayInterface {
           remainFood = amount;
           lblRemainingFood.setText(remainFood);
       }
+    /*
+    * Sets the event boolean to stop the animation
+    *
+    * @param  event boolean to stop animation
+    */
+    public void setEvent(boolean event) {
+    	panel.setEvent(event);
+    }
     /**
     * Sets the imageicon for the weather
     *
@@ -259,6 +267,7 @@ public class GamePlayInterface {
 
         panel = new MapPanel();
         panel.setBackground(Color.white);
+        panel.setEvent(false);
         Thread mpThread = new Thread(panel);
         mpThread.start();
 

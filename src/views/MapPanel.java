@@ -27,6 +27,8 @@ public class MapPanel extends JPanel implements Runnable {
     private int coordY = 240;
     private int distance;
     private int movement;
+    private boolean debug = false;
+    private boolean event;
 
 	/**
 	* Constructor places the map in the panel
@@ -45,11 +47,20 @@ public class MapPanel extends JPanel implements Runnable {
     	distance = dist;
     }
     public void moveMap() {
-    	if(distance >= 110 && coordXMap < -340 && coordYMap < -500) {	
+    	if(distance >= 111 && coordXMap < -340 && coordYMap < -500) {	
     		coordXMap ++;
     		coordYMap ++;
+    		coordX =277;
+    		coordY =145;
     	}
     }
+    public void setEvent(boolean event) {
+    	this.event = event;
+    }
+    /**
+    * Moves the the wagon round and round and round
+    * to set locations
+    */
     public void moveWagon() {
     	if(distance == 10) { 
     		if(coordX > 550)	
@@ -112,9 +123,9 @@ public class MapPanel extends JPanel implements Runnable {
     		    coordY +=2;
         }
         else if(distance == 110) {
-    		if(coordX > 277)
+    		if(coordX > 170)//277)
     			coordX -=2;
-    		if(coordY < 145)
+    		if(coordY < 22)//145)
     			coordY += 2;        
         }
         else if(distance == 120) {
@@ -164,11 +175,12 @@ public class MapPanel extends JPanel implements Runnable {
         g.setColor(Color.BLUE);
         g.fillOval(coordX, coordY, 20, 20);
         g.setColor(Color.YELLOW);
-       //debugging grid
-       // for(int i = 0; i <595; i+=20)
-       // 		g.drawLine(i,0,i,332);
-       // for(int i = 0; i <332; i+=20)
-        //	    g.drawLine(0,i,595,i);
-
+        //debugging grid
+        if(debug) {
+        for(int i = 0; i <595; i+=20)
+        		g.drawLine(i,0,i,332);
+        for(int i = 0; i <332; i+=20)
+        	    g.drawLine(0,i,595,i);
+        }
     }
 }

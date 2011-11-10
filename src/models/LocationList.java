@@ -31,6 +31,7 @@ public class LocationList {
   static final String DESC = "desc";
   static final String DISTANCE = "distance";
   static final String STORE = "store";
+  static final String RIVER = "river";
   static final String END = "end";
 
   /**
@@ -96,6 +97,13 @@ public class LocationList {
           if (event.asStartElement().getName().getLocalPart().equals(STORE)) {
             event = eventReader.nextEvent();
             location.setStore(event.asCharacters().getData());
+            continue;
+          } 
+
+          // If it is a store then set store to true
+          if (event.asStartElement().getName().getLocalPart().equals(RIVER)) {
+            event = eventReader.nextEvent();
+            location.setRiver(event.asCharacters().getData());
             continue;
           } 
 

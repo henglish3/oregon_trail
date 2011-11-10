@@ -10,6 +10,7 @@ import edu.gatech.cs2340.shlat.models.Store;
 public class Location {
   private String name;
   private boolean store;
+  private boolean river;
   private String landmark;
   private String description;
   private int landmarkDistance;
@@ -216,5 +217,13 @@ public class Location {
    */
   public boolean getEnd() {
     return end;
+  }
+
+  public void setRiver(String river) {
+    this.river = Boolean.valueOf(end);
+  }
+
+  public boolean getRiver() {
+    return river;
   }
 }

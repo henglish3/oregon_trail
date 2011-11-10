@@ -186,9 +186,16 @@ public class Game implements ActionListener {
                     JOptionPane.showMessageDialog(null,"Congratulations, you win! You have reached " + nextLoc.getName());
                     System.exit(0);
                 }
-                else{
+                else
+                {
                     JOptionPane.showMessageDialog(null,"You have reached " + nextLoc.getName());
                 }
+            }
+
+            //Open the store window if the location has one
+            if(nextLoc.hasStore()) {
+                Store locationStore = new Store();
+                storeControl.run(locationStore);
             }
         } else if(action_command.equals("mgiShowStatus")) {
             charStat.setVisibility(true);

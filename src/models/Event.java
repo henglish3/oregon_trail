@@ -22,7 +22,7 @@ public class Event {
    * @param int
    *      The integer corresponding to the event action
    */
-  public Event(Character char1, Character char2, Character char3, Character char4, ){
+  public Event(Character char1, Character char2, Character char3, Character char4){
     generator = new Random();
     partyMembers = new Party(char1, char2, char3, char4);
   }
@@ -83,7 +83,7 @@ public class Event {
         item = stock.getItemById(4);
         itemLoss = item.getAmount()*(percentageValue/100);
         if (!(item.getAmount() < itemLoss)) {
-          item.changeAmount(item.getAmount() - itemLoss);
+          item.changeAmount(item.getAmount() - (int)itemLoss);
         }
         else {
           item.changeAmount(0);
@@ -94,7 +94,7 @@ public class Event {
         item = stock.getItemById(5);
         itemLoss = item.getAmount()*(percentageValue/100);
         if (!(item.getAmount() < itemLoss)) {
-          item.changeAmount(item.getAmount() - itemLoss);
+          item.changeAmount(item.getAmount() - (int)itemLoss);
         }
         else {
           item.changeAmount(0);

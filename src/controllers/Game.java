@@ -193,14 +193,13 @@ public class Game implements ActionListener {
             }
 
             //Open the store window if the location has one
-            if(nextLoc.hasStore()) {
+            if(atLoc && nextLoc.hasStore()) {
                 Store locationStore = new Store();
                 storeControl.run(locationStore);
             }
 
             //Show player options if the current location is a river
-            if(nextLoc.getRiver()) {
-                System.out.println("RIVER!!");
+            if(atLoc && nextLoc.getRiver()) {
                 //Get the players choice of what to do
                 Object[] possibilities = {"Pay Toll", "Ford", "Caulk"};
                 String choice = (String)JOptionPane.showInputDialog(

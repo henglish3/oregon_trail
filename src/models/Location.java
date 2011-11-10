@@ -14,7 +14,7 @@ public class Location {
   private String landmark;
   private String description;
   private int landmarkDistance;
-  private static int distanceTraveled;//Keeps track of how many miles the player has traveled
+  private int distanceTraveled;
   private boolean end;
   /**
    * This method creates a default Location object
@@ -23,7 +23,7 @@ public class Location {
     name = null;
     store = false;
     landmark = null;
-    Location.distanceTraveled = 0;
+    distanceTraveled = 0;
   }
   /**
    * This constructor creates a Location object
@@ -37,7 +37,7 @@ public class Location {
     this.landmark = landmark;
     this.store = store;
     distanceTraveled = 0;
-    Location.distanceTraveled = 0;
+    this.distanceTraveled = 0;
   }
   /**
    * This constructor creates a Location object with specific name, landmark, and distance traveled values
@@ -50,7 +50,7 @@ public class Location {
    */
   public Location(String name, String landmark, int distance, boolean store){
     this(name, landmark, store);
-    Location.distanceTraveled = distance;
+    this.distanceTraveled = distance;
   }
   /**
    * This constructor creates a Location object with specific name, landmark, distance traveled, and distance to landmark values
@@ -105,7 +105,7 @@ public class Location {
    *        The distance traveled
    */
   public int getDistance(){
-    return Location.distanceTraveled;
+    return distanceTraveled;
   }
   /**
    * This method sets a new distance for this object
@@ -113,7 +113,7 @@ public class Location {
    *        The new distance traveled by this object
    */
   public void setDistance(int distance){
-    Location.distanceTraveled = distance;
+    distanceTraveled = distance;
   }
   /**
    * This method returns the landmark distance
@@ -158,7 +158,7 @@ public class Location {
    *         The int value used to increment the distance traveled by the player
    */
   public void travelDistance(int x) {
-    Location.distanceTraveled += x;
+    distanceTraveled += x;
   }
 
   /**
@@ -184,7 +184,7 @@ public class Location {
    *        The value of the distance traveled
    */
   public int getCurrentDistanceTraveled(){
-    return Location.distanceTraveled;
+    return distanceTraveled;
   }
   /**
    * This method creates or sets a description of this Location

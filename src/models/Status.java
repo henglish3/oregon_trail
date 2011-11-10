@@ -24,6 +24,20 @@ public enum Status {
      */
     Status(int status) {
         this.status = status;
+        switch (status) {
+          case 0:
+            statusLabel = "IMMORTAL";
+           break;
+         case 1:
+            statusLabel = "NORMAL";
+           break;
+        case 2: 
+            statusLabel = "SICK";
+           break;
+        case 3: 
+            statusLabel = "DEAD";
+           break;
+      }
     } //ends Status constructor.
     
     /**

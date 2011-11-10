@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <locations>
   <location>
-    <name>Hello Kitty Fortress</name>
-    <landmark>Yes</landmark>
-    <desc>The infamous impenetrable Hello Kitty fortress. Warning: do not enter without a pimp cane.</desc>
-    <distance>55</distance>
-    <store>False</store>
+    <name>New New York</name>
+    <landmark>Much better than Old New York</landmark>
+    <desc>Built upon the ruins of Old New York after aliens invaded the planet in the year 2634.</desc>
+    <distance>0</distance>
+    <store>True</store>
     <river>False</river>
     <end>False</end>
   </location>
@@ -19,12 +19,30 @@
     <end>False</end>
   </location>
   <location>
-    <name>New New York</name>
-    <landmark>Much better than Old New York</landmark>
-    <desc>Built upon the ruins of Old New York after aliens invaded the planet in the year 2634.</desc>
-    <distance>0</distance>
-    <store>True</store>
+    <name>Nile River</name>
+    <landmark>It's the Nile river.</landmark>
+    <desc>It's the *#_%$*@ @#$ *@#$ ^@34* *@^*^ Nile River!</desc>
+    <distance>40</distance>
+    <store>False</store>
     <river>True</river>
+    <end>False</end>
+  </location>
+  <location>
+    <name>Hello Kitty Fortress</name>
+    <landmark>Yes</landmark>
+    <desc>The infamous impenetrable Hello Kitty fortress. Warning: do not enter without a pimp cane.</desc>
+    <distance>50</distance>
+    <store>False</store>
+    <river>False</river>
+    <end>False</end>
+  </location>
+  <location>
+    <name>Hello Kitty Fortress</name>
+    <landmark>Yes</landmark>
+    <desc>The infamous impenetrable Hello Kitty fortress. Warning: do not enter without a pimp cane.</desc>
+    <distance>50</distance>
+    <store>False</store>
+    <river>False</river>
     <end>False</end>
   </location>
   <location>
@@ -33,7 +51,7 @@
     <desc>A neighborhood in NNY in which a lot of robots choose to reside. Also home of the Robot Mafia so watch out!</desc>
     <distance>110</distance>
     <store>True</store>
-    <river>False</river>
+    <river>True</river>
     <end>False</end>
   </location>
   <location>

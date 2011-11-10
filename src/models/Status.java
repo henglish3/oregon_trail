@@ -31,9 +31,18 @@ public enum Status {
      *   
      * @return The status the character has.
      */
-    public int getstatus() {
+    public int getStatus() {
         return status;
     } //ends getStatus method.
+    
+    /**
+     * Method changes the character's status
+     *
+     * @param int status The new int value for the status
+     */
+    public void setStatus(int status){
+        this.status = status;
+    }//end setStatus method
     
     /**
      * toString method returns a string.

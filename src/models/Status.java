@@ -15,6 +15,7 @@ public enum Status {
     DEAD(3);
     
     private int status;
+    private String statusLabel;
     
     /**
      * Constructor that assigns the character's status.
@@ -40,6 +41,6 @@ public enum Status {
      * @return The string that is returned.
      */
     public String toString() {
-        return " ";
+        return statusLabel;
     } //ends toString method.
 } //ends Status enumueration.

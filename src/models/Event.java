@@ -22,7 +22,7 @@ public class Event {
    * @param int
    *      The integer corresponding to the event action
    */
-  public Event(Character char1, Character char2, Character char3, Character char4, ){
+  public Event(Character char1, Character char2, Character char3, Character char4){
     generator = new Random();
     partyMembers = new Party(char1, char2, char3, char4);
   }

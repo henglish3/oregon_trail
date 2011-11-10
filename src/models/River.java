@@ -10,6 +10,9 @@ import java.lang.Math;
 public class River extends Location {
     private int depth;
     
+    public River() {
+    }
+
     /**
      * Constructor that creates a River object taht extends Location and also has depth.
      * 

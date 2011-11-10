@@ -33,6 +33,7 @@ public class LocationList {
   static final String STORE = "store";
   static final String RIVER = "river";
   static final String END = "end";
+  private boolean isRiver = false;
 
   /**
    * This method takes a String location of an xml file and parses it into location objects and stores it in a List
@@ -51,8 +52,10 @@ public class LocationList {
 
       // Create a null location
       Location location = null;
+      River river = null;
 
       while (eventReader.hasNext()) {
+        isRiver = false;
         XMLEvent event = eventReader.nextEvent();
 
         if (event.isStartElement()) {
@@ -61,6 +64,7 @@ public class LocationList {
           // If the XML element is an location create a new location
           if (startElement.getName().getLocalPart() == (LOCATION)) {
             location = new Location(); 
+            river = new River();
           }
 
           // If the first element is the start element and it's the name then set the name
@@ -68,6 +72,7 @@ public class LocationList {
             if (event.asStartElement().getName().getLocalPart().equals(NAME)) {
               event = eventReader.nextEvent();
               location.setName(event.asCharacters().getData());
+              river.setName(event.asCharacters().getData());
               continue;
             }
           }
@@ -76,6 +81,7 @@ public class LocationList {
           if (event.asStartElement().getName().getLocalPart().equals(LANDMARK)) {
             event = eventReader.nextEvent();
             location.setLandmark(event.asCharacters().getData());
+            river.setLandmark(event.asCharacters().getData());
             continue;
           }
           
@@ -83,6 +89,7 @@ public class LocationList {
           if (event.asStartElement().getName().getLocalPart().equals(DESC)) {
             event = eventReader.nextEvent();
             location.setDesc(event.asCharacters().getData());
+            river.setDesc(event.asCharacters().getData());
             continue;
           }
 
@@ -90,6 +97,7 @@ public class LocationList {
           if (event.asStartElement().getName().getLocalPart().equals(DISTANCE)) {
             event = eventReader.nextEvent();
             location.setLandmarkDistance(event.asCharacters().getData());
+            river.setLandmarkDistance(event.asCharacters().getData());
             continue;
           }
           
@@ -97,6 +105,7 @@ public class LocationList {
           if (event.asStartElement().getName().getLocalPart().equals(STORE)) {
             event = eventReader.nextEvent();
             location.setStore(event.asCharacters().getData());
+            river.setStore(event.asCharacters().getData());
             continue;
           } 
 
@@ -104,6 +113,8 @@ public class LocationList {
           if (event.asStartElement().getName().getLocalPart().equals(RIVER)) {
             event = eventReader.nextEvent();
             location.setRiver(event.asCharacters().getData());
+            river.setRiver(event.asCharacters().getData());
+            isRiver = Boolean.valueOf(event.asCharacters().getData());
             continue;
           } 
 
@@ -111,6 +122,7 @@ public class LocationList {
           if (event.asStartElement().getName().getLocalPart().equals(END)) {
             event = eventReader.nextEvent();
             location.setEnd(event.asCharacters().getData());
+            river.setEnd(event.asCharacters().getData());
             continue;
           } 
 
@@ -120,7 +132,11 @@ public class LocationList {
         if (event.isEndElement()) {
           EndElement endElement = event.asEndElement();
           if (endElement.getName().getLocalPart() == (LOCATION)) {
-            locations.add(location);
+            if (isRiver) {
+              locations.add((Location)river);
+            } else {
+              locations.add(location);
+            }
           }
         }
       }

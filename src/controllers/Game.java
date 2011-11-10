@@ -200,6 +200,7 @@ public class Game implements ActionListener {
 
             //Show player options if the current location is a river
             if(nextLoc.getRiver()) {
+                System.out.println("RIVER!!");
                 //Get the players choice of what to do
                 Object[] possibilities = {"Pay Toll", "Ford", "Caulk"};
                 String choice = (String)JOptionPane.showInputDialog(

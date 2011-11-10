@@ -9,13 +9,13 @@ package edu.gatech.cs2340.shlat.models;
 public class Item {
     private final int MAX_AMOUNT = 200;
 
-    private double amount; 
+    private int amount; 
     private String desc;
     private int id;
     private String name;
-    private double price;
+    private int price;
     private boolean start;
-    private double startAmount;
+    private int startAmount;
     private int storeQuantity;
     private int weight;
     
@@ -35,7 +35,7 @@ public class Item {
      * @param item The item being duplicated.
      * @param amount The amount to set the new item to.
      */
-    public Item(Item item, double amount) {
+    public Item(Item item, int amount) {
         this.name = item.getName();
         this.amount = amount;
         this.weight = item.getWeight();
@@ -50,7 +50,7 @@ public class Item {
      * @param weight The weight of this Item
      * @param price The price of this Item
      */
-    public Item(String name, double amount, int weight, double price){
+    public Item(String name, int amount, int weight, int price){
         this.name = name;
         this.amount = amount;
         this.weight = weight;
@@ -62,7 +62,7 @@ public class Item {
      *
      * @param amount This Item's new amount
      */
-    public void changeAmount(double amount){
+    public void changeAmount(int amount){
         this.amount = amount;
     }
     
@@ -124,7 +124,7 @@ public class Item {
      *
      * @param price This Item's new price
      */
-    public void changePrice(double price){
+    public void changePrice(int price){
         this.price = price;
     }
     /**
@@ -133,7 +133,7 @@ public class Item {
      * @param price This Item's new String weight
      */
     public void changePrice(String price) {
-        this.price = Double.parseDouble(price);
+        this.price = Integer.parseInt(price);
     }
     
     /**
@@ -141,7 +141,7 @@ public class Item {
      *
      * @return amount This Item's amount
      */
-    public double getAmount(){
+    public int getAmount(){
         return amount;
     }
     
@@ -168,7 +168,7 @@ public class Item {
      *
      * @return price This Item's price
      */
-    public double getPrice(){
+    public int getPrice(){
         return price;
     }
 

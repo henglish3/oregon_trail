@@ -29,8 +29,9 @@ public class Event {
         partyMembers.setCharacterStatus(randChar, Status.DEAD);
         message =  "" + partyMembers.getCharacterName(randChar) + " has just been arrested for prostition and cannot continue on the journey. ";
         return true;
-    else {
+    } else {
     	return false;
+    }
   }
 
   /**

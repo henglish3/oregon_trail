@@ -83,6 +83,38 @@ public class Event {
      // }
       if(ID == 4) { //wagon damage event.
           int partBroke = (int)(Math.random()*3);
+          if(partBroke == 0) {
+              wagon.setWheel(false);
+            //  if(player.getJob() == FARMER) {
+            //      wagon.setWheel(true);
+            //  }
+           //   else if(player.getInventory(find if there is at least 1 of that part in inventory) {
+            //      wagon.setWheel(true);
+            //  }
+          }
+
+          else if(partBroke == 1) {
+              wagon.setAxle(false);
+             // if(player.getJob() == FARMER) {
+             //     wagon.setAxle(true);
+            //  }
+            //  else if(player.getInventory(find if there is at least 1 of that part in inventory) {
+            //      wagon.setAxle(true);
+            //  }
+              
+          }
+          else {
+              wagon.setTongue(false);
+              //if(player.getJob() == FARMER) {
+                 // wagon.setTongue(true);
+              //}
+              //else if(player.getInventory(find if there is at least 1 of that part in inventory) {
+              //    wagon.setTongue(true);
+          //    }
+              
+          }
+          
+          
       }
           
       

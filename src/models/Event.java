@@ -26,11 +26,13 @@ public class Event {
    * @param rations The wagon's amount of rations used while moving.
    * @param player The player.
    * @param party The party.
+   * @param wagon The wagon.
+   * @param date The date.
    */
-  public void chanceEvent(Location location, Pace pace, Rations rations, Player player, Party party) {
+  public void chanceEvent(Location location, Pace pace, Rations rations, Player player, Party party, Wagon wagon, Date date) {
       int chance =(int)(Math.random()*5);
       if(chance == 0){
-          selectEvent(location, pace, rations, player, party);
+          selectEvent(location, pace, rations, player, party, wagon, date);
       }
   } //ends chanceEvent method.
   
@@ -42,8 +44,10 @@ public class Event {
    * @param rations The wagon's amount of rations used while moving.
    * @param player The player.
    * @param party The party.
+   * @param wagon The wagon.
+   * @param date The date.
    */
-  public void selectEvent(Location location, Pace pace, Rations rations, Player player, Party party) {
+  public void selectEvent(Location location, Pace pace, Rations rations, Player player, Party party, Wagon wagon, Date date) {
       
       //int ID = ;
    //displayEvent(ID);   
@@ -57,8 +61,30 @@ public class Event {
    * @param rations The wagon's amount of rations used while moving.
    * @param player The player.
    * @param party The party.
+   * @param wagon The wagon.
+   * @param date The date.
    */
-  public void doEvent(int ID, Pace pace, Rations rations, Player player, Party party) {
+  public void doEvent(int ID, Pace pace, Rations rations, Player player, Party party, Wagon wagon, Date date) {
+      if(ID == 1) { //storm event.
+          int daysLost = ((int)(Math.random()*5)) + 1;
+          for(int i = 0; i != daysLost; i++) {   
+          date.updateDay();
+          }
+          //Ration.setRation(getRation() - (daysLost * RATIONOPTION ));
+          //RATIONOPTION = amount of food lost for the famished option. Stew I need to know how I can get this.
+      }
+      //if(ID == 2) { //character ill or die event.
+       //   party.getCharacterStatus(getSize()
+      //    if() {
+     //     }       
+     // }
+      //if(ID == 3) { //character recovered event.
+          
+     // }
+      if(ID == 4) { //wagon damage event.
+          int partBroke = (int)(Math.random()*3);
+      }
+          
       
   } //ends doEvent method.
   
@@ -67,8 +93,7 @@ public class Event {
    * 
    * @param ID The ID of the event that has occured.
    */
-  public void displayEvent(int ID)
-  {
+  public void displayEvent(int ID) {
   } //ends displayEvent method.
   
   

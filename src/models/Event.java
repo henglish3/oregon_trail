@@ -9,6 +9,7 @@ public class Event {
   private Party partyMembers;
   private int randChar;
   private String message;
+  private int chance;
   /**
    * This constructor creates an Event object
    * @param int
@@ -17,20 +18,46 @@ public class Event {
   public Event(Party party){
     partyMembers = party;
   }
+  
+  public boolean chanceEvent() {
+      chance =(int)(Math.random()*5);
+      if(chance == 0){
+          
+          return true;
+      }else{
+          return false;
+      }
+  } //ends chanceEvent method.
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   /**
    * This method represents an event in which one of the characters is randomly arrested due to prostitution. 
    * @param randomInt 
    *      The random integer calcuated to determine the index of the character that will be affected by this event
    */
   public boolean checkArrest() {
-  	int chance = (int) Math.random()*100;
+   int chance = (int) Math.random()*100;
     randChar = (int) Math.random()*3;
     if(chance <= 15 && partyMembers.getCharacterStatus(randChar) != Status.DEAD) {
         partyMembers.setCharacterStatus(randChar, Status.DEAD);
         message =  "" + partyMembers.getCharacterName(randChar) + " has just been arrested for prostition and cannot continue on the journey. ";
         return true;
     } else {
-    	return false;
+     return false;
     }
   }
 

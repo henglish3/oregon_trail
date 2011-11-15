@@ -55,8 +55,8 @@ public class GameSave implements Serializable {
     return this.rations;
   }
 
-  public Pace loadPage() {
-    return this.page;
+  public Pace loadPace() {
+    return this.pace;
   }
 
   public void save() {

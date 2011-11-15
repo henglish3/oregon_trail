@@ -1,6 +1,5 @@
 package edu.gatech.cs2340.shlat.models;
 import java.io.*;
-import edu.gatech.cs2340.shlat.models.Base64Coder;
 
 public class Serialize<T> {
   public byte[] serialize(T object) throws IOException {

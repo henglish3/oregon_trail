@@ -96,6 +96,7 @@ public class GameSave implements Serializable {
 
   public static GameSave load(String filename) {
     try {
+      filename = "saves/" + filename;
       File f = new File(filename);
       byte b[] = new byte[(int) f.length()];
       

@@ -113,4 +113,14 @@ public class GameSave implements Serializable {
       return null;
     }
   }
+
+  public String[] getSaveFiles() {
+    File f = new File("saves");
+    String[] saves = f.list();
+    if (saves.length == 0) {
+      return null;
+    } else {
+      return saves;
+    }
+  }
 }

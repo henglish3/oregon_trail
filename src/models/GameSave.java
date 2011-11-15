@@ -27,7 +27,7 @@ public class GameSave implements Serializable {
     this.rations = rations;
   }
 
-  public void prepare(Player player) {
+  public void prepare(Party party) {
     this.party = party;
   }
 

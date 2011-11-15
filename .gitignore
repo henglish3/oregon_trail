@@ -5,6 +5,7 @@
 *.ear
 build/
 apidoc/
+saves/
 
 # Generic files to ignore
 *~

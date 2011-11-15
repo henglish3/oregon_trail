@@ -24,13 +24,13 @@ public class Game implements ActionListener {
     
     //Models
     private Player                  playerCharacter;
-    private Wagon                   playerWagon; //
+    private Wagon                   playerWagon;
     private Store                   startStore;
-    private Pace                    currentPace; //
-    private Rations                 currentRations; //
+    private Pace                    currentPace;
+    private Rations                 currentRations;
     private Location                currentLocation; 
     private Map                     map;
-    private Party                   party; //
+    private Party                   party;
     
     private edu.gatech.cs2340.shlat.models.Character[] partyCharacters;
     
@@ -73,12 +73,6 @@ public class Game implements ActionListener {
         
         //Initialize other controllers
         storeControl = new StoreController(this, playerCharacter, playerWagon);
-
-        GameSave gs = new GameSave();
-        gs.prepare(playerWagon);
-        gs.prepare(currentPace);
-        gs.prepare(currentRations);
-        gs.save();
     }
 
     /**

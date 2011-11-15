@@ -75,4 +75,24 @@ public class GameSave implements Serializable {
       System.out.println(e);
     }
   }
+
+  public static GameSave load(String filename) {
+    try {
+      File f = new File(filename);
+      byte b[] = new byte[(int) f.length()];
+      
+      FileInputStream fis = new FileInputStream(filename);
+      fis.read(b);
+      fis.close();
+
+      Serialize s = new Serialize();
+      return (GameSave) s.deserialize(b);
+    } catch (IOException e) {
+      System.out.println(e);
+      return null;
+    } catch (ClassNotFoundException e) {
+      System.out.println(e);
+      return null;
+    }
+  }
 }

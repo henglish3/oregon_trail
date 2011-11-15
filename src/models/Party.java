@@ -9,9 +9,12 @@ package edu.gatech.cs2340.shlat.models;
 
 import java.awt.event.*;
 import java.awt.EventQueue;
+import java.io.Serializable;
 
-public class Party {
+public class Party implements Serializable {
     private Character[] characters;
+
+    public Party() {}
     
     /**
      * Constructor that assigns the four characters to the party.

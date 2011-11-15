@@ -7,8 +7,9 @@
  */
  
 package edu.gatech.cs2340.shlat.models;
+import java.io.Serializable;
 
-public class Wagon {
+public class Wagon implements Serializable {
     
     private boolean wheel; //turns to false on wagon break event, player must use 1 part from inventory to change true.
     private boolean axle;

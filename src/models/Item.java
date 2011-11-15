@@ -5,8 +5,9 @@
  */
 
 package edu.gatech.cs2340.shlat.models;
+import java.io.*;
 
-public class Item {
+public class Item implements Serializable{
     private final int MAX_AMOUNT = 200;
 
     private int amount; 

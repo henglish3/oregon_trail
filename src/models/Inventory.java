@@ -8,8 +8,9 @@ package edu.gatech.cs2340.shlat.models;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.io.*;
 
-public class Inventory {
+public class Inventory implements Serializable {
     private List<Item> inventory;
     private String location = "items.xml";
     private int weight;

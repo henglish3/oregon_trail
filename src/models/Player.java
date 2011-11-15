@@ -6,10 +6,13 @@
  */
  
 package edu.gatech.cs2340.shlat.models;
+import java.io.Serializable;
  
-public class Player extends Character {
+public class Player extends Character implements Serializable {
     private int money;
     private Inventory inventory;
+
+    public Player()  {}
 
     public Player(int age, int sex, String name, Job job) {
         super(age, sex, name, Status.IMMORTAL);

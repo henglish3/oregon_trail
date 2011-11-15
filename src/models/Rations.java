@@ -5,9 +5,12 @@
  */
 
 package edu.gatech.cs2340.shlat.models;
+import java.io.Serializable;
 
-public class Rations {
+public class Rations implements Serializable{
   private int ration;
+
+  public Rations() {}
 
   /**
    * Method creates a Rations object with a selected rations description

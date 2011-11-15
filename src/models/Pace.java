@@ -6,9 +6,12 @@
  */
 
 package edu.gatech.cs2340.shlat.models;
+import java.io.Serializable;
 
-public class Pace {
+public class Pace implements Serializable {
     private int pace;
+
+    public Pace() {}
 
     /**
      * Constructor that sets the initial pace.

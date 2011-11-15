@@ -13,6 +13,8 @@ public class Character {
     private int age;
     private int sex; //female = 0, male = 1
     private String name;
+
+    public Character() {}
  
     /**
      * Constructor that make instantiates the character's variables.

@@ -43,6 +43,22 @@ public class GameSave implements Serializable {
     this.rations = rations;
   }
 
+  public Party loadParty() {
+    return this.party;
+  }
+
+  public Wagon loadWagon() {
+    return this.wagon;
+  }
+
+  public Rations loadRations() {
+    return this.rations;
+  }
+
+  public Pace loadPage() {
+    return this.page;
+  }
+
   public void save() {
     try {
       File saves = new File("saves");
@@ -60,7 +76,9 @@ public class GameSave implements Serializable {
 
       String filename = "saves/" + b.abs().toString(16);
       System.out.println(filename);
+
       Serialize<GameSave> s = new Serialize();
+      
       FileOutputStream fos = new FileOutputStream(filename);
       fos.write(s.serialize(this));
       fos.close();

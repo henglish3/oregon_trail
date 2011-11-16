@@ -195,6 +195,22 @@ public class NewGameCharInterface {
         else
             return 3;
     }
+    
+    /**
+     *Clears the GUI
+     *
+     */
+    public void clear() {
+        mainCharNameField.setText("");
+        mainCharNameField.setText("");
+        char2NameField.setText("");
+        char3NameField.setText("");
+        char4NameField.setText("");
+        mainCharAgeField.setText("");
+        char2AgeField.setText("");
+        char3AgeField.setText("");
+        char4AgeField.setText("");
+    }
 
     /**
      * Initialize the contents of the frame.

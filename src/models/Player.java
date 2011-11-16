@@ -20,6 +20,16 @@ public class Player extends Character implements Serializable {
         this.money = 1600;
         this.inventory = new Inventory(true);
     }
+    
+    /**
+     * Initializes the players inventory if the object was created by the empty constructor
+     *
+     */
+    public void initializeInventory() {
+        money = 1600;
+        inventory = new Inventory(true);
+    }
+    
     /**
      * Enumerated type which identifies the character's job.
      */

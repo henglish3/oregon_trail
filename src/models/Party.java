@@ -25,9 +25,9 @@ public class Party implements Serializable {
      * @param char2 The thrid character in the party.
      * @param char3 The fourth character in the party.
      */
-    public Party(Character char0, Character char1, Character char2, Character char3) {
+    public Party(Player char0, Character char1, Character char2, Character char3) {
         characters = new Character[4];
-        characters[0] = char0;
+        characters[0] = (Character)char0;
         characters[1] = char1;
         characters[2] = char2;
         characters[3] = char3;
@@ -40,6 +40,25 @@ public class Party implements Serializable {
      */
     public Character[] getCharacters() {
         return characters;
+    } //ends getCharacters method.
+    
+    /**
+     * Method that gets a character based on index
+     * 
+     * @param index The index of the character to get. 0 is the player
+     * @return The characters in the party.
+     */
+    public Character getCharacter(int index) {
+        return characters[index];
+    } //ends getCharacters method.
+    
+    /**
+     * Method that gets the player character
+     * 
+     * @return The characters in the party.
+     */
+    public Player getPlayer() {
+        return (Player)characters[0];
     } //ends getCharacters method.
     
     /**
@@ -100,6 +119,15 @@ public class Party implements Serializable {
     public int getCharacterAge(int charNum) {
         return characters[charNum].getAge();
     } //ends getCharacterAge method.
+    
+    /**
+     * Gets the number of characters in the party
+     *
+     * @return number of characters in the party
+     */
+    public int getNumCharacters() {
+        return 4;
+    }
 
     /**
      * Method that sets a certain character's age in the party.
@@ -110,19 +138,4 @@ public class Party implements Serializable {
     public void setCharacterAge(int charNum, int ageChange) {
         characters[charNum].setAge(ageChange);
     } //ends setCharacterAge method.
-    
-    /**
-     * Listener class implements ActionListener.
-     */
-    private class Listener implements ActionListener {
-        
-        /**
-         * Method...
-         * 
-         * @param e The event being taken by the method.
-         */
-        public void actionPerformed(ActionEvent e) {
-            //if(e.getSource() == ???)
-        } //ends actionPerformed method.
-    } //ends Listener class.
 } //ends Party class.

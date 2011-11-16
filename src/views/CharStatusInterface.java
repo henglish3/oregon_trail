@@ -14,6 +14,7 @@ import java.awt.event.WindowListener;
 import javax.swing.ImageIcon;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JButton;
+import edu.gatech.cs2340.shlat.models.*;
 
 
 public class CharStatusInterface implements ActionListener {
@@ -38,11 +39,23 @@ public class CharStatusInterface implements ActionListener {
     /**
      * Create the application.
      */
-    public CharStatusInterface(String[] name, String[] age, String[] sex, String job) {
-        this.name = name;
-        this.age = age;
-        this.sex = sex;
-        this.job = job;
+    public CharStatusInterface(Party party) {
+        name = new String[4];
+        age = new String[4];
+        sex = new String[4];
+        if(party.getPlayer().getJob() == Player.Job.BANKER) {
+            job = "Banker";
+        } else if(party.getPlayer().getJob() == Player.Job.FARMER) {
+            job = "Farmer";
+        } else {
+            job = "Carpenter";
+        }
+        
+        for(int i = 0; i < party.getNumCharacters(); i++) {
+            name[i] = party.getCharacter(i).getName();
+            age[i] = "" + party.getCharacter(i).getAge();
+            sex[i] = (party.getCharacter(i).getSex()==0) ? "Male" : "Female";
+        }
         initialize();
     }
     public void actionPerformed(ActionEvent e) {

@@ -23,7 +23,6 @@ public class Game implements ActionListener {
     private GamePlayInterface       gameplayUI;
     
     //Models
-    private Player                  playerCharacter;
     private Wagon                   playerWagon;
     private Store                   startStore;
     private Pace                    currentPace;
@@ -31,17 +30,6 @@ public class Game implements ActionListener {
     private Location                currentLocation; 
     private Map                     map;
     private Party                   party;
-    
-    private edu.gatech.cs2340.shlat.models.Character[] partyCharacters;
-    
-    //Just for M4 Delete and make better
-    private String[] name;
-    private String[] age;
-    private String[] sex;
-    private String[] status;
-    private String job;
-
-
 
     /**
      * Constructor for the Game controller. Initialize all models and views
@@ -53,26 +41,18 @@ public class Game implements ActionListener {
         
         //Initialize models
         playerWagon = new Wagon();
+        party = new Party(new Player(), new edu.gatech.cs2340.shlat.models.Character(), 
+                        new edu.gatech.cs2340.shlat.models.Character(), 
+                        new edu.gatech.cs2340.shlat.models.Character());
+        party.getPlayer().initializeInventory();
         startStore = new Store();
         map = new Map();
         currentLocation = new Location("Player", "NONE", false);
-        playerCharacter = new Player(18, 0, "Player", Player.Job.BANKER);
-        partyCharacters = new edu.gatech.cs2340.shlat.models.Character[3];
-        for(int i = 0; i < 3; i++)
-        {
-            partyCharacters[i] = new edu.gatech.cs2340.shlat.models.Character(18, 0, "Bob");
-        }
         currentPace = new Pace(0);
         currentRations = new Rations(0);
-
-        //Temporary initialize arrays
-        name = new String[4];
-        age = new String[4];
-        sex = new String[4];
-        status = new String[4];
         
         //Initialize other controllers
-        storeControl = new StoreController(this, playerCharacter, playerWagon);
+        storeControl = new StoreController(this, party.getPlayer(), playerWagon);
     }
 
     /**
@@ -88,32 +68,31 @@ public class Game implements ActionListener {
         if(action_command.equals("ngciDone")) {
             //Get all data from GUI and update models
             //Player character
-            playerCharacter.setName(newGameUI.getMainCharacterName());
-            playerCharacter.setAge(newGameUI.getMainCharacterAge());
-            playerCharacter.setSex(newGameUI.getMainCharacterSex());
+            party.getPlayer().setName(newGameUI.getMainCharacterName());
+            party.getPlayer().setAge(newGameUI.getMainCharacterAge());
+            party.getPlayer().setSex(newGameUI.getMainCharacterSex());
+            party.getPlayer().setStatus(Status.NORMAL);
             temp = newGameUI.getMainCharacterJob();
             switch(temp) {
                 case 0:
-                    playerCharacter.setJob(Player.Job.BANKER);
+                    party.getPlayer().setJob(Player.Job.BANKER);
                     break;
                 case 1:
-                    playerCharacter.setJob(Player.Job.CARPENTER);
+                    party.getPlayer().setJob(Player.Job.CARPENTER);
                     break;
                 case 2:
-                    playerCharacter.setJob(Player.Job.FARMER);
+                    party.getPlayer().setJob(Player.Job.FARMER);
                     break;
             }
             
             //Other party members
             for(int i = 0; i < 3; i++)
             {
-                partyCharacters[i].setName(newGameUI.getCharacterName(i));
-                partyCharacters[i].setAge(newGameUI.getCharacterAge(i));
-                partyCharacters[i].setSex(newGameUI.getCharacterSex(i));
+                party.getCharacter(i+1).setName(newGameUI.getCharacterName(i));
+                party.getCharacter(i+1).setAge(newGameUI.getCharacterAge(i));
+                party.getCharacter(i+1).setSex(newGameUI.getCharacterSex(i));
+                party.getCharacter(i+1).setStatus(Status.NORMAL);
             }
-            
-            //Create a party object
-            party = new Party(playerCharacter, partyCharacters[0], partyCharacters[1], partyCharacters[2]);
             
             //Initial rations/pace
             temp = newGameUI.getInitialRations();
@@ -123,23 +102,24 @@ public class Game implements ActionListener {
             currentPace.setPace(temp);
 
             //Close the new game GUI and open the character stat gui
-            getInfo();
-            charStat = new CharStatusInterface(name, age, sex, job);
+            charStat = new CharStatusInterface(party);
             charStat.setRations(currentRations.getRation());
             charStat.setPace(currentPace.getPace());
             newGameUI.setVisibility(false);
+            charStat.setVisibility(true);
             
             //Run the starting store
             storeControl.run(startStore);
         } else if(action_command.equals("ngciReset")) {
-            //Reset data in GUI/models?
+            //Reset data in GUI
+            newGameUI.clear();
         } else if(action_command.equals("storeClosed")) {
             //Open main game GUI and set information in the GUI
             gameplayUI.setVisibility(true);
             gameplayUI.setRations(currentRations.getRation());
             gameplayUI.setPace(currentPace.getPace());
             gameplayUI.setDistTravel(currentLocation.getCurrentDistanceTraveled());
-            gameplayUI.setFoodRemaining("" + playerCharacter.getFood());
+            gameplayUI.setFoodRemaining("" + party.getPlayer().getFood());
             gameplayUI.setAlertLabel("");
             //TODO: current date
         } else if(action_command.equals("makeMove")) {
@@ -162,7 +142,7 @@ public class Game implements ActionListener {
             }
             
             //Ensure that the player has enough food
-            temp = playerCharacter.getFood()/4;     //Maximum rations
+            temp = party.getPlayer().getFood()/4;     //Maximum rations
             if(rationsUsed > temp) {
                 currentRations.setRation(temp);
                 rationsUsed = temp;
@@ -177,11 +157,11 @@ public class Game implements ActionListener {
             }
             
             currentLocation.travelDistance(dist);
-            playerCharacter.consumeFood(4, rationsUsed);
+            party.getPlayer().consumeFood(4, rationsUsed);
             
             //Update GUI labels containing rations and distance traveled
             gameplayUI.setDistTravel(currentLocation.getCurrentDistanceTraveled());
-            gameplayUI.setFoodRemaining("" + playerCharacter.getFood());
+            gameplayUI.setFoodRemaining("" + party.getPlayer().getFood());
             
             //Alert player if they reached a destination
             if(atLoc) {
@@ -224,8 +204,8 @@ public class Game implements ActionListener {
                     riverChoice = 2;
                 
                 River tempRiver = new River("river", "nile", 0, 5);
-                //String message = ((River)nextLoc).crossRiver(riverChoice, playerCharacter, null);
-                String message = tempRiver.crossRiver(riverChoice, playerCharacter, party);
+                //String message = ((River)nextLoc).crossRiver(riverChoice, party.getPlayer(), null);
+                String message = tempRiver.crossRiver(riverChoice, party.getPlayer(), party);
                 JOptionPane.showMessageDialog(null,message);
             }
         } else if(action_command.equals("mgiShowStatus")) {
@@ -250,21 +230,6 @@ public class Game implements ActionListener {
         });
    }
     
-    /**
-     * Fetch data from models for populating the view
-     */
-    public void getInfo() {
-    	name[0]=playerCharacter.getName(); 
-        age[0]=""+playerCharacter.getAge();
-        //status[0]=playerCharacter.getStatus();
-        job = playerCharacter.jobString();
-        for(int i=1; i < 4; i++) {
-            name[i] = partyCharacters[i-1].getName();
-            age[i] = ""+partyCharacters[i-1].getAge();
-            //status[i] = partyCharacters[i-1].getStatus();
-        }
-
-    }
     /**
      * Application entry point
      *

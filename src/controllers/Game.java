@@ -106,7 +106,6 @@ public class Game implements ActionListener {
             charStat.setRations(currentRations.getRation());
             charStat.setPace(currentPace.getPace());
             newGameUI.setVisibility(false);
-            charStat.setVisibility(true);
             
             //Run the starting store
             storeControl.run(startStore);
@@ -209,6 +208,9 @@ public class Game implements ActionListener {
                 JOptionPane.showMessageDialog(null,message);
             }
         } else if(action_command.equals("mgiShowStatus")) {
+            //Update statuses
+            for(int i = 0; i < party.getNumCharacters(); i++)
+                charStat.setStatus(i, party.getCharacter(i).getStatusStr());
             charStat.setVisibility(true);
         }
     }

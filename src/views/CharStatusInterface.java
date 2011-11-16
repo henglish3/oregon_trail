@@ -29,6 +29,11 @@ public class CharStatusInterface implements ActionListener {
     private String lblRations;
     private JLabel lblCurrentRations;
     private JLabel lblCurrentPace;
+    
+    private JLabel lblMainCharStatus;
+    private JLabel lblChar2Status;
+    private JLabel lblChar3Status;
+    private JLabel lblChar4Status;
 
     /**
     *set visibility of the window
@@ -56,7 +61,11 @@ public class CharStatusInterface implements ActionListener {
             age[i] = "" + party.getCharacter(i).getAge();
             sex[i] = (party.getCharacter(i).getSex()==0) ? "Male" : "Female";
         }
+        
         initialize();
+        
+        for(int i = 0; i < party.getNumCharacters(); i++)
+            setStatus(i, party.getCharacter(i).getStatusStr());
     }
     public void actionPerformed(ActionEvent e) {
     	frame.dispose();
@@ -67,16 +76,16 @@ public class CharStatusInterface implements ActionListener {
     public void setStatus(int charId, String status) {
     	switch(charId) {
     		case 0:
-                lblStatus[0] = status;
+                lblMainCharStatus.setText(status);
                 break;
             case 1:
-                lblStatus[1] = status;
+                lblChar2Status.setText(status);
                 break;
             case 2:
-                lblStatus[2] = status;
+                lblChar3Status.setText(status);
                 break;
             case 3:
-                lblStatus[3] = status;
+                lblChar4Status.setText(status);
                 break;
         }
     }
@@ -134,7 +143,7 @@ public class CharStatusInterface implements ActionListener {
         
         JLabel lblMainCharName = new JLabel(name[0]);
         
-        JLabel lblMainCharStatus = new JLabel("Well");
+        lblMainCharStatus = new JLabel("Well");
         
         JLabel lblMainCharJob = new JLabel(job);
         
@@ -150,7 +159,7 @@ public class CharStatusInterface implements ActionListener {
         
         JLabel lblChar2Age = new JLabel(age[1]);
         
-        JLabel lblChar2Status = new JLabel("Well");
+        lblChar2Status = new JLabel("Well");
         
         JLabel lblChar2Pic = new JLabel("");
         lblChar2Pic.setIcon(new ImageIcon("/Users/harrisonenglish/Desktop/face.png"));
@@ -165,13 +174,13 @@ public class CharStatusInterface implements ActionListener {
         
         JLabel lblCha3Age = new JLabel(age[2]);
         
-        JLabel lblChar3Status = new JLabel("Well");
+        lblChar3Status = new JLabel("Well");
         
         JLabel lblChar4Name = new JLabel(name[3]);
         
         JLabel lblChar4Age = new JLabel(age[3]);
         
-        JLabel lblChar4Status = new JLabel("Well");
+        lblChar4Status = new JLabel("Well");
         
         JButton btnDone = new JButton("Done");
         btnDone.addActionListener(this);
@@ -236,9 +245,9 @@ public class CharStatusInterface implements ActionListener {
         					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
         						.addComponent(lblMainCharStatus)
         						.addComponent(lblStatus)
-        						.addComponent(lblChar2Status, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
-        						.addComponent(lblChar3Status, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
-        						.addComponent(lblChar4Status, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE))
+        						.addComponent(lblChar2Status, GroupLayout.PREFERRED_SIZE, 84, GroupLayout.PREFERRED_SIZE)
+        						.addComponent(lblChar3Status, GroupLayout.PREFERRED_SIZE, 84, GroupLayout.PREFERRED_SIZE)
+        						.addComponent(lblChar4Status, GroupLayout.PREFERRED_SIZE, 84, GroupLayout.PREFERRED_SIZE))
         					.addGap(89))
         				.addGroup(groupLayout.createSequentialGroup()
         					.addComponent(btnDone)

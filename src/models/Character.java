@@ -53,6 +53,22 @@ public class Character {
     public Status getStatus() {
         return status;
     } //ends getStatus method.
+    
+    /**
+     * Method that gets the character's status.
+     * 
+     * @return The status of the character.
+     */
+    public String getStatusStr() {
+        if(status == Status.IMMORTAL)
+            return "Immortal";
+        else if(status == Status.NORMAL)
+            return "Well";
+        else if(status == Status.SICK)
+            return "Sick";
+        else
+            return "Dead";
+    } //ends getStatus method.
  
     /**
      * Method that sets the character's status.

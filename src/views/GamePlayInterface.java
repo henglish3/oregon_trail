@@ -32,6 +32,9 @@ public class GamePlayInterface {
     private String date = "date";
     private String distTravel = "dist Traveled";
     private String remainFood = "food remain";
+    private String currLoc = "current location";
+    private String nextLoc= "next location";
+    private String lEvent= "last event";
     private ImageIcon weatherIcon;
     private JRadioButton rdbtnNorm;
     private JRadioButton rdbtnSlow;
@@ -43,6 +46,9 @@ public class GamePlayInterface {
     private JLabel lblDate;
     private JLabel lblRemainingFood;
     private JLabel lblDistTravel;
+    private JLabel currentLocation;
+    private JLabel nextLocation;
+    private JLabel lastEvent;
     private MapPanel panel;
 
     /**
@@ -153,12 +159,39 @@ public class GamePlayInterface {
         lblDate.setText(date);
     }
     /**
+     * Sets the current location
+     *
+     *@param location string to display as current location
+     */
+     public void setCurrLocation(String location) {
+         currLoc = location;
+         currentLocation.setText(currLoc);
+     }
+     /**
+      * Sets the next location
+      *
+      *@param location string to display as next location
+      */
+      public void setNextLocation(String location) {
+          nextLoc = location;
+          nextLocation.setText(nextLoc);
+      }
+      /**
+       * Sets the last event
+       *
+       *@param event string to display as last event
+       */
+       public void setLastEvent(String event) {
+           lEvent = event;
+           lastEvent.setText(lEvent);
+       }
+    /**
      * Sets the distance traveled
      *
      *@param dist string to display as distance traveled
      */
      public void setDistTravel(int dist) {
-         distTravel = "" + dist + " miles";
+        distTravel = "" + dist + " miles";
         lblDistTravel.setText(distTravel);
         panel.setDist(dist);
      }
@@ -177,7 +210,7 @@ public class GamePlayInterface {
     * @param  event boolean to stop animation
     */
     public void setEvent(boolean event) {
-    	panel.setEvent(event);
+    	//panel.setEvent(event);
     }
     /**
     * Sets the imageicon for the weather
@@ -192,7 +225,7 @@ public class GamePlayInterface {
      */
     private void initialize(ActionListener al) {
         frame = new JFrame();
-        frame.setBounds(100, 100, 752, 495);
+        frame.setBounds(100, 100, 749, 484);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         JToolBar toolBar = new JToolBar();
@@ -223,7 +256,7 @@ public class GamePlayInterface {
         
         JLabel lblPace = new JLabel("Pace");
         lblPace.setHorizontalAlignment(SwingConstants.CENTER);
-        lblPace.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
+        lblPace.setFont(new Font("Lucida Grande", Font.BOLD, 16));
         
         rdbtnNorm = new JRadioButton("Normal");
         rdbtnNorm.setHorizontalAlignment(SwingConstants.LEFT);
@@ -245,7 +278,7 @@ public class GamePlayInterface {
 
         JLabel lblRations = new JLabel("Rations");
         lblRations.setHorizontalAlignment(SwingConstants.CENTER);
-        lblRations.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
+        lblRations.setFont(new Font("Lucida Grande", Font.BOLD, 16));
         
         rdbtnStarved = new JRadioButton("Famished");
         rdbtnStarved.setHorizontalAlignment(SwingConstants.LEFT);
@@ -288,17 +321,13 @@ public class GamePlayInterface {
         
         JButton btnMap = new JButton("Map");
         
-        JButton btnStop = new JButton("Stop");
-        
-        JButton btnJournal = new JButton("Journal");
+        JButton btnStop = new JButton("Rest");
         
         JButton btnInventory = new JButton("Inventory");
         
         JButton btnStatus = new JButton("Status");
         btnStatus.setActionCommand("mgiShowStatus");
         btnStatus.addActionListener(al);
-        
-        JTextPane textPane = new JTextPane();
         
         JLabel lblDistanceTraveled = new JLabel("Distance Traveled");
         lblDistanceTraveled.setFont(new Font("Lucida Grande", Font.BOLD, 14));
@@ -315,6 +344,24 @@ public class GamePlayInterface {
         lblOutofRations = new JLabel("You have NO RATIONS!");
         lblOutofRations.setFont(new Font("Lucida Grande", Font.BOLD, 13));
         lblOutofRations.setForeground(Color.RED);
+        
+        JLabel lblCurrentLocation = new JLabel("Current Location");
+        lblCurrentLocation.setFont(new Font("Lucida Grande", Font.BOLD, 14));
+        
+        currentLocation = new JLabel(currLoc);
+        currentLocation.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
+        
+        JLabel lblNextLocation = new JLabel("Next Location");
+        lblNextLocation.setFont(new Font("Lucida Grande", Font.BOLD, 14));
+        
+        nextLocation = new JLabel(nextLoc);
+        nextLocation.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
+        
+        JLabel lblLastEvent = new JLabel("Last Event");
+        lblLastEvent.setFont(new Font("Lucida Grande", Font.BOLD, 14));
+        
+        lastEvent = new JLabel(lEvent);
+        lastEvent.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
         GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
         groupLayout.setHorizontalGroup(
         	groupLayout.createParallelGroup(Alignment.LEADING)
@@ -322,58 +369,74 @@ public class GamePlayInterface {
         			.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
         				.addComponent(toolBar, GroupLayout.PREFERRED_SIZE, 450, GroupLayout.PREFERRED_SIZE)
         				.addGroup(groupLayout.createSequentialGroup()
-        					.addGap(38)
-        					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-        						.addComponent(rdbtnFast)
-        						.addComponent(rdbtnSlow)
-        						.addComponent(lblPace)
-        						.addComponent(rdbtnNorm, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE))
-        					.addPreferredGap(ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-        					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-        						.addComponent(lblOutofRations)
-        						.addGroup(groupLayout.createSequentialGroup()
-        							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-        								.addComponent(rdbtnStarved)
-        								.addComponent(rdbtnFilling)
-        								.addComponent(rdbtnEnough)
-        								.addComponent(lblRations))
-        							.addGap(18)
-        							.addComponent(textPane, GroupLayout.PREFERRED_SIZE, 239, GroupLayout.PREFERRED_SIZE)))
-        					.addPreferredGap(ComponentPlacement.RELATED)
-        					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-        						.addComponent(btnInventory, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE)
-        						.addComponent(btnGo, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE)
-        						.addComponent(btnStop, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE))
-        					.addGap(6)
-        					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-        						.addComponent(btnStatus, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE)
-        						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-        							.addComponent(btnMap, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE)
-        							.addComponent(btnJournal, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE))))
-        				.addGroup(groupLayout.createSequentialGroup()
         					.addContainerGap()
         					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 595, GroupLayout.PREFERRED_SIZE)
-        					.addPreferredGap(ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
         					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-        						.addGroup(Alignment.TRAILING, groupLayout.createParallelGroup(Alignment.LEADING)
-        							.addComponent(lblFoodRemaining, GroupLayout.PREFERRED_SIZE, 129, GroupLayout.PREFERRED_SIZE)
-        							.addComponent(lblDistanceTraveled)
+        						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+        							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+        								.addGroup(groupLayout.createSequentialGroup()
+        									.addPreferredGap(ComponentPlacement.UNRELATED, 30, Short.MAX_VALUE)
+        									.addComponent(lblDate)
+        									.addGap(81))
+        								.addGroup(groupLayout.createSequentialGroup()
+        									.addGap(27)
+        									.addComponent(lblDistTravel, GroupLayout.PREFERRED_SIZE, 82, GroupLayout.PREFERRED_SIZE))
+        								.addGroup(groupLayout.createSequentialGroup()
+        									.addPreferredGap(ComponentPlacement.RELATED)
+        									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+        										.addComponent(lblFoodRemaining, GroupLayout.PREFERRED_SIZE, 129, GroupLayout.PREFERRED_SIZE)
+        										.addComponent(lblDistanceTraveled))))
         							.addGroup(groupLayout.createSequentialGroup()
-        								.addGap(27)
-        								.addComponent(lblRemainingFood, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE))
-        							.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-        								.addComponent(lblDistTravel, GroupLayout.PREFERRED_SIZE, 82, GroupLayout.PREFERRED_SIZE)
-        								.addGap(23)))
-        						.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-        							.addComponent(lblWeatherImg, GroupLayout.PREFERRED_SIZE, 97, GroupLayout.PREFERRED_SIZE)
-        							.addGap(18))
-        						.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-        							.addComponent(lblDate)
-        							.addGap(53))
-        						.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-        							.addComponent(lblWeather)
-        							.addGap(44)))))
-        			.addGap(3))
+        								.addGap(26)
+        								.addComponent(lblRemainingFood, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE)))
+        						.addGroup(groupLayout.createSequentialGroup()
+        							.addGap(18)
+        							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+        								.addComponent(lblWeather)
+        								.addComponent(lblWeatherImg, GroupLayout.PREFERRED_SIZE, 97, GroupLayout.PREFERRED_SIZE))))))
+        			.addContainerGap(7, Short.MAX_VALUE))
+        		.addGroup(groupLayout.createSequentialGroup()
+        			.addGap(38)
+        			.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+        				.addGroup(groupLayout.createSequentialGroup()
+        					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+        						.addGroup(groupLayout.createSequentialGroup()
+        							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+        								.addComponent(rdbtnSlow)
+        								.addComponent(lblPace)
+        								.addComponent(rdbtnNorm, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE))
+        							.addPreferredGap(ComponentPlacement.RELATED)
+        							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+        								.addComponent(lblRations)
+        								.addComponent(rdbtnStarved)
+        								.addComponent(rdbtnEnough)))
+        						.addGroup(groupLayout.createSequentialGroup()
+        							.addComponent(lblOutofRations)
+        							.addPreferredGap(ComponentPlacement.RELATED)))
+        					.addGap(39)
+        					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+        						.addComponent(currentLocation)
+        						.addComponent(lblNextLocation)
+        						.addComponent(lblCurrentLocation)
+        						.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+        							.addComponent(nextLocation)
+        							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+        								.addComponent(lastEvent)
+        								.addComponent(lblLastEvent)))))
+        				.addGroup(groupLayout.createSequentialGroup()
+        					.addComponent(rdbtnFast)
+        					.addPreferredGap(ComponentPlacement.RELATED)
+        					.addComponent(rdbtnFilling)))
+        			.addPreferredGap(ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+        			.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+        				.addComponent(btnStop, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(btnGo, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(btnInventory, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE))
+        			.addPreferredGap(ComponentPlacement.UNRELATED)
+        			.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+        				.addComponent(btnStatus, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(btnMap, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE))
+        			.addGap(62))
         );
         groupLayout.setVerticalGroup(
         	groupLayout.createParallelGroup(Alignment.LEADING)
@@ -381,7 +444,7 @@ public class GamePlayInterface {
         			.addComponent(toolBar, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
         			.addPreferredGap(ComponentPlacement.RELATED)
         			.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-        				.addComponent(panel, GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
+        				.addComponent(panel, GroupLayout.DEFAULT_SIZE, 262, Short.MAX_VALUE)
         				.addGroup(groupLayout.createSequentialGroup()
         					.addComponent(lblWeather)
         					.addPreferredGap(ComponentPlacement.RELATED)
@@ -395,39 +458,58 @@ public class GamePlayInterface {
         					.addGap(18)
         					.addComponent(lblFoodRemaining, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE)
         					.addPreferredGap(ComponentPlacement.RELATED)
-        					.addComponent(lblRemainingFood, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE)))
-        			.addPreferredGap(ComponentPlacement.RELATED)
-        			.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+        					.addComponent(lblRemainingFood, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE)
+        					.addPreferredGap(ComponentPlacement.RELATED)))
+        			.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
         				.addGroup(groupLayout.createSequentialGroup()
-        					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-        						.addComponent(lblPace)
-        						.addComponent(lblRations))
-        					.addPreferredGap(ComponentPlacement.RELATED)
-        					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-        						.addComponent(btnStatus)
-        						.addComponent(btnGo)
-        						.addComponent(rdbtnSlow, GroupLayout.PREFERRED_SIZE, 19, Short.MAX_VALUE)
-        						.addComponent(rdbtnStarved))
-        					.addPreferredGap(ComponentPlacement.RELATED)
-        					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+        					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
         						.addGroup(groupLayout.createSequentialGroup()
+        							.addPreferredGap(ComponentPlacement.RELATED)
+        							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+        								.addComponent(lblPace)
+        								.addComponent(lblRations)))
+        						.addGroup(groupLayout.createSequentialGroup()
+        							.addGap(18)
+        							.addComponent(lblCurrentLocation)))
+        					.addPreferredGap(ComponentPlacement.RELATED)
+        					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+        						.addGroup(groupLayout.createSequentialGroup()
+        							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+        								.addComponent(rdbtnSlow, GroupLayout.PREFERRED_SIZE, 19, Short.MAX_VALUE)
+        								.addComponent(rdbtnStarved))
+        							.addPreferredGap(ComponentPlacement.RELATED)
         							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
         								.addComponent(rdbtnNorm)
         								.addComponent(rdbtnEnough))
-        							.addGap(12))
-        						.addGroup(groupLayout.createSequentialGroup()
+        							.addGap(12)
         							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-        								.addComponent(btnStop)
-        								.addComponent(btnMap))
-        							.addPreferredGap(ComponentPlacement.RELATED)))
+        								.addComponent(rdbtnFast)
+        								.addComponent(rdbtnFilling)))
+        						.addGroup(groupLayout.createSequentialGroup()
+        							.addComponent(currentLocation)
+        							.addPreferredGap(ComponentPlacement.RELATED)
+        							.addComponent(lblNextLocation)
+        							.addPreferredGap(ComponentPlacement.RELATED)
+        							.addComponent(nextLocation)
+        							.addPreferredGap(ComponentPlacement.RELATED)
+        							.addComponent(lblLastEvent)))
+        					.addPreferredGap(ComponentPlacement.RELATED)
         					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-        						.addComponent(btnInventory)
-        						.addComponent(btnJournal)
-        						.addComponent(rdbtnFilling)
-        						.addComponent(rdbtnFast)))
-        				.addComponent(textPane, GroupLayout.PREFERRED_SIZE, 119, GroupLayout.PREFERRED_SIZE))
-        			.addPreferredGap(ComponentPlacement.RELATED)
-        			.addComponent(lblOutofRations))
+        						.addComponent(lblOutofRations)
+        						.addComponent(lastEvent))
+        					.addGap(22))
+        				.addGroup(groupLayout.createSequentialGroup()
+        					.addGap(24)
+        					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+        						.addComponent(btnStatus)
+        						.addComponent(btnGo))
+        					.addPreferredGap(ComponentPlacement.RELATED)
+        					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+        						.addComponent(btnMap)
+        						.addComponent(btnStop))
+        					.addPreferredGap(ComponentPlacement.RELATED)
+        					.addComponent(btnInventory)))
+        			.addContainerGap())
         );
         frame.getContentPane().setLayout(groupLayout);
     }

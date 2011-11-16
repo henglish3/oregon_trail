@@ -28,11 +28,8 @@ public class NewGameCharInterface {
     private JTextField char2AgeField;
     private JTextField char3AgeField;
     private JTextField char4AgeField;
-    private JComboBox mainCharJobField;        
-    private JComboBox mainCharSexField;
-    private JComboBox char2SexField;
-    private JComboBox char3SexField;
-    private JComboBox char4SexField;
+    private JComboBox mainCharJobField; 
+    private JComboBox startMonthField;
     private JRadioButton rdbtnSlow;
     private JRadioButton rdbtnNormal;
     private JRadioButton rdbtnLudicrous; 
@@ -41,6 +38,7 @@ public class NewGameCharInterface {
     private JRadioButton rdbtnGluttonous;
     private JLabel lblNewCharacterScreen;
     private JLabel lblPartyLeader;
+    private JTextField dateField;
 
     /**
      * Launch the application.
@@ -134,30 +132,6 @@ public class NewGameCharInterface {
         return 1;
     }
     
-    /**
-     *Get character sex
-     */
-    public int getCharacterSex(int charId) {
-        JComboBox sexCombo;
-        switch(charId) {
-            case 0:
-                sexCombo = char2SexField;
-                break;
-            case 1:
-                sexCombo = char3SexField;
-                break;
-            case 2:
-                sexCombo = char4SexField;
-                break;
-            default:
-                return 0;
-        }
-        
-        if(((String)(sexCombo.getSelectedItem())).equals("Male"))
-            return 0;
-        
-        return 1;
-    }
     
     /**
      *Get the main character job
@@ -171,7 +145,46 @@ public class NewGameCharInterface {
         else
             return 2;
     }
-    
+    /**
+     *Get start month
+     */
+    public int getStartMonth() {
+        String selection =(String)(startMonthField.getSelectedItem());
+        if(selection.equals("January"))
+            return 0;
+        else if(selection.equals("Feburary"))
+            return 1;
+        else if(selection.equals("March"))
+            return 2;
+        else if(selection.equals("April"))
+            return 3;
+        else if(selection.equals("May"))
+            return 4;
+        else if(selection.equals("June"))
+            return 5;
+        else if(selection.equals("July"))
+            return 6;
+        else if(selection.equals("August"))
+            return 7;
+        else if(selection.equals("September"))
+            return 8;
+        else if(selection.equals("October"))
+            return 9;
+        else if(selection.equals("November"))
+            return 10;
+        else if(selection.equals("Decemeber"))
+            return 11;
+        else
+        	return 4;
+    }
+    /**
+     * returns the start day.
+     * 
+     * @return dateField the start day
+     */
+    public String getStartDay() {
+    	return dateField.getText();
+    }
     /**
      *Get initial pace
      */
@@ -210,6 +223,7 @@ public class NewGameCharInterface {
         char2AgeField.setText("");
         char3AgeField.setText("");
         char4AgeField.setText("");
+        dateField.setText("");
     }
 
     /**
@@ -217,7 +231,7 @@ public class NewGameCharInterface {
      */
     private void initialize(ActionListener al) {
         frame = new JFrame("New Game");
-        frame.setBounds(100,100, 602, 607);
+        frame.setBounds(100,100, 591, 472);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         
@@ -230,22 +244,6 @@ public class NewGameCharInterface {
         
         JLabel lblAge = new JLabel("Age");
         lblAge.setFont(new Font("Lucida Grande", Font.BOLD, 16));
-        
-        JLabel lblSex = new JLabel("Sex");
-        lblSex.setFont(new Font("Lucida Grande", Font.BOLD, 16));
-        
-        //Jlables for the Images of each character
-        JLabel lblMainCharPic = new JLabel("");
-        lblMainCharPic.setIcon(new ImageIcon("/Users/harrisonenglish/Desktop/face.png"));
-        
-        JLabel lblChar2Pic = new JLabel("");
-        lblChar2Pic.setIcon(new ImageIcon("/Users/harrisonenglish/Desktop/face.png"));
-        
-        JLabel lblChar3Pic = new JLabel("");
-        lblChar3Pic.setIcon(new ImageIcon("/Users/harrisonenglish/Desktop/face.png"));
-        
-        JLabel lblChar4Pic = new JLabel("");
-        lblChar4Pic.setIcon(new ImageIcon("/Users/harrisonenglish/Desktop/face.png"));
         
         //Set's the each Field for each player and sets the default
         mainCharNameField = new JTextField();
@@ -284,11 +282,6 @@ public class NewGameCharInterface {
         String[] professions = { "Banker","Carpenter","Farmer" };
         mainCharJobField = new JComboBox(professions);
         
-        String[] sex = { "Male","Female" };
-        mainCharSexField = new JComboBox(sex);
-        char2SexField = new JComboBox(sex);
-        char3SexField = new JComboBox(sex);
-        char4SexField = new JComboBox(sex);
         
         JLabel lblInitialPace = new JLabel("Initial Pace");
         lblInitialPace.setFont(new Font("Lucida Grande", Font.BOLD, 16));
@@ -330,6 +323,18 @@ public class NewGameCharInterface {
         
         lblPartyLeader = new JLabel("Pary Leader:");
         lblPartyLeader.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
+        
+        JLabel lblStartDate = new JLabel("Start Date");
+        lblStartDate.setFont(new Font("Lucida Grande", Font.BOLD, 16));
+        
+        dateField = new JTextField();
+        dateField.setColumns(10);
+        
+        
+        String[] months = { "January","Feburary","March","April","May","June","July","August","September","October","November","December" };
+        startMonthField = new JComboBox(months);
+        
+        JLabel label = new JLabel("2011");
 
         
         //Layout Stuff DON'T TOUCH!!!!
@@ -337,78 +342,60 @@ public class NewGameCharInterface {
         groupLayout.setHorizontalGroup(
         	groupLayout.createParallelGroup(Alignment.LEADING)
         		.addGroup(groupLayout.createSequentialGroup()
-        			.addGap(108)
-        			.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-        				.addComponent(rdbtnNormal)
-        				.addComponent(rdbtnSlow)
-        				.addComponent(lblInitialPace)
-        				.addComponent(rdbtnLudicrous))
-        			.addGap(31)
         			.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
         				.addGroup(groupLayout.createSequentialGroup()
-        					.addComponent(lblIntialRations)
-        					.addContainerGap())
-        				.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-        					.addGroup(groupLayout.createSequentialGroup()
-        						.addComponent(rdbtnFamished)
-        						.addContainerGap())
-        					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-        						.addGroup(groupLayout.createSequentialGroup()
-        							.addComponent(rdbtnEnough)
-        							.addContainerGap(277, Short.MAX_VALUE))
-        						.addGroup(groupLayout.createSequentialGroup()
-        							.addComponent(rdbtnGluttonous)
-        							.addPreferredGap(ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
-        							.addComponent(btnReset, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
-        							.addPreferredGap(ComponentPlacement.RELATED)
-        							.addComponent(btnDone)
-        							.addGap(29))))))
-        		.addGroup(groupLayout.createSequentialGroup()
-        			.addContainerGap()
-        			.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-        				.addGroup(groupLayout.createSequentialGroup()
-        					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-        						.addComponent(lblChar2Pic, GroupLayout.PREFERRED_SIZE, 84, GroupLayout.PREFERRED_SIZE)
-        						.addComponent(lblChar3Pic, GroupLayout.PREFERRED_SIZE, 84, GroupLayout.PREFERRED_SIZE)
-        						.addComponent(lblChar4Pic, GroupLayout.PREFERRED_SIZE, 84, GroupLayout.PREFERRED_SIZE))
-        					.addGap(26)
+        					.addGap(116)
         					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
         						.addComponent(lblName)
-        						.addComponent(char2NameField, GroupLayout.PREFERRED_SIZE, 122, GroupLayout.PREFERRED_SIZE)
-        						.addComponent(char3NameField, GroupLayout.PREFERRED_SIZE, 122, GroupLayout.PREFERRED_SIZE)
         						.addComponent(lblPartyLeader)
         						.addComponent(mainCharNameField, GroupLayout.PREFERRED_SIZE, 122, GroupLayout.PREFERRED_SIZE)
+        						.addComponent(char2NameField, GroupLayout.PREFERRED_SIZE, 122, GroupLayout.PREFERRED_SIZE)
+        						.addComponent(char3NameField, GroupLayout.PREFERRED_SIZE, 122, GroupLayout.PREFERRED_SIZE)
         						.addComponent(char4NameField, GroupLayout.PREFERRED_SIZE, 122, GroupLayout.PREFERRED_SIZE))
         					.addGap(41)
         					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
         						.addComponent(char4AgeField, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-        						.addComponent(mainCharAgeField, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-        						.addComponent(lblAge)
+        						.addComponent(char3AgeField, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
         						.addComponent(char2AgeField, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-        						.addComponent(char3AgeField, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE))
-        					.addGap(40)
-        					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-        						.addComponent(char3SexField, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
-        						.addComponent(char2SexField, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
-        						.addComponent(char4SexField, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
         						.addGroup(groupLayout.createSequentialGroup()
-        							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-        								.addGroup(groupLayout.createSequentialGroup()
-        									.addComponent(lblSex)
-        									.addGap(90))
-        								.addGroup(groupLayout.createSequentialGroup()
-        									.addComponent(mainCharSexField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-        									.addGap(18)))
         							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-        								.addComponent(lblProfession)
-        								.addComponent(mainCharJobField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
-        					.addGap(35))
-        				.addComponent(lblMainCharPic, GroupLayout.PREFERRED_SIZE, 84, GroupLayout.PREFERRED_SIZE))
-        			.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        		.addGroup(groupLayout.createSequentialGroup()
-        			.addGap(43)
-        			.addComponent(lblNewCharacterScreen)
-        			.addContainerGap(394, Short.MAX_VALUE))
+        								.addComponent(mainCharAgeField, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
+        								.addComponent(lblAge))
+        							.addGap(50)
+        							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+        								.addComponent(mainCharJobField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        								.addComponent(lblProfession)))))
+        				.addGroup(groupLayout.createSequentialGroup()
+        					.addGap(43)
+        					.addComponent(lblNewCharacterScreen))
+        				.addGroup(groupLayout.createSequentialGroup()
+        					.addGap(66)
+        					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+        						.addComponent(rdbtnNormal)
+        						.addComponent(rdbtnSlow)
+        						.addComponent(rdbtnLudicrous)
+        						.addComponent(lblInitialPace))
+        					.addGap(31)
+        					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+        						.addComponent(lblIntialRations)
+        						.addComponent(rdbtnEnough)
+        						.addComponent(rdbtnFamished)
+        						.addComponent(rdbtnGluttonous))
+        					.addGap(53)
+        					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+        						.addGroup(groupLayout.createSequentialGroup()
+        							.addComponent(btnReset, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
+        							.addPreferredGap(ComponentPlacement.RELATED)
+        							.addComponent(btnDone))
+        						.addComponent(lblStartDate)
+        						.addGroup(groupLayout.createSequentialGroup()
+        							.addComponent(textField, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+        							.addPreferredGap(ComponentPlacement.RELATED)
+        							.addComponent(startMonthField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        							.addGap(36)
+        							.addComponent(label)))
+        					.addPreferredGap(ComponentPlacement.RELATED)))
+        			.addContainerGap(51, Short.MAX_VALUE))
         );
         groupLayout.setVerticalGroup(
         	groupLayout.createParallelGroup(Alignment.LEADING)
@@ -416,70 +403,56 @@ public class NewGameCharInterface {
         			.addGap(26)
         			.addComponent(lblNewCharacterScreen)
         			.addPreferredGap(ComponentPlacement.RELATED)
-        			.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-        				.addGroup(groupLayout.createSequentialGroup()
-        					.addComponent(lblMainCharPic, GroupLayout.PREFERRED_SIZE, 78, GroupLayout.PREFERRED_SIZE)
-        					.addGap(18)
-        					.addComponent(lblChar2Pic, GroupLayout.PREFERRED_SIZE, 78, GroupLayout.PREFERRED_SIZE)
-        					.addGap(18)
-        					.addComponent(lblChar3Pic, GroupLayout.PREFERRED_SIZE, 78, GroupLayout.PREFERRED_SIZE)
-        					.addGap(18)
-        					.addComponent(lblChar4Pic, GroupLayout.PREFERRED_SIZE, 78, GroupLayout.PREFERRED_SIZE))
-        				.addGroup(groupLayout.createSequentialGroup()
-        					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-        						.addComponent(lblName)
-        						.addComponent(lblSex)
-        						.addComponent(lblProfession)
-        						.addComponent(lblAge))
-        					.addPreferredGap(ComponentPlacement.RELATED)
-        					.addComponent(lblPartyLeader)
-        					.addPreferredGap(ComponentPlacement.UNRELATED)
-        					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-        						.addComponent(mainCharNameField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-        						.addComponent(mainCharSexField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-        						.addComponent(mainCharJobField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-        						.addComponent(mainCharAgeField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-        					.addGap(50)
-        					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-        						.addComponent(char2NameField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-        						.addComponent(char2SexField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-        						.addComponent(char2AgeField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-        					.addGap(71)
-        					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-        						.addComponent(char3NameField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-        						.addComponent(char3SexField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-        						.addComponent(char3AgeField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-        					.addGap(62)
-        					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-        						.addComponent(char4SexField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-        						.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-        							.addComponent(char4NameField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-        							.addComponent(char4AgeField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))))
-        			.addPreferredGap(ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+        			.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(lblName)
+        				.addComponent(lblAge)
+        				.addComponent(lblProfession))
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addComponent(lblPartyLeader)
+        			.addPreferredGap(ComponentPlacement.UNRELATED)
+        			.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(mainCharNameField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(mainCharAgeField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(mainCharJobField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        			.addGap(18)
+        			.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(char2NameField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(char2AgeField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        			.addGap(18)
+        			.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(char3NameField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(char3AgeField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        			.addGap(18)
+        			.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(char4NameField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(char4AgeField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        			.addGap(39)
         			.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
         				.addGroup(groupLayout.createSequentialGroup()
-        					.addGap(49)
-        					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-        						.addComponent(rdbtnSlow)
-        						.addComponent(rdbtnFamished))
+        					.addGap(23)
+        					.addComponent(rdbtnSlow)
         					.addPreferredGap(ComponentPlacement.RELATED)
         					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
         						.addComponent(rdbtnNormal)
         						.addComponent(rdbtnEnough))
         					.addPreferredGap(ComponentPlacement.RELATED)
-        					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-        						.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-        							.addComponent(btnDone)
-        							.addComponent(btnReset))
-        						.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-        							.addComponent(rdbtnGluttonous)
-        							.addComponent(rdbtnLudicrous))))
-        				.addGroup(groupLayout.createSequentialGroup()
-        					.addGap(26)
         					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+        						.addComponent(rdbtnLudicrous)
+        						.addComponent(rdbtnGluttonous)
+        						.addComponent(btnDone)
+        						.addComponent(btnReset)))
+        				.addGroup(groupLayout.createSequentialGroup()
+        					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+        						.addComponent(lblIntialRations)
         						.addComponent(lblInitialPace)
-        						.addComponent(lblIntialRations))))
-        			.addContainerGap(19, Short.MAX_VALUE))
+        						.addComponent(lblStartDate))
+        					.addPreferredGap(ComponentPlacement.RELATED)
+        					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+        						.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        						.addComponent(rdbtnFamished)
+        						.addComponent(startMonthField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        						.addComponent(label))))
+        			.addContainerGap(29, Short.MAX_VALUE))
         );
         frame.getContentPane().setLayout(groupLayout);
     }

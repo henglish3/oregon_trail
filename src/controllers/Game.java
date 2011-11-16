@@ -81,7 +81,6 @@ public class Game implements ActionListener {
             //Player character
             party.getPlayer().setName(newGameUI.getMainCharacterName());
             party.getPlayer().setAge(newGameUI.getMainCharacterAge());
-            party.getPlayer().setSex(newGameUI.getMainCharacterSex());
             party.getPlayer().setStatus(Status.NORMAL);
             temp = newGameUI.getMainCharacterJob();
             switch(temp) {
@@ -101,7 +100,6 @@ public class Game implements ActionListener {
             {
                 party.getCharacter(i+1).setName(newGameUI.getCharacterName(i));
                 party.getCharacter(i+1).setAge(newGameUI.getCharacterAge(i));
-                party.getCharacter(i+1).setSex(newGameUI.getCharacterSex(i));
                 party.getCharacter(i+1).setStatus(Status.NORMAL);
             }
             

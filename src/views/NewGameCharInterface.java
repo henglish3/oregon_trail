@@ -123,17 +123,6 @@ public class NewGameCharInterface {
     }
     
     /**
-     *Get the main character sex
-     */
-    public int getMainCharacterSex() {
-        if(((String)(mainCharJobField.getSelectedItem())).equals("Male"))
-            return 0;
-        
-        return 1;
-    }
-    
-    
-    /**
      *Get the main character job
      */
     public int getMainCharacterJob() {
@@ -389,7 +378,7 @@ public class NewGameCharInterface {
         							.addComponent(btnDone))
         						.addComponent(lblStartDate)
         						.addGroup(groupLayout.createSequentialGroup()
-        							.addComponent(textField, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+        							.addComponent(dateField, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
         							.addPreferredGap(ComponentPlacement.RELATED)
         							.addComponent(startMonthField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
         							.addGap(36)
@@ -448,7 +437,7 @@ public class NewGameCharInterface {
         						.addComponent(lblStartDate))
         					.addPreferredGap(ComponentPlacement.RELATED)
         					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-        						.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        						.addComponent(dateField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
         						.addComponent(rdbtnFamished)
         						.addComponent(startMonthField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
         						.addComponent(label))))

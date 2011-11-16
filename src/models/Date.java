@@ -48,6 +48,7 @@ public class Date {
     if (month.equalsIgnoreCase(months[12])) {
       monthInt = 1;
       setMonth(months[monthInt]);
+      updateYear();
     }
     else {
       monthInt++;
@@ -78,10 +79,12 @@ public class Date {
       if (year % 4 == 0) {
         if (day == 29) { // Handles leap year scenario
           setDay(1);
+          updateMonth();
         }
       }
       else if (day == 28){ // Handles last day of February
         setDay(1);
+        updateMonth();
       }
       else {
         day++;
@@ -90,6 +93,7 @@ public class Date {
     else if (((monthInt <= 7) && (monthInt % 2 == 1)) || ((monthInt >= 8) && (monthInt % 2 == 0))) { // Handles odd-numbered months in the range 1 - 7 (inclusive) and even numbered months in the range 8 - 12 (inclusive)
       if (day == 31) {
         setDay(1);
+        updateMonth();
       }
       else {
         day++;
@@ -98,6 +102,7 @@ public class Date {
     else if (((monthInt <= 7) && (monthInt % 2 == 0)) || ((monthInt >= 8) && (monthInt % 2 == 1))) { // Handles even-numbered months in the range 1 - 7 (inclusive) and odd numbered months in the range 8 - 12 (inclusive)
       if (day == 30) {
         setDay(1);
+        updateMonth();
       }
       else {
         day++;

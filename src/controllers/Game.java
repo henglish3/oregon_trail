@@ -30,6 +30,13 @@ public class Game implements ActionListener {
     private Location                currentLocation; 
     private Map                     map;
     private Party                   party;
+    private Date                    currentDate;
+    
+    //Keeps track of what state the game is in
+    private int                     gameState;
+    public static final int         STATE_MAINMENU = 0;
+    public static final int         STATE_NEWGAME = 1;
+    public static final int         STATE_INGAME = 2;
 
     /**
      * Constructor for the Game controller. Initialize all models and views
@@ -50,9 +57,13 @@ public class Game implements ActionListener {
         currentLocation = new Location("Player", "NONE", false);
         currentPace = new Pace(0);
         currentRations = new Rations(0);
+        currentDate = new Date("August");
         
         //Initialize other controllers
         storeControl = new StoreController(this, party.getPlayer(), playerWagon);
+        
+        //Start game at new game state
+        gameState = STATE_NEWGAME;
     }
 
     /**
@@ -113,14 +124,16 @@ public class Game implements ActionListener {
             //Reset data in GUI
             newGameUI.clear();
         } else if(action_command.equals("storeClosed")) {
-            //Open main game GUI and set information in the GUI
-            gameplayUI.setVisibility(true);
-            gameplayUI.setRations(currentRations.getRation());
-            gameplayUI.setPace(currentPace.getPace());
-            gameplayUI.setDistTravel(currentLocation.getCurrentDistanceTraveled());
-            gameplayUI.setFoodRemaining("" + party.getPlayer().getFood());
-            gameplayUI.setAlertLabel("");
-            //TODO: current date
+            //Open main game GUI if the start store was closed
+            if(gameState == STATE_NEWGAME) {
+                gameplayUI.setVisibility(true);
+                gameplayUI.setAlertLabel("");
+                gameplayUI.setRations(currentRations.getRation());
+                gameplayUI.setPace(currentPace.getPace());
+                gameplayUI.setDistTravel(currentLocation.getCurrentDistanceTraveled());
+                gameplayUI.setFoodRemaining("" + party.getPlayer().getFood());
+                gameplayUI.setDate(currentDate.toString());
+            }
         } else if(action_command.equals("makeMove")) {
             //Get any updates to rations and pace
             currentRations.setRation(gameplayUI.getRations());
@@ -206,6 +219,10 @@ public class Game implements ActionListener {
                 String message = ((River)nextLoc).crossRiver(riverChoice, party.getPlayer(), null);
                 JOptionPane.showMessageDialog(null,message);
             }
+            
+            //Update the current date
+            currentDate.updateDay();
+            gameplayUI.setDate(currentDate.toString());
         } else if(action_command.equals("mgiShowStatus")) {
             //Update statuses
             for(int i = 0; i < party.getNumCharacters(); i++)

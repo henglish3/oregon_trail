@@ -1,5 +1,7 @@
 package edu.gatech.cs2340.shlat.models;
 import java.util.*;
+import java.lang.Math;
+
 /**
  * This class will create an Event object with it's own set of actions throughout the gameplay
  * @author S.H.L.A.T.
@@ -10,7 +12,7 @@ public class Event {
   private int randChar;
   private String message;
   /**
-   * This constructor creates an Event object
+   * CURRENTLY NOT USED This constructor creates an Event object
    * @param int
    *      The integer corresponding to the event action
    */
@@ -113,8 +115,18 @@ public class Event {
           //    }
               
           }
-          
-          
+          if(ID == 5) { //random amount of an item stolen.
+              boolean a = false;
+              while(!a) {
+                  double t = Math.random();
+                  int temp = (int)(t * player.getInventory().getList().size());
+                  Item lostItem = (Item)(player.getInventory().getList().get(temp));
+                  if(lostItem.getAmount() <= 1){
+                      lostItem.changeAmount(lostItem.getAmount() - 1);
+                      a = true;
+                  }
+              }
+          }
       }
           
       
@@ -143,9 +155,8 @@ public class Event {
   
   
   /**
-   * This method represents an event in which one of the characters is randomly arrested due to prostitution. 
-   * @param randomInt 
-   *      The random integer calcuated to determine the index of the character that will be affected by this event
+   * SCRAP THIS METHOD LATER This method represents an event in which one of the characters is randomly arrested due to prostitution. 
+   * @param randomInt The random integer calcuated to determine the index of the character that will be affected by this event
    */
   public boolean checkArrest() {
    int chance = (int) Math.random()*100;
@@ -160,10 +171,11 @@ public class Event {
   }
 
   /**
-   * This method prints out the message associated with this Event object
+   * This method prints out the message associated with this Event object.
+   * 
+   * @return the String that needs to be returned.
    */
   public String toString(){
     return message;
-  }
-}
-
+  } //ends toString method.
+} //ends Event class.

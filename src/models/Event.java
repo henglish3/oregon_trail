@@ -127,6 +127,20 @@ public class Event {
                   }
               }
           }
+          if(ID == 6) { //free 10-100 food event.
+              boolean a = false;
+              while(!a) {
+                  int freeAmount = (int)((Math.random()*90) + 10);
+                  if(player.getFood() + freeAmount  <= 2000) { //2000 represents max amount can carry. change later.
+                      //player.setFood(player.getFood() + freeAmount); need a ration changing method
+                      a = true;
+                  }
+                  //else{ add amount that doesnt reach max amount.
+                 //     player.setFood(
+                          
+                  //}
+              }
+          }
       }
           
       

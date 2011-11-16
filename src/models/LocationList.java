@@ -132,7 +132,7 @@ public class LocationList {
         if (event.isEndElement()) {
           EndElement endElement = event.asEndElement();
           if (endElement.getName().getLocalPart() == (LOCATION)) {
-            if (isRiver) {
+            if (river.getRiver()) {
               locations.add((Location)river);
             } else {
               locations.add(location);

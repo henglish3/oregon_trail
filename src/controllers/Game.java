@@ -203,14 +203,14 @@ public class Game implements ActionListener {
                     riverChoice = 2;
                 
                 River tempRiver = new River("river", "nile", 0, 5);
-                //String message = ((River)nextLoc).crossRiver(riverChoice, party.getPlayer(), null);
-                String message = tempRiver.crossRiver(riverChoice, party.getPlayer(), party);
+                String message = ((River)nextLoc).crossRiver(riverChoice, party.getPlayer(), null);
                 JOptionPane.showMessageDialog(null,message);
             }
         } else if(action_command.equals("mgiShowStatus")) {
             //Update statuses
             for(int i = 0; i < party.getNumCharacters(); i++)
                 charStat.setStatus(i, party.getCharacter(i).getStatusStr());
+                
             charStat.setVisibility(true);
         }
     }

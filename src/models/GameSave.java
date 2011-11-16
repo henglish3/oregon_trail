@@ -1,8 +1,8 @@
 package edu.gatech.cs2340.shlat.models;
 import java.io.*;
-import java.math.*;
-import java.security.*;
 import java.util.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import edu.gatech.cs2340.shlat.models.Serialize;
 
 public class GameSave implements Serializable {
@@ -67,26 +67,19 @@ public class GameSave implements Serializable {
       }
       
       Date currentDate = new Date();
-      byte[] date = currentDate.toString().getBytes();
+      SimpleDateFormat formatter = new SimpleDateFormat("dd_MMM_yyyy-HH-mm-ss");
+      String formatted = "saves/" + formatter.format(currentDate);
 
-      MessageDigest md = MessageDigest.getInstance("MD5");
-      md.update(date);
-
-      BigInteger b = new BigInteger(md.digest());
-
-      String filename = "saves/" + b.abs().toString(16);
-      System.out.println(filename);
+      System.out.println(formatted);
 
       Serialize<GameSave> s = new Serialize();
       
-      FileOutputStream fos = new FileOutputStream(filename);
+      FileOutputStream fos = new FileOutputStream(formatted);
       fos.write(s.serialize(this));
       fos.close();
     } catch (SecurityException e) {
       System.out.println("Sorry! It appears that you don't have permission to save files!");
       System.out.println(e);
-    } catch (NoSuchAlgorithmException e) {
-      System.out.println("Sorry! Can't save. What were you thinking? Wanting to save an awesome game like this. Be extreme! Keep going!");
     } catch (FileNotFoundException e) {
       System.out.println(e);
     } catch (IOException e) {

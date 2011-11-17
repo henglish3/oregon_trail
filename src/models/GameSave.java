@@ -10,21 +10,28 @@ public class GameSave implements Serializable {
   private Wagon wagon;
   private Pace pace;
   private Rations rations;
+  private Date date;
 
   public GameSave() {}
 
-  public GameSave(Party party, Wagon wagon, Pace pace, Rations rations) {
+  public GameSave(Party party, Wagon wagon, Pace pace, Rations rations, Date date) {
     this.party = party;
     this.wagon = wagon;
     this.pace = pace;
     this.rations = rations;
+    this.date = date;
   }
 
-  public void prepare(Party party, Wagon wagon, Pace pace, Rations rations) {
+  public void prepare(Party party, Wagon wagon, Pace pace, Rations rations, Date date) {
     this.party = party;
     this.wagon = wagon;
     this.pace = pace;
     this.rations = rations;
+    this.date = date;
+  }
+
+  public void prepare(Date date) {
+    this.date = date;
   }
 
   public void prepare(Party party) {
@@ -57,6 +64,10 @@ public class GameSave implements Serializable {
 
   public Pace loadPace() {
     return this.pace;
+  }
+
+  public Date loadDate() {
+    return this.date;
   }
 
   public void save() {

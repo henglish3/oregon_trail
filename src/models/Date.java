@@ -1,10 +1,11 @@
 package edu.gatech.cs2340.shlat.models;
+import java.io.*;
 /**
  * This class will specify and update the date as the player progresses throughout the game
  * @author S.H.L.A.T.
  * @version 1.0 11/08/2011
  */
-public class Date {
+public class Date implements Serializable {
   private String month;
   private String[] months = {null, "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
   private int day, monthInt;

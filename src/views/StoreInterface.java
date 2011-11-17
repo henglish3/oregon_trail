@@ -275,47 +275,7 @@ public class StoreInterface implements ActionListener {
     	        break;
     	}
     }
-    /**
-     *  Sets the total Cost for the one type of item
-     *  
-     * @param cost total cost for one type
-     * @param itemID id for the item
-     */
-    public void setItemCost(int cost, int itemID){
-    	itemTotalCost[itemID] = ""+cost;
-        switch(itemID) {
-    	    case 0:
-    	        cost1.setText(itemTotalCost[itemID]);
-    	        break;
-    	    case 1:
-    	        cost2.setText(itemTotalCost[itemID]);
-    	        break;
-    	    case 2:
-    	        cost3.setText(itemTotalCost[itemID]);
-    	        break;
-    	    case 3:
-    	        cost4.setText(itemTotalCost[itemID]);
-    	        break;
-    	    case 4:
-    	        cost5.setText(itemTotalCost[itemID]);
-    	        break;
-    	    case 5:
-    	        cost6.setText(itemTotalCost[itemID]);
-    	        break;
-    	    case 6:
-    	        cost7.setText(itemTotalCost[itemID]);
-    	        break;
-    	    case 7:
-    	        cost8.setText(itemTotalCost[itemID]);
-    	        break;
-    	    case 8:
-    	        cost9.setText(itemTotalCost[itemID]);
-    	        break;
-    	    case 9:
-    	        cost10.setText(itemTotalCost[itemID]);
-    	        break;
-    	}
-    }
+    
     /**
      * Sets the item Weight
      * 

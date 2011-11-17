@@ -88,7 +88,6 @@ public class StoreController implements ActionListener {
             storeView.setItemDes(currentItem.getName(), i);
             storeView.setUnitCost((int)currentItem.getPrice(), i);
             storeView.setStoreMax(currentItem.getAmount(), i);
-            storeView.setItemCost(0, i);
             storeView.setItemWeight(currentItem.getWeight(), i);
             
             playersItem = player.getInventory().getItemById(currentItem.getId());

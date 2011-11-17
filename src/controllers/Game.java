@@ -182,8 +182,11 @@ public class Game implements ActionListener {
                 }
                 else
                 {
+                    //Update current
                     JOptionPane.showMessageDialog(null,"You have reached " + nextLoc.getName());
                 }
+            } else {
+                //Update current/next location labels
             }
 
             //Open the store window if the location has one

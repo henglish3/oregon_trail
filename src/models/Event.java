@@ -67,7 +67,7 @@ public class Event {
    * @param date The date.
    */
   public void doEvent(int ID, Pace pace, Rations rations, Player player, Party party, Wagon wagon, Date date) {
-      if(ID == 1) { //storm event.
+      if(ID == 1) { //EVENT: STORM EVENT. LOSE X AMOUNT OF DAYS AND RATION FOR THOSE DAYS. 
           int daysLost = ((int)(Math.random()*5)) + 1;
           for(int i = 0; i != daysLost; i++) {   
           date.updateDay();
@@ -75,15 +75,15 @@ public class Event {
           //Ration.setRation(getRation() - (daysLost * RATIONOPTION ));
           //RATIONOPTION = amount of food lost for the famished option. Stew I need to know how I can get this.
       }
-      //if(ID == 2) { //character ill or die event.
+      //if(ID == 2) { //EVENT: A CHARACTER WILL GET ILL, IF ALREADY ILL THEN DIE.
        //   party.getCharacterStatus(getSize()
       //    if() {
      //     }       
      // }
-      //if(ID == 3) { //character recovered event.
+      //if(ID == 3) { //EVENT: A CHARACTER WILL RECOVER IF SICK EVENT.
           
      // }
-      if(ID == 4) { //wagon damage event.
+      if(ID == 4) { //EVENT: WAGON DAMAGE
           int partBroke = (int)(Math.random()*3);
           if(partBroke == 0) {
               wagon.setWheel(false);
@@ -115,7 +115,7 @@ public class Event {
           //    }
               
           }
-          if(ID == 5) { //random amount of an item stolen.
+          if(ID == 5) { //EVENT: RANDOM ITEM STOLEN EVENT.
               boolean a = false;
               while(!a) {
                   double t = Math.random();
@@ -127,7 +127,7 @@ public class Event {
                   }
               }
           }
-          if(ID == 6) { //free 10-100 food event.
+          if(ID == 6) { //EVENT: FREE 10-100 FOOD EVENT.
               boolean a = false;
               while(!a) {
                   int freeAmount = (int)((Math.random()*90) + 10);
@@ -140,6 +140,10 @@ public class Event {
                           
                   //}
               }
+          }
+          if(ID == 7) { //EVENT: OXEN DEATH EVENT.
+          }
+          if(ID == 8) { //EVENT: OXEN TIRED EVENT. MOVE SLOWER FOR 3 DAYS.
           }
       }
           

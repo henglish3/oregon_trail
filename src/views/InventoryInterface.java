@@ -1,4 +1,4 @@
-package edu.gatech.cs2340.shlat.views;
+//package edu.gatech.cs2340.shlat.views;
 
 import java.awt.EventQueue;
 
@@ -22,13 +22,45 @@ public class InventoryInterface {
     private String[] itemWeight;
     private String currentMoney = "14000";
     private String currentWeight = "1000";
+    private JLabel itemHave1;
+    private JLabel itemHave2;
+    private JLabel itemHave3;
+    private JLabel itemHave4;
+    private JLabel itemHave5;
+    private JLabel itemHave6;
+    private JLabel itemHave7;
+    private JLabel itemHave8;
+    private JLabel itemHave9;
+    private JLabel itemHave10;
+    
+    private JLabel itemDes1;
+    private JLabel itemDes2;
+    private JLabel itemDes3;
+    private JLabel itemDes4;
+    private JLabel itemDes5;
+    private JLabel itemDes6;
+    private JLabel itemDes7;
+    private JLabel itemDes8;
+    private JLabel itemDes9;
+    private JLabel itemDes10;
+    
+    private JLabel itemWeight1;
+    private JLabel itemWeight2;
+    private JLabel itemWeight3;
+    private JLabel itemWeight4;
+    private JLabel itemWeight5;
+    private JLabel itemWeight6;
+    private JLabel itemWeight7;
+    private JLabel itemWeight8;
+    private JLabel itemWeight9;
+    private JLabel itemWeight10;
 
     /**
      * Launch the application.
      * 
      * @param args The arguments collected from the user
      */
-    /*public static void main(String[] args) {
+    public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
@@ -39,13 +71,6 @@ public class InventoryInterface {
                 }
             }
         });
-    }*/
-    
-    /**
-    *set visibility of the window
-    */
-    public void setVisibility(boolean visibility) {
-    	frame.setVisible(visibility);
     }
 
     /**
@@ -56,7 +81,38 @@ public class InventoryInterface {
      */
     public void setItemsHave(int items, int itemID){
     	itemHave[itemID] = ""+items;
-  	  
+    	switch(itemID) {
+    		case 0:
+    			itemHave1.setText(itemHave[0]);
+    			break;
+    		case 1:
+    			itemHave2.setText(itemHave[1]);
+    			break;
+    		case 2:
+    			itemHave3.setText(itemHave[2]);
+    			break;
+    		case 3:
+    			itemHave4.setText(itemHave[3]);
+    			break;
+    		case 4:
+    			itemHave5.setText(itemHave[4]);
+    			break;
+    		case 5:
+    			itemHave6.setText(itemHave[5]);
+    			break;
+    		case 6:
+    			itemHave7.setText(itemHave[6]);
+    			break;
+    		case 7:
+    			itemHave8.setText(itemHave[7]);
+    			break;
+    		case 9:
+    			itemHave9.setText(itemHave[8]);
+    			break;
+    		case 10:
+    			itemHave10.setText(itemHave[9]);
+    			break;
+    	}
     }
     /**
      * Sets the name of the item or description
@@ -66,6 +122,38 @@ public class InventoryInterface {
      */
     public void setItemDes(String itemName, int itemID){
     	itemDes[itemID] = itemName;
+    	switch(itemID) {
+		case 0:
+			itemDes1.setText(itemDes[0]);
+			break;
+		case 1:
+			itemDes2.setText(itemDes[1]);
+			break;
+		case 2:
+			itemDes3.setText(itemDes[2]);
+			break;
+		case 3:
+			itemDes4.setText(itemDes[3]);
+			break;
+		case 4:
+			itemDes5.setText(itemDes[4]);
+			break;
+		case 5:
+			itemDes6.setText(itemDes[5]);
+			break;
+		case 6:
+			itemDes7.setText(itemDes[6]);
+			break;
+		case 7:
+			itemDes8.setText(itemDes[7]);
+			break;
+		case 9:
+			itemDes9.setText(itemDes[8]);
+			break;
+		case 10:
+			itemDes10.setText(itemDes[9]);
+			break;
+	}
     }
 
 
@@ -77,6 +165,38 @@ public class InventoryInterface {
      */
     public void setItemWeight(int weight, int itemID){
     	itemWeight[itemID] = ""+weight;
+    	switch(itemID) {
+		case 0:
+			itemWeight1.setText(itemWeight[0]);
+			break;
+		case 1:
+			itemWeight2.setText(itemWeight[1]);
+			break;
+		case 2:
+			itemWeight3.setText(itemWeight[2]);
+			break;
+		case 3:
+			itemWeight4.setText(itemWeight[3]);
+			break;
+		case 4:
+			itemWeight5.setText(itemWeight[4]);
+			break;
+		case 5:
+			itemWeight6.setText(itemWeight[5]);
+			break;
+		case 6:
+			itemWeight7.setText(itemWeight[6]);
+			break;
+		case 7:
+			itemWeight8.setText(itemWeight[7]);
+			break;
+		case 9:
+			itemWeight9.setText(itemWeight[8]);
+			break;
+		case 10:
+			itemWeight10.setText(itemWeight[9]);
+			break;
+	}
     }
     /**
      * Set the CurrentMoney label
@@ -99,10 +219,6 @@ public class InventoryInterface {
      * Create the application.
      */
     public InventoryInterface() {
-        itemDes = new String[10];
-        itemHave = new String[10];
-        itemWeight = new String[10];
-        
         initialize();
     }
 
@@ -124,51 +240,38 @@ public class InventoryInterface {
         JLabel lblItemWeight = new JLabel("Weight");
         lblItemWeight.setFont(new Font("Lucida Grande", Font.BOLD, 16));
         
+        itemHave1 = new JLabel(itemHave[0]);
+        itemHave2 = new JLabel(itemHave[1]);
+        itemHave3 = new JLabel(itemHave[2]);
+        itemHave4 = new JLabel(itemHave[3]);
+        itemHave5 = new JLabel(itemHave[4]);
+        itemHave6 = new JLabel(itemHave[5]);
+        itemHave7 = new JLabel(itemHave[6]);
+        itemHave8 = new JLabel(itemHave[7]);
+        itemHave9 = new JLabel(itemHave[8]);
+        itemHave10 = new JLabel(itemHave[9]);
         
-        /*for(int i =0; i<=numItems; i++){
-        	//itemHave[i] = new JLabel("0");
-        	storeMax[i] = new JLabel("10");
-        	wantItem[i] = new JTextField();
-            wantItem[i].setColumns(10);
-            itemDes[i] = new JLabel("Lorem ipsum dolor sit amet");
-            unitCost[i] = new JLabel("4.95");
-        	
-        }*/
+        itemDes1 = new JLabel(itemDes[0]);
+        itemDes2 = new JLabel(itemDes[1]);
+        itemDes3 = new JLabel(itemDes[2]);
+        itemDes4 = new JLabel(itemDes[3]);
+        itemDes5 = new JLabel(itemDes[4]);
+        itemDes6 = new JLabel(itemDes[5]);
+        itemDes7 = new JLabel(itemDes[6]);
+        itemDes8 = new JLabel(itemDes[7]);
+        itemDes9 = new JLabel(itemDes[8]);
+        itemDes10 = new JLabel(itemDes[9]);
         
-        //JLabel[] itemHave = new JLabel[1];
-        //itemHave[0] = new JLabel("0");
-        JLabel itemHave1 = new JLabel(itemHave[0]);
-        JLabel itemHave2 = new JLabel(itemHave[1]);
-        JLabel itemHave3 = new JLabel(itemHave[2]);
-        JLabel itemHave4 = new JLabel(itemHave[3]);
-        JLabel itemHave5 = new JLabel(itemHave[4]);
-        JLabel itemHave6 = new JLabel(itemHave[5]);
-        JLabel itemHave7 = new JLabel(itemHave[6]);
-        JLabel itemHave8 = new JLabel(itemHave[7]);
-        JLabel itemHave9 = new JLabel(itemHave[8]);
-        JLabel itemHave10 = new JLabel(itemHave[9]);
-        
-        JLabel itemDes1 = new JLabel(itemDes[0]);
-        JLabel itemDes2 = new JLabel(itemDes[1]);
-        JLabel itemDes3 = new JLabel(itemDes[2]);
-        JLabel itemDes4 = new JLabel(itemDes[3]);
-        JLabel itemDes5 = new JLabel(itemDes[4]);
-        JLabel itemDes6 = new JLabel(itemDes[5]);
-        JLabel itemDes7 = new JLabel(itemDes[6]);
-        JLabel itemDes8 = new JLabel(itemDes[7]);
-        JLabel itemDes9 = new JLabel(itemDes[8]);
-        JLabel itemDes10 = new JLabel(itemDes[9]);
-        
-        JLabel itemWeight1 = new JLabel(itemWeight[0]);
-        JLabel itemWeight2 = new JLabel(itemWeight[1]);
-        JLabel itemWeight3 = new JLabel(itemWeight[2]);
-        JLabel itemWeight4 = new JLabel(itemWeight[3]);
-        JLabel itemWeight5 = new JLabel(itemWeight[4]);
-        JLabel itemWeight6 = new JLabel(itemWeight[5]);
-        JLabel itemWeight7 = new JLabel(itemWeight[6]);
-        JLabel itemWeight8 = new JLabel(itemWeight[7]);
-        JLabel itemWeight9 = new JLabel(itemWeight[8]);
-        JLabel itemWeight10 = new JLabel(itemWeight[9]);
+        itemWeight1 = new JLabel(itemWeight[0]);
+        itemWeight2 = new JLabel(itemWeight[1]);
+        itemWeight3 = new JLabel(itemWeight[2]);
+        itemWeight4 = new JLabel(itemWeight[3]);
+        itemWeight5 = new JLabel(itemWeight[4]);
+        itemWeight6 = new JLabel(itemWeight[5]);
+        itemWeight7 = new JLabel(itemWeight[6]);
+        itemWeight8 = new JLabel(itemWeight[7]);
+        itemWeight9 = new JLabel(itemWeight[8]);
+        itemWeight10 = new JLabel(itemWeight[9]);
         
         
         JLabel titleCurrentMoney = new JLabel("You Have $");

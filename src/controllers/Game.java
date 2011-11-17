@@ -183,10 +183,13 @@ public class Game implements ActionListener {
                 else
                 {
                     //Update current
-                    JOptionPane.showMessageDialog(null,"You have reached " + nextLoc.getName());
+                    gameplayUI.setCurrLocation(nextLoc.getName());
+                    gameplayUI.setNextLocation(map.getNextLocation(party.getPlayer().getDistanceTraveled() + 1).getName());
                 }
             } else {
                 //Update current/next location labels
+                gameplayUI.setCurrLocation("none");
+                gameplayUI.setNextLocation(nextLoc.getName());
             }
 
             //Open the store window if the location has one
@@ -249,35 +252,37 @@ public class Game implements ActionListener {
             
             //Prompt the user for a filename to load
             Object[] possibilities = GameSave.getSaveFiles();
-            String choice = (String)JOptionPane.showInputDialog(
-                    null,
-                    "Choose a save file to load\n",
-                    "Load Game",
-                    JOptionPane.PLAIN_MESSAGE,
-                    null,
-                    possibilities,
-                    null);
+            if(possibilities != null) {
+                String choice = (String)JOptionPane.showInputDialog(
+                        null,
+                        "Choose a save file to load\n",
+                        "Load Game",
+                        JOptionPane.PLAIN_MESSAGE,
+                        null,
+                        possibilities,
+                        null);
+                        
+                loadGame = GameSave.load(choice);
                     
-            loadGame = GameSave.load(choice);
+                //Set all models to data loaded from file
+                playerWagon = loadGame.loadWagon();
+                party = loadGame.loadParty();
+                currentRations = loadGame.loadRations();
+                currentPace = loadGame.loadPace();
+                currentDate = loadGame.loadDate();
                 
-            //Set all models to data loaded from file
-            playerWagon = loadGame.loadWagon();
-            party = loadGame.loadParty();
-            currentRations = loadGame.loadRations();
-            currentPace = loadGame.loadPace();
-            currentDate = loadGame.loadDate();
-            
-            //Update GUIs
-            charStat = new CharStatusInterface(party);
-            charStat.setRations(currentRations.getRation());
-            charStat.setPace(currentPace.getPace());
-            
-            gameplayUI.setAlertLabel("");
-            gameplayUI.setRations(currentRations.getRation());
-            gameplayUI.setPace(currentPace.getPace());
-            gameplayUI.setDistTravel(party.getPlayer().getDistanceTraveled());
-            gameplayUI.setFoodRemaining("" + party.getPlayer().getFood());
-            gameplayUI.setDate(currentDate.toString());
+                //Update GUIs
+                charStat = new CharStatusInterface(party);
+                charStat.setRations(currentRations.getRation());
+                charStat.setPace(currentPace.getPace());
+                
+                gameplayUI.setAlertLabel("");
+                gameplayUI.setRations(currentRations.getRation());
+                gameplayUI.setPace(currentPace.getPace());
+                gameplayUI.setDistTravel(party.getPlayer().getDistanceTraveled());
+                gameplayUI.setFoodRemaining("" + party.getPlayer().getFood());
+                gameplayUI.setDate(currentDate.toString());
+            }
         } else if(action_command.equals("mgiSave")) {
             GameSave saveGame = new GameSave(party, playerWagon, currentPace, currentRations, currentDate);
             saveGame.save();

@@ -11,6 +11,7 @@ public class Event {
   private Party partyMembers;
   private int randChar;
   private String message;
+  
   /**
    * CURRENTLY NOT USED This constructor creates an Event object
    * @param int
@@ -33,6 +34,7 @@ public class Event {
    */
   public void chanceEvent(Location location, Pace pace, Rations rations, Player player, Party party, Wagon wagon, Date date) {
       int chance =(int)(Math.random()*5);
+      message = "";
       if(chance == 0){
           selectEvent(location, pace, rations, player, party, wagon, date);
       }
@@ -72,26 +74,31 @@ public class Event {
           date.updateDay();
           player.consumeFood(party.getCharacters().length, party.getCharacters().length);
           }
-          //MESSAGE: You were caught in a storm. You have lost daysLost from your journey.
+          message = "You were caught in a storm. You have lost " + daysLost + " days from your journey.";
       }
       if(ID == 2) { //EVENT: A CHARACTER WILL GET ILL, IF ALREADY ILL THEN DIE.
           int i = 0;
           int j = party.getCharacters().length - 1;
           boolean a = false;
-          while(!a || i < j) {
-              int charNum = (int)(Math.random()* j);
+          int charNum = (int)(Math.random()* j);
+          int orig = charNum;
+          while(!a) {
               if(party.getCharacterStatus(charNum) == Status.NORMAL) {
                   party.getCharacter(charNum).setStatus(Status.SICK);
                   a = true;
-                  //MESSAGE: party.getCharacterName(charNum)is now ill.
+                  message = "" + party.getCharacterName(charNum) + " is now ill";
               }
               else if(party.getCharacterStatus(charNum) == Status.SICK) {
                   party.getCharacter(charNum).setStatus(Status.DEAD);
                   a = true;
-                  //MESSAGE: party.getCharacterName(charNum)has died. 
+                  message = "" + party.getCharacterName(charNum) + " has died";
               }
               else{
-                  j--;
+                  charNum++;
+                  if(charNum == party.getCharacters().length)
+                    charNum = 0;
+                  if(charNum == orig)
+                    break;
               }
           }
       }    
@@ -99,15 +106,20 @@ public class Event {
           int i = 0;
           int j = party.getCharacters().length - 1;
           boolean a = false;
-          while(!a || i < j) {
-              int charNum = (int)(Math.random()* j);
+          int charNum = (int)(Math.random()* j);
+          int orig = charNum;
+          while(!a) {
               if(party.getCharacterStatus(charNum) == Status.SICK) {
                   party.getCharacter(charNum).setStatus(Status.NORMAL);
                   a = true;
-                  //MESSAGE: party.getCharacterName(charNum)has recovered from their sickness. 
+                  message = "" + party.getCharacterName(charNum) + " has recovered from their sickness.";
               }
               else{
-                  j--;
+                  charNum++;
+                  if(charNum == party.getCharacters().length)
+                    charNum = 0;
+                  if(charNum == orig)
+                    break;
               }
           }
       } 
@@ -154,7 +166,7 @@ public class Event {
                   if(lostItem.getAmount() <= 1){
                       lostItem.changeAmount(lostItem.getAmount() - 1);
                       a = true;
-                      //MESSAGE: 1 lostItem has been stolen from your wagon.
+                      message = "1 " + lostItem.getName() + " has been stolen from your wagon.";
                   }
               }
           }
@@ -165,7 +177,7 @@ public class Event {
                   if(player.getFood() + freeAmount  <= 2000) { //2000 represents max amount can carry. change later.
                       player.consumeFood(1, freeAmount);
                       a = true;
-                      //MESSAGE: You went into a homeless shelter and you have been given freeAmount of rations.
+                      message = "You went into a homeless shelter and you have been given " + freeAmount + " pounds of free rations.";
                   }
                   else{
                       --freeAmount;
@@ -186,40 +198,11 @@ public class Event {
   /**
    * Method that sends information on what event has occured and the outcome
    * 
-   * @param ID The ID of the event that has occured.
+   * @return the message explaining what happened
    */
-  public void displayEvent(int ID) {
-  } //ends displayEvent method.
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  /**
-   * SCRAP THIS METHOD LATER This method represents an event in which one of the characters is randomly arrested due to prostitution. 
-   * @param randomInt The random integer calcuated to determine the index of the character that will be affected by this event
-   */
-  public boolean checkArrest() {
-   int chance = (int) Math.random()*100;
-    randChar = (int) Math.random()*3;
-    if(chance <= 15 && partyMembers.getCharacterStatus(randChar) != Status.DEAD) {
-        partyMembers.setCharacterStatus(randChar, Status.DEAD);
-        message =  "" + partyMembers.getCharacterName(randChar) + " has just been arrested for prostition and cannot continue on the journey. ";
-        return true;
-    } else {
-     return false;
-    }
-  }
+  public String getMessage() {
+    return message;
+  } //ends getMessage method.
 
   /**
    * This method prints out the message associated with this Event object.

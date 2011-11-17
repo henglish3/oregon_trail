@@ -31,6 +31,7 @@ public class Game implements ActionListener {
     private Map                     map;
     private Party                   party;
     private Date                    currentDate;
+    private Event                   eventHandler;
     
     //Keeps track of what state the game is in
     private int                     gameState;
@@ -58,6 +59,7 @@ public class Game implements ActionListener {
         currentPace = new Pace(0);
         currentRations = new Rations(0);
         currentDate = new Date("August");
+        eventHandler = new Event(party);
         
         //Initialize other controllers
         storeControl = new StoreController(this, party.getPlayer(), playerWagon);
@@ -223,6 +225,13 @@ public class Game implements ActionListener {
                 String message = ((River)nextLoc).crossRiver(riverChoice, party.getPlayer(), null);
                 JOptionPane.showMessageDialog(null,message);
             }
+            
+            //Run the event handler
+            eventHandler.chanceEvent(null, currentPace, currentRations, party.getPlayer(), party, playerWagon, currentDate);
+            //Update the event message
+            //gameplayUI.setLastEvent(eventHandler.getMessage());
+            if(!eventHandler.getMessage().equals(""))
+                JOptionPane.showMessageDialog(null,eventHandler.getMessage());
             
             //Update the current date
             currentDate.updateDay();

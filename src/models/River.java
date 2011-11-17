@@ -68,7 +68,7 @@ public class River extends Location {
         r = Math.random();
         s = Math.random();
         t = Math.random();
-        int temp;
+        int temp, orig;
         Item lostItem;
         if(r > 0.3) {
             return "Attempt to ford the river was successful!";
@@ -78,11 +78,42 @@ public class River extends Location {
                 //Wagon loses an item
                 temp = (int)(t * player.getInventory().getList().size());
                 lostItem = (Item)(player.getInventory().getList().get(temp));
+                
+                //Item must be present in inventory
+                orig = temp;
+                while(lostItem.getAmount() < 1) {
+                    if(temp == player.getInventory().getList().size())
+                        temp = 0;
+                    else
+                        temp++;
+                        
+                    if(temp == orig)
+                        return "Attempt to ford the river was unsuccessful, but wagon is empty, nothing was lost.";
+                        
+                    lostItem = (Item)(player.getInventory().getList().get(temp));
+                }
+                
                 lostItem.changeAmount(lostItem.getAmount() - 1);
                 return ("Attempt to ford the river was unsuccessful. You lost a " + lostItem.getName());
             } else {
                 //Party loses a member
-                return "Attempt to ford the river was unsuccessful. You lost Tomer.";
+                temp = (int)(t * (party.getNumCharacters() - 1)) + 1;
+                
+                while(temp != 0) {
+                    if(party.getCharacter(temp).getStatus() != Status.DEAD) {
+                        party.getCharacter(temp).setStatus(Status.DEAD);
+                        return ("Attempt to ford the river was unsuccessful. You lost " + party.getCharacter(temp).getName());
+                    } else {
+                        temp++;
+                        if(temp == party.getNumCharacters());
+                            temp = 0;
+                    }
+                }
+                
+                //All other characters dead. Player dies. Game over.
+                party.getCharacter(temp).setStatus(Status.DEAD);
+                
+                return "Attempt to ford the river was unsuccessful. You have died. GAME OVER!";
             }
         }
     } //ends fordRiver method.
@@ -109,11 +140,42 @@ public class River extends Location {
                 //Wagon loses an item
                 temp = (int)(t * player.getInventory().getList().size());
                 lostItem = (Item)(player.getInventory().getList().get(temp));
+                
+                //Item must be present in inventory
+                orig = temp;
+                while(lostItem.getAmount() < 1) {
+                    if(temp == player.getInventory().getList().size())
+                        temp = 0;
+                    else
+                        temp++;
+                        
+                    if(temp == orig)
+                        return "Attempt to ford the river was unsuccessful, but wagon is empty, nothing was lost.";
+                        
+                    lostItem = (Item)(player.getInventory().getList().get(temp));
+                }
+                
                 lostItem.changeAmount(lostItem.getAmount() - 1);
-                return ("Attempt to caulk the river was unsuccessful. You lost a " + lostItem.getName());
+                return ("Attempt to ford the river was unsuccessful. You lost a " + lostItem.getName());
             } else {
                 //Party loses a member
-                return "Attempt to caulk the river was unsuccessful. You lost Tomer.";
+                temp = (int)(t * (party.getNumCharacters() - 1)) + 1;
+                
+                while(temp != 0) {
+                    if(party.getCharacter(temp).getStatus() != Status.DEAD) {
+                        party.getCharacter(temp).setStatus(Status.DEAD);
+                        return ("Attempt to ford the river was unsuccessful. You lost " + party.getCharacter(temp).getName());
+                    } else {
+                        temp++;
+                        if(temp == party.getNumCharacters());
+                            temp = 0;
+                    }
+                }
+                
+                //All other characters dead. Player dies. Game over.
+                party.getCharacter(temp).setStatus(Status.DEAD);
+                
+                return "Attempt to ford the river was unsuccessful. You have died. GAME OVER!";
             }
         }
     } //ends caulkRiver method.

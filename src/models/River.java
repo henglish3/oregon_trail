@@ -132,7 +132,7 @@ public class River extends Location {
         t = Math.random();
         int temp, orig;
         Item lostItem;
-        if(r > 0.6) {
+        if(r > 0.5) {
             return "Attempt to caulk the river was successful!";
         } else {
             //Choose whether to kill a party member or lose an item
@@ -150,32 +150,39 @@ public class River extends Location {
                         temp++;
                         
                     if(temp == orig)
-                        return "Attempt to ford the river was unsuccessful, but wagon is empty, nothing was lost.";
+                        return "Attempt to caulk the river was unsuccessful, but wagon is empty, nothing was lost.";
                         
                     lostItem = (Item)(player.getInventory().getList().get(temp));
                 }
                 
                 lostItem.changeAmount(lostItem.getAmount() - 1);
-                return ("Attempt to ford the river was unsuccessful. You lost a " + lostItem.getName());
+                return ("Attempt to ford the caulk was unsuccessful. You lost a " + lostItem.getName());
             } else {
                 //Party loses a member
                 temp = (int)(t * (party.getNumCharacters() - 1)) + 1;
+                orig = temp;
+                boolean first = true;
                 
-                while(temp != 0) {
-                    if(party.getCharacter(temp).getStatus() != Status.DEAD) {
-                        party.getCharacter(temp).setStatus(Status.DEAD);
-                        return ("Attempt to ford the river was unsuccessful. You lost " + party.getCharacter(temp).getName());
-                    } else {
-                        temp++;
-                        if(temp == party.getNumCharacters());
-                            temp = 0;
-                    }
+                while(party.getCharacter(temp).getStatus() == Status.DEAD) {
+                    temp++;
+                    if(temp == party.getNumCharacters())
+                        temp = 1;
+                    
+                    if(temp == orig)
+                        break;
+                        
+                    first = false;
                 }
                 
-                //All other characters dead. Player dies. Game over.
-                party.getCharacter(temp).setStatus(Status.DEAD);
+                if(temp != orig || first) {
+                    party.getCharacter(temp).setStatus(Status.DEAD);
+                    return ("Attempt to ford the caulk was unsuccessful. You lost " + party.getCharacter(temp).getName());
+                } else {
+                    //All other characters dead. Player dies. Game over.
+                    party.getPlayer().setStatus(Status.DEAD);
                 
-                return "Attempt to ford the river was unsuccessful. You have died. GAME OVER!";
+                    return "Attempt to caulk the river was unsuccessful. You have died. GAME OVER!";
+                }
             }
         }
     } //ends caulkRiver method.

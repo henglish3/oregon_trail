@@ -222,7 +222,7 @@ public class Game implements ActionListener {
                     riverChoice = 2;
                 
                 River tempRiver = new River("river", "nile", 0, 5);
-                String message = ((River)nextLoc).crossRiver(riverChoice, party.getPlayer(), null);
+                String message = ((River)nextLoc).crossRiver(riverChoice, party.getPlayer(), party);
                 JOptionPane.showMessageDialog(null,message);
             }
             

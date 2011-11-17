@@ -84,17 +84,6 @@ public class StoreInterface implements ActionListener {
     private JLabel unitCost8;
     private JLabel unitCost9;
     private JLabel unitCost10;
-        
-    private JLabel cost1;
-    private JLabel cost2;
-    private JLabel cost3;
-    private JLabel cost4;
-    private JLabel cost5;
-    private JLabel cost6;
-    private JLabel cost7;
-    private JLabel cost8;
-    private JLabel cost9;
-    private JLabel cost10;
     
     private JLabel lblCurrentMoney;
     private JLabel lblTotalCost;
@@ -539,7 +528,7 @@ public class StoreInterface implements ActionListener {
      */
     private void initialize(ActionListener al) {
         frame = new JFrame("Shop!");
-        frame.setBounds(100, 100, 580, 471);
+        frame.setBounds(100, 100, 526, 472);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         JLabel lblInventory = new JLabel("You");
@@ -559,9 +548,6 @@ public class StoreInterface implements ActionListener {
         
         JLabel lblUnitCost = new JLabel("Unit Cost");
         lblUnitCost.setFont(new Font("Lucida Grande", Font.BOLD, 16));
-        
-        JLabel lblCost = new JLabel("Cost");
-        lblCost.setFont(new Font("Lucida Grande", Font.BOLD, 16));
         
         
         /*for(int i =0; i<=numItems; i++){
@@ -651,17 +637,6 @@ public class StoreInterface implements ActionListener {
         unitCost8 = new JLabel(unitCost[7]);
         unitCost9 = new JLabel(unitCost[8]);
         unitCost10 = new JLabel(unitCost[9]);
-        
-        cost1 = new JLabel(itemTotalCost[0]);
-        cost2 = new JLabel(itemTotalCost[1]);
-        cost3 = new JLabel(itemTotalCost[2]);
-        cost4 = new JLabel(itemTotalCost[3]);
-        cost5 = new JLabel(itemTotalCost[4]);
-        cost6 = new JLabel(itemTotalCost[5]);
-        cost7 = new JLabel(itemTotalCost[6]);
-        cost8 = new JLabel(itemTotalCost[7]);
-        cost9 = new JLabel(itemTotalCost[8]);
-        cost10 = new JLabel(itemTotalCost[9]);
         
         JLabel titleCurrentMoney = new JLabel("You Have $");
         
@@ -777,40 +752,26 @@ public class StoreInterface implements ActionListener {
         								.addComponent(unitCost7)
         								.addComponent(unitCost8)
         								.addComponent(unitCost9)
-        								.addComponent(unitCost10))))
-        					.addGap(18)
-        					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
-        						.addComponent(lblCost, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        						.addComponent(cost1)
-        						.addComponent(cost2)
-        						.addComponent(cost3)
-        						.addComponent(cost4)
-        						.addComponent(cost5)
-        						.addComponent(cost6)
-        						.addComponent(cost7)
-        						.addComponent(cost8)
-        						.addComponent(cost9)
-        						.addComponent(cost10)))
+        								.addComponent(unitCost10)))))
         				.addGroup(groupLayout.createSequentialGroup()
-        					.addGap(173)
+        					.addGap(133)
         					.addComponent(btnPurchase)
-        					.addGap(64)
-        					.addComponent(btnCancel)))
-        			.addContainerGap(28, Short.MAX_VALUE))
-        		.addGroup(groupLayout.createSequentialGroup()
-        			.addGap(16)
-        			.addComponent(titleTotalWeight)
-        			.addGap(18)
-        			.addComponent(lblWeight)
-        			.addGap(69)
-        			.addComponent(titleCurrentMoney)
-        			.addPreferredGap(ComponentPlacement.UNRELATED)
-        			.addComponent(lblCurrentMoney)
-        			.addPreferredGap(ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
-        			.addComponent(titleTotalCost)
-        			.addPreferredGap(ComponentPlacement.UNRELATED)
-        			.addComponent(lblTotalCost, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-        			.addGap(46))
+        					.addGap(49)
+        					.addComponent(btnCancel))
+        				.addGroup(groupLayout.createSequentialGroup()
+        					.addGap(16)
+        					.addComponent(titleTotalWeight)
+        					.addGap(18)
+        					.addComponent(lblWeight, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
+        					.addGap(38)
+        					.addComponent(titleCurrentMoney)
+        					.addPreferredGap(ComponentPlacement.UNRELATED)
+        					.addComponent(lblCurrentMoney)
+        					.addGap(34)
+        					.addComponent(titleTotalCost)
+        					.addPreferredGap(ComponentPlacement.RELATED)
+        					.addComponent(lblTotalCost, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)))
+        			.addContainerGap(96, Short.MAX_VALUE))
         );
         groupLayout.setVerticalGroup(
         	groupLayout.createParallelGroup(Alignment.LEADING)
@@ -822,13 +783,11 @@ public class StoreInterface implements ActionListener {
         				.addComponent(lblBuy)
         				.addComponent(lblItemDescription)
         				.addComponent(lblItemWeight)
-        				.addComponent(lblUnitCost)
-        				.addComponent(lblCost))
+        				.addComponent(lblUnitCost))
         			.addPreferredGap(ComponentPlacement.RELATED)
         			.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
         				.addComponent(wantItem1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
         				.addComponent(itemDes1)
-        				.addComponent(cost1)
         				.addComponent(unitCost1)
         				.addComponent(itemHave1)
         				.addComponent(numItem1)
@@ -837,7 +796,6 @@ public class StoreInterface implements ActionListener {
         			.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
         				.addComponent(wantItem2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
         				.addComponent(itemDes2)
-        				.addComponent(cost2)
         				.addComponent(unitCost2)
         				.addComponent(itemHave2)
         				.addComponent(numItem2)
@@ -846,7 +804,6 @@ public class StoreInterface implements ActionListener {
         			.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
         				.addComponent(wantItem3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
         				.addComponent(itemDes3)
-        				.addComponent(cost3)
         				.addComponent(unitCost3)
         				.addComponent(itemHave3)
         				.addComponent(numItem3)
@@ -855,7 +812,6 @@ public class StoreInterface implements ActionListener {
         			.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
         				.addComponent(wantItem4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
         				.addComponent(itemDes4)
-        				.addComponent(cost4)
         				.addComponent(unitCost4)
         				.addComponent(itemHave4)
         				.addComponent(numItem4)
@@ -864,7 +820,6 @@ public class StoreInterface implements ActionListener {
         			.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
         				.addComponent(wantItem5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
         				.addComponent(itemDes5)
-        				.addComponent(cost5)
         				.addComponent(unitCost5)
         				.addComponent(itemHave5)
         				.addComponent(numItem5)
@@ -873,7 +828,6 @@ public class StoreInterface implements ActionListener {
         			.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
         				.addComponent(wantItem6, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
         				.addComponent(itemDes6)
-        				.addComponent(cost6)
         				.addComponent(unitCost6)
         				.addComponent(itemHave6)
         				.addComponent(numItem6)
@@ -882,7 +836,6 @@ public class StoreInterface implements ActionListener {
         			.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
         				.addComponent(wantItem7, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
         				.addComponent(itemDes7)
-        				.addComponent(cost7)
         				.addComponent(unitCost7)
         				.addComponent(itemHave7)
         				.addComponent(numItem7)
@@ -891,7 +844,6 @@ public class StoreInterface implements ActionListener {
         			.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
         				.addComponent(wantItem8, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
         				.addComponent(itemDes8)
-        				.addComponent(cost8)
         				.addComponent(unitCost8)
         				.addComponent(itemHave8)
         				.addComponent(numItem8)
@@ -900,7 +852,6 @@ public class StoreInterface implements ActionListener {
         			.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
         				.addComponent(wantItem9, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
         				.addComponent(itemDes9)
-        				.addComponent(cost9)
         				.addComponent(unitCost9)
         				.addComponent(itemHave9)
         				.addComponent(numItem9)
@@ -909,19 +860,18 @@ public class StoreInterface implements ActionListener {
         			.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
         				.addComponent(wantItem10, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
         				.addComponent(itemDes10)
-        				.addComponent(cost10)
         				.addComponent(unitCost10)
         				.addComponent(itemHave10)
         				.addComponent(numItem10)
         				.addComponent(itemWeight10))
-        			.addPreferredGap(ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
+        			.addPreferredGap(ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
         			.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-        				.addComponent(titleTotalCost)
-        				.addComponent(lblTotalCost)
         				.addComponent(lblWeight)
         				.addComponent(titleTotalWeight)
         				.addComponent(titleCurrentMoney)
-        				.addComponent(lblCurrentMoney))
+        				.addComponent(lblCurrentMoney)
+        				.addComponent(titleTotalCost)
+        				.addComponent(lblTotalCost))
         			.addGap(18)
         			.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
         				.addComponent(btnPurchase)

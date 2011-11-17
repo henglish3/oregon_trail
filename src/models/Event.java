@@ -73,7 +73,7 @@ public class Event {
           date.updateDay();
           player.consumeFood(party.getCharacters().length, party.getCharacters().length);
           }
-          //MESSAGE: "You were caught in a storm. You have lost daysLost from your journey."
+          //MESSAGE: You were caught in a storm. You have lost daysLost from your journey.
       }
       if(ID == 2) { //EVENT: A CHARACTER WILL GET ILL, IF ALREADY ILL THEN DIE.
           int i = 0;
@@ -84,12 +84,12 @@ public class Event {
               if(party.getCharacterStatus(charNum) == Status.NORMAL) {
                   party.getCharacter(charNum).setStatus(Status.SICK);
                   a = true;
-                  //MESSAGE: "party.getCharacterName(charNum)is now ill." 
+                  //MESSAGE: party.getCharacterName(charNum)is now ill.
               }
               else if(party.getCharacterStatus(charNum) == Status.SICK) {
                   party.getCharacter(charNum).setStatus(Status.DEAD);
                   a = true;
-                  //MESSAGE: "party.getCharacterName(charNum)has died." 
+                  //MESSAGE: party.getCharacterName(charNum)has died. 
               }
               else{
                   j--;
@@ -105,46 +105,48 @@ public class Event {
               if(party.getCharacterStatus(charNum) == Status.SICK) {
                   party.getCharacter(charNum).setStatus(Status.NORMAL);
                   a = true;
-                  //MESSAGE: "party.getCharacterName(charNum)has recovred from their sickness." 
+                  //MESSAGE: party.getCharacterName(charNum)has recovered from their sickness. 
               }
               else{
                   j--;
               }
           }
-      }      
+      } 
+      /*
       if(ID == 4) { //EVENT: WAGON DAMAGE
           int partBroke = (int)(Math.random()*3);
           if(partBroke == 0) {
               wagon.setWheel(false);
-            //  if(player.getJob() == FARMER) {
-            //      wagon.setWheel(true);
-            //  }
-           //   else if(player.getInventory(find if there is at least 1 of that part in inventory) {
-            //      wagon.setWheel(true);
-            //  }
+            if(player.getJob() == FARMER) {
+                  wagon.setWheel(true);
+              }
+              else if(player.getInventory(WHEEL INVENTORY) > 0) {
+                  wagon.setWheel(true);
+              }
           }
 
           else if(partBroke == 1) {
               wagon.setAxle(false);
-             // if(player.getJob() == FARMER) {
-             //     wagon.setAxle(true);
-            //  }
-            //  else if(player.getInventory(find if there is at least 1 of that part in inventory) {
-            //      wagon.setAxle(true);
-            //  }
+             if(player.getJob() == FARMER) {
+                  wagon.setAxle(true);
+              }
+              else if(player.getInventory(find if there is at least 1 of that part in inventory) {
+                  wagon.setAxle(true);
+              }
               
           }
           else {
               wagon.setTongue(false);
-              //if(player.getJob() == FARMER) {
-                 // wagon.setTongue(true);
-              //}
-              //else if(player.getInventory(find if there is at least 1 of that part in inventory) {
-              //    wagon.setTongue(true);
-          //    }
+              if(player.getJob() == FARMER) {
+                  wagon.setTongue(true);
+              }
+              else if(player.getInventory(find if there is at least 1 of that part in inventory) {
+                  wagon.setTongue(true);
+              }
               
           }
-          if(ID == 5) { //EVENT: RANDOM ITEM STOLEN EVENT.
+          */
+          if(ID == 4) { //EVENT: RANDOM ITEM STOLEN EVENT.
               boolean a = false;
               while(!a) {
                   double t = Math.random();
@@ -153,28 +155,31 @@ public class Event {
                   if(lostItem.getAmount() <= 1){
                       lostItem.changeAmount(lostItem.getAmount() - 1);
                       a = true;
+                      //MESSAGE: 1 lostItem has been stolen from your wagon.
                   }
               }
           }
-          if(ID == 6) { //EVENT: FREE 10-100 FOOD EVENT.
+          if(ID == 5) { //EVENT: FREE 10-100 RATIONS EVENT.
               boolean a = false;
+              int freeAmount = (int)((Math.random()*90) + 10);
               while(!a) {
-                  int freeAmount = (int)((Math.random()*90) + 10);
                   if(player.getFood() + freeAmount  <= 2000) { //2000 represents max amount can carry. change later.
-                      //player.setFood(player.getFood() + freeAmount); need a ration changing method
+                      player.consumeFood(1, freeAmount);
                       a = true;
+                      //MESSAGE: You went into a homeless shelter and you have been given freeAmount of rations.
                   }
-                  //else{ add amount that doesnt reach max amount.
-                 //     player.setFood(
-                          
-                  //}
+                  else{
+                      --freeAmount;
+                      if(freeAmount <= 0) {
+                          a = true;
+                      }
+                  }
               }
           }
-          if(ID == 7) { //EVENT: OXEN DEATH EVENT.
-          }
-          if(ID == 8) { //EVENT: OXEN TIRED EVENT. MOVE SLOWER FOR 3 DAYS.
-          }
-      }
+          //if(ID == 7) { //EVENT: OXEN DEATH EVENT.
+         //}
+          //if(ID == 8) { //EVENT: OXEN TIRED EVENT. MOVE SLOWER FOR 3 DAYS.
+          //}
           
       
   } //ends doEvent method.

@@ -130,7 +130,7 @@ public class River extends Location {
         r = Math.random();
         s = Math.random();
         t = Math.random();
-        int temp;
+        int temp, orig;
         Item lostItem;
         if(r > 0.6) {
             return "Attempt to caulk the river was successful!";

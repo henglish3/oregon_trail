@@ -260,6 +260,7 @@ public class Game implements ActionListener {
             party = loadGame.loadParty();
             currentRations = loadGame.loadRations();
             currentPace = loadGame.loadPace();
+            currentDate = loadGame.loadDate();
             
             //Update GUIs
             charStat = new CharStatusInterface(party);
@@ -273,7 +274,7 @@ public class Game implements ActionListener {
             gameplayUI.setFoodRemaining("" + party.getPlayer().getFood());
             gameplayUI.setDate(currentDate.toString());
         } else if(action_command.equals("mgiSave")) {
-            GameSave saveGame = new GameSave(party, playerWagon, currentPace, currentRations);
+            GameSave saveGame = new GameSave(party, playerWagon, currentPace, currentRations, currentDate);
             saveGame.save();
         } else if(action_command.equals("mgiQuit")) {
             System.exit(0);

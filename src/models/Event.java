@@ -73,6 +73,7 @@ public class Event {
           date.updateDay();
           player.consumeFood(party.getCharacters().length, party.getCharacters().length);
           }
+          //MESSAGE: "You were caught in a storm. You have lost daysLost from your journey."
       }
       if(ID == 2) { //EVENT: A CHARACTER WILL GET ILL, IF ALREADY ILL THEN DIE.
           int i = 0;
@@ -83,19 +84,34 @@ public class Event {
               if(party.getCharacterStatus(charNum) == Status.NORMAL) {
                   party.getCharacter(charNum).setStatus(Status.SICK);
                   a = true;
+                  //MESSAGE: "party.getCharacterName(charNum)is now ill." 
               }
               else if(party.getCharacterStatus(charNum) == Status.SICK) {
                   party.getCharacter(charNum).setStatus(Status.DEAD);
                   a = true;
+                  //MESSAGE: "party.getCharacterName(charNum)has died." 
               }
               else{
-                  j++;
+                  j--;
               }
           }
       }    
-      //if(ID == 3) { //EVENT: A CHARACTER WILL RECOVER IF SICK EVENT.
-          
-     // }
+      if(ID == 3) { //EVENT: A CHARACTER WILL RECOVER IF SICK EVENT.
+          int i = 0;
+          int j = party.getCharacters().length - 1;
+          boolean a = false;
+          while(!a || i < j) {
+              int charNum = (int)(Math.random()* j);
+              if(party.getCharacterStatus(charNum) == Status.SICK) {
+                  party.getCharacter(charNum).setStatus(Status.NORMAL);
+                  a = true;
+                  //MESSAGE: "party.getCharacterName(charNum)has recovred from their sickness." 
+              }
+              else{
+                  j--;
+              }
+          }
+      }      
       if(ID == 4) { //EVENT: WAGON DAMAGE
           int partBroke = (int)(Math.random()*3);
           if(partBroke == 0) {

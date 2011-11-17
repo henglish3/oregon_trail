@@ -50,9 +50,8 @@ public class Event {
    * @param date The date.
    */
   public void selectEvent(Location location, Pace pace, Rations rations, Player player, Party party, Wagon wagon, Date date) {
-      
-      //int ID = ;
-   //displayEvent(ID);   
+      int ID = ((int)(Math.random()*5)) + 1;
+      doEvent(ID, pace, rations, player, party, wagon, date);
   } //ends selectEvent method.
   
   /**
@@ -68,7 +67,7 @@ public class Event {
    */
   public void doEvent(int ID, Pace pace, Rations rations, Player player, Party party, Wagon wagon, Date date) {
       if(ID == 1) { //EVENT: STORM EVENT. LOSE X AMOUNT OF DAYS AND RATION FOR THOSE DAYS. 
-          int daysLost = ((int)(Math.random()*5)) + 1;
+          int daysLost = ((int)(Math.random()*3)) + 1;
           for(int i = 0; i != daysLost; i++) {   
           date.updateDay();
           player.consumeFood(party.getCharacters().length, party.getCharacters().length);

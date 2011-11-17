@@ -71,9 +71,8 @@ public class Event {
           int daysLost = ((int)(Math.random()*5)) + 1;
           for(int i = 0; i != daysLost; i++) {   
           date.updateDay();
+          player.consumeFood(party.getCharacters().length, party.getCharacters().length);
           }
-          //Ration.setRation(getRation() - (daysLost * RATIONOPTION ));
-          //RATIONOPTION = amount of food lost for the famished option. Stew I need to know how I can get this.
       }
       //if(ID == 2) { //EVENT: A CHARACTER WILL GET ILL, IF ALREADY ILL THEN DIE.
        //   party.getCharacterStatus(getSize()

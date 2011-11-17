@@ -175,7 +175,7 @@ public class Event {
               int freeAmount = (int)((Math.random()*90) + 10);
               while(!a) {
                   if(player.getFood() + freeAmount  <= 2000) { //2000 represents max amount can carry. change later.
-                      player.consumeFood(1, freeAmount);
+                      player.consumeFood(1, (-freeAmount));
                       a = true;
                       message = "You went into a homeless shelter and you have been given " + freeAmount + " pounds of free rations.";
                   }

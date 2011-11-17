@@ -241,15 +241,23 @@ public class GamePlayInterface {
         addPopup(btnMenu, popupMenu);
         
         JButton btnNew = new JButton("New");
+        btnNew.setActionCommand("mgiNew");
+        btnNew.addActionListener(al);
         popupMenu.add(btnNew);
         
         JButton btnLoad = new JButton("Load");
+        btnLoad.setActionCommand("mgiLoad");
+        btnLoad.addActionListener(al);
         popupMenu.add(btnLoad);
         
         JButton btnSave = new JButton("Save");
+        btnSave.setActionCommand("mgiSave");
+        btnSave.addActionListener(al);
         popupMenu.add(btnSave);
         
         JButton btnQuit = new JButton("Quit");
+        btnQuit.setActionCommand("mgiQuit");
+        btnQuit.addActionListener(al);
         popupMenu.add(btnQuit);
         
         toolBar.setFloatable(false);

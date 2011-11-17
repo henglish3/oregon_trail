@@ -10,15 +10,17 @@ import java.io.Serializable;
  
 public class Player extends Character implements Serializable {
     private int money;
+    private int distanceTraveled;
     private Inventory inventory;
 
-    public Player()  {}
+    public Player()  {distanceTraveled = 0;}
 
     public Player(int age, int sex, String name, Job job) {
         super(age, sex, name, Status.IMMORTAL);
         this.job = job;
         this.money = 1600;
         this.inventory = new Inventory(true);
+        distanceTraveled = 0;
     }
     
     /**
@@ -64,6 +66,24 @@ public class Player extends Character implements Serializable {
      */    
     public String jobString() {
       return job.toString();
+    }
+    
+    /**
+     * Method that increases the player's distance traveled
+     *
+     * @param dist distance in miles to move the player
+     */
+    public void travelDistance(int dist) {
+        distanceTraveled += dist;
+    }
+    
+    /**
+     * Method that gets the player's distance traveled
+     *
+     * @return the distance that the player has traveled in miles
+     */
+    public int getDistanceTraveled() {
+        return distanceTraveled;
     }
 
     /**

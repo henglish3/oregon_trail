@@ -6,8 +6,9 @@
  */
  
 package edu.gatech.cs2340.shlat.models;
+import java.io.Serializable;
  
-public class Character {
+public class Character implements Serializable {
  
     private Status status;
     private int age;

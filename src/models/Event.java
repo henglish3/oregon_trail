@@ -163,7 +163,7 @@ public class Event {
                   double t = Math.random();
                   int temp = (int)(t * player.getInventory().getList().size());
                   Item lostItem = (Item)(player.getInventory().getList().get(temp));
-                  if(lostItem.getAmount() <= 1){
+                  if(lostItem.getAmount() >= 1){
                       lostItem.changeAmount(lostItem.getAmount() - 1);
                       a = true;
                       message = "1 " + lostItem.getName() + " has been stolen from your wagon.";

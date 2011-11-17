@@ -47,11 +47,11 @@ public class MapPanel extends JPanel implements Runnable {
     	distance = dist;
     }
     public void moveMap() {
-    	if(distance >= 111 && coordXMap < -340 && coordYMap < -500) {	
+    	if(distance >= 111 && coordXMap < -340 && coordYMap < -500 ) {	
     		coordXMap ++;
     		coordYMap ++;
-    		coordX =277;
-    		coordY =145;
+    		coordX++;
+    		coordY++;
     	}
     }
     public void setEvent(boolean event) {
@@ -61,99 +61,79 @@ public class MapPanel extends JPanel implements Runnable {
     * Moves the the wagon round and round and round
     * to set locations
     */
-    public void moveWagon() {
-    	if(distance == 10) { 
-    		if(coordX > 550)	
-    		    coordX -=2;
-    		if(coordY > 170) 
-    		    coordY -=2;
-        }
-        else if(distance == 20) {
-    		if(coordX > 490)	
-    		    coordX -=2;
-    		if(coordY > 90) 
-    		    coordY -=2;
-        }
-        else if(distance == 30) {
-            if(coordX > 390)	
-    		    coordX -=2;
-    		if(coordY < 120) 
-    		    coordY +=2;
-    	}
-    	else if(distance ==40) {
-    		if(coordX > 330)
-    			coordX -=2;
-    		if(coordY < 120)
-    			coordY +=2;
-        }
-        else if(distance == 50) {
-    		if(coordX > 295)
-    			coordX -=2;
-    		if(coordY < 120)
-    			coordY +=2;
-        }
-        else if(distance ==55) {
-            if(coordX > 290)	
-    		    coordX -=2;
-    		if(coordY < 120) 
-    		    coordY +=2;
-        }
-         else if(distance == 65) {
-            if(coordX > 287)	
-    		    coordX -=2;
-    		if(coordY < 125) 
-    		    coordY +=2;
-        } 
-        else if(distance == 75) {
-            if(coordX > 283)	
-    		    coordX -=2;
-    		if(coordY < 130) 
-    		    coordY +=2;
-        }
-        else if(distance ==85) {
-            if(coordX > 280)	
-    		    coordX -=2;
-    		if(coordY < 140) 
-    		    coordY +=2;
-        }
-        else if(distance ==95) {
-            if(coordX > 280)	
-    		    coordX -=2;
-    		if(coordY < 145) 
-    		    coordY +=2;
-        }
-        else if(distance == 110) {
-    		if(coordX > 170)//277)
-    			coordX -=2;
-    		if(coordY < 22)//145)
-    			coordY += 2;        
-        }
-        else if(distance == 120) {
-            if(coordX < 282)	
-    		    coordX +=2;
-    		if(coordY > 101) 
-    		    coordY -=2;
-        }
-         else if(distance == 130) {
-            if(coordX < 287)	
-    		    coordX +=2;
-    		if(coordY > 67) 
-    		    coordY -=2;
-        }    
-        else if(distance == 140) {
-    		if(coordY > 35) {
-    			coordY -= 2;
-            }
-    		if(coordX < 292)
-    			coordX +=2;
-        }
-
+    public void findWagon() {
+    	if(distance == 0)
+    		moveWagon(570, 240);
+    	else if(distance == 5)
+    		moveWagon(560, 205);
+    	else if(distance == 10)
+    		moveWagon(550, 170);
+    	else if(distance == 15)
+    		moveWagon(520, 130);
+        else if(distance == 20)
+    		moveWagon(490,90);    	
+    	else if(distance == 25)
+    		moveWagon(440, 105);	
+        else if(distance == 30) 
+            moveWagon(390,120);
+    	else if(distance == 35)
+    		moveWagon(360, 120);
+    	else if(distance ==40)
+            moveWagon(330,120);
+     	else if(distance == 45)
+    		moveWagon(313, 120);
+        else if(distance == 50) 
+            moveWagon(295,120);	
+        else if(distance ==55) 
+            moveWagon(290,120);
+        else if(distance == 60)
+    		moveWagon(290, 115);
+        else if(distance == 65)
+            moveWagon(287,125);
+        else if(distance == 70)
+    		moveWagon(285, 127);
+        else if(distance == 75)
+            moveWagon(283,130);
+    	else if(distance == 80)
+    		moveWagon(281, 135);
+        else if(distance ==85) 
+            moveWagon(280,140);
+    	else if(distance == 90)
+    		moveWagon(280, 142);
+        else if(distance ==95) 
+            moveWagon(280,145);
+    	else if(distance == 100)
+    		moveWagon(280, 170);
+        else if(distance == 110) 
+            moveWagon(170,22);
+    	else if(distance == 115)
+    		moveWagon(226, 62);
+        else if(distance == 120) 
+            moveWagon(282,101);
+    	else if(distance == 125)
+    		moveWagon(284, 83);
+         else if(distance == 130) 
+            moveWagon(287,67);
+    	else if(distance == 135)
+    		moveWagon(290, 51);
+        else if(distance == 140) 
+    		moveWagon(292, 35);
+    }
+    public void moveWagon(int x, int y) {
+        if(coordX < x)
+        	coordX += 2;
+        else if(coordX > x)
+        	coordX -=2;
+        if(coordY < y)
+        	coordY+=2;
+        else if(coordY > y)
+        	coordY-=2;
     }
    // Redraw screen every 15ms
     public void run() {
            	try {
            	    while (true) {
-           	        moveWagon();
+           	        findWagon();
            	        moveMap();
            	        repaint();     	            	            	 
            	        // Fixes performance problem

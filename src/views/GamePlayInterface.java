@@ -332,6 +332,8 @@ public class GamePlayInterface {
         JButton btnStop = new JButton("Rest");
         
         JButton btnInventory = new JButton("Inventory");
+        btnInventory.setActionCommand("mgiShowInventory");
+        btnInventory.addActionListener(al);
         
         JButton btnStatus = new JButton("Status");
         btnStatus.setActionCommand("mgiShowStatus");

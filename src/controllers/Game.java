@@ -21,6 +21,7 @@ public class Game implements ActionListener {
     private NewGameCharInterface    newGameUI;
     private CharStatusInterface     charStat;
     private GamePlayInterface       gameplayUI;
+    private InventoryInterface      inventoryUI;
     
     //Models
     private Wagon                   playerWagon;
@@ -44,6 +45,7 @@ public class Game implements ActionListener {
         //Initialize view GUIs
         newGameUI = new NewGameCharInterface(this);
         gameplayUI = new GamePlayInterface(this);
+        inventoryUI = new InventoryInterface();
         
         //Initialize models
         playerWagon = new Wagon();
@@ -278,6 +280,8 @@ public class Game implements ActionListener {
             saveGame.save();
         } else if(action_command.equals("mgiQuit")) {
             System.exit(0);
+        } else if(action_command.equals("mgiShowInventory")) {
+            inventoryUI.setVisibility(true);
         }
     }
     

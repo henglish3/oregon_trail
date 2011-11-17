@@ -1,4 +1,4 @@
-//package edu.gatech.cs2340.shlat.views;
+package edu.gatech.cs2340.shlat.views;
 
 import java.awt.EventQueue;
 
@@ -28,7 +28,7 @@ public class InventoryInterface {
      * 
      * @param args The arguments collected from the user
      */
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
@@ -39,6 +39,13 @@ public class InventoryInterface {
                 }
             }
         });
+    }*/
+    
+    /**
+    *set visibility of the window
+    */
+    public void setVisibility(boolean visibility) {
+    	frame.setVisible(visibility);
     }
 
     /**
@@ -92,6 +99,10 @@ public class InventoryInterface {
      * Create the application.
      */
     public InventoryInterface() {
+        itemDes = new String[10];
+        itemHave = new String[10];
+        itemWeight = new String[10];
+        
         initialize();
     }
 

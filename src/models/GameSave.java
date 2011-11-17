@@ -10,11 +10,11 @@ public class GameSave implements Serializable {
   private Wagon wagon;
   private Pace pace;
   private Rations rations;
-  private Date date;
+  private edu.gatech.cs2340.shlat.models.Date date;
 
   public GameSave() {}
 
-  public GameSave(Party party, Wagon wagon, Pace pace, Rations rations, Date date) {
+  public GameSave(Party party, Wagon wagon, Pace pace, Rations rations, edu.gatech.cs2340.shlat.models.Date date) {
     this.party = party;
     this.wagon = wagon;
     this.pace = pace;
@@ -22,7 +22,7 @@ public class GameSave implements Serializable {
     this.date = date;
   }
 
-  public void prepare(Party party, Wagon wagon, Pace pace, Rations rations, Date date) {
+  public void prepare(Party party, Wagon wagon, Pace pace, Rations rations, edu.gatech.cs2340.shlat.models.Date date) {
     this.party = party;
     this.wagon = wagon;
     this.pace = pace;
@@ -30,7 +30,7 @@ public class GameSave implements Serializable {
     this.date = date;
   }
 
-  public void prepare(Date date) {
+  public void prepare(edu.gatech.cs2340.shlat.models.Date date) {
     this.date = date;
   }
 
@@ -66,7 +66,7 @@ public class GameSave implements Serializable {
     return this.pace;
   }
 
-  public Date loadDate() {
+  public edu.gatech.cs2340.shlat.models.Date loadDate() {
     return this.date;
   }
 
@@ -119,7 +119,7 @@ public class GameSave implements Serializable {
     }
   }
 
-  public String[] getSaveFiles() {
+  public static String[] getSaveFiles() {
     File f = new File("saves");
     String[] saves = f.list();
     if (saves.length == 0) {

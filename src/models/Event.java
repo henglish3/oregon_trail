@@ -74,11 +74,25 @@ public class Event {
           player.consumeFood(party.getCharacters().length, party.getCharacters().length);
           }
       }
-      //if(ID == 2) { //EVENT: A CHARACTER WILL GET ILL, IF ALREADY ILL THEN DIE.
-       //   party.getCharacterStatus(getSize()
-      //    if() {
-     //     }       
-     // }
+      if(ID == 2) { //EVENT: A CHARACTER WILL GET ILL, IF ALREADY ILL THEN DIE.
+          int i = 0;
+          int j = party.getCharacters().length - 1;
+          boolean a = false;
+          while(!a || i < j) {
+              int charNum = (int)(Math.random()* j);
+              if(party.getCharacterStatus(charNum) == Status.NORMAL) {
+                  party.getCharacter(charNum).setStatus(Status.SICK);
+                  a = true;
+              }
+              else if(party.getCharacterStatus(charNum) == Status.SICK) {
+                  party.getCharacter(charNum).setStatus(Status.DEAD);
+                  a = true;
+              }
+              else{
+                  j++;
+              }
+          }
+      }    
       //if(ID == 3) { //EVENT: A CHARACTER WILL RECOVER IF SICK EVENT.
           
      // }

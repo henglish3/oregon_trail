@@ -121,6 +121,12 @@ public class GameSave implements Serializable {
 
   public static String[] getSaveFiles() {
     File f = new File("saves");
+
+    if (!f.exists()) {
+      f.mkdir();
+      return null;
+    }
+
     String[] saves = f.list();
     if (saves.length == 0) {
       return null;

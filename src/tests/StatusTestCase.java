@@ -1,4 +1,10 @@
-import junit.framework.*;
+package edu.gatech.cs2340.shlat.tests;
+
+import org.junit.*;
+import org.junit.Test;
+import org.junit.Assert;
+import edu.gatech.cs2340.shlat.models.*;
+
 /**
  * This class will test the increaseStatus() method in the Status calss
  * @author Alfonza Lewis

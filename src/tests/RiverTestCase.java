@@ -48,7 +48,7 @@ public class RiverTestCase {
                 Party party = new Party();
                 River river = new River();
                 river.crossRiver(choice, player, party);
-		Assert.assertEquals(fordRiver(player, party), river.crossRiver(choice, player, party)); 
+		Assert.assertEquals(river.fordRiver(player, party), river.crossRiver(choice, player, party)); 
 	}
 
 	/**
@@ -74,6 +74,6 @@ public class RiverTestCase {
                 Party party = new Party();
                 River river = new River();
                 river.crossRiver(choice, player, party);
-		Assert.assertEquals(caulkRiver(player, party), river.crossRiver(choice, player, party)); 
+		Assert.assertEquals(river.caulkRiver(player, party), river.crossRiver(choice, player, party)); 
 	}
 }

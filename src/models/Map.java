@@ -14,11 +14,18 @@ public class Map {
     private String file = "locations.xml";
 
     /**
-     * Constructor that instantiates the ArrayList for Location.
+     * Empty constructor for tests
      */
     public Map() {
+        locations = new ArrayList();
+    }
+    
+    /**
+     * Constructor that instantiates the ArrayList for Location.
+     */
+    public Map(String filename) {
         LocationList list = new LocationList();
-        List<Location> readFile = list.readFile(file);
+        List<Location> readFile = list.readFile(filename);
         locations = new ArrayList();
         for (Location location : readFile) {
           locations.add(location);

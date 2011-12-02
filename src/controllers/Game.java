@@ -55,7 +55,7 @@ public class Game implements ActionListener {
                         new edu.gatech.cs2340.shlat.models.Character());
         party.getPlayer().initializeInventory();
         startStore = new Store();
-        map = new Map();
+        map = new Map("locations.xml");
         currentPace = new Pace(0);
         currentRations = new Rations(0);
         currentDate = new Date("August");

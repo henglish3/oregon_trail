@@ -6,6 +6,7 @@
 build/
 apidoc/
 saves/
+reports/
 
 # Generic files to ignore
 *~

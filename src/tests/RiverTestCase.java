@@ -9,7 +9,7 @@ import edu.gatech.cs2340.shlat.models.*;
  * @author Lucas Pessoa
  * @version 1.0 11/29/2011
  */
-public class RiverTestCase extends TestCase {
+public class RiverTestCase {
 	/**
 	 * Method checks if crossRiver() method makes player cross river if they chose to and have 50 money.
 	 */

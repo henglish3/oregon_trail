@@ -11,15 +11,16 @@
         <mkdir dir="${doc.dir}" />
         <mkdir dir="${reports.dir}" />
         <mkdir dir="${reports.dir}/raw/" />
-        <copy file="items.xml" tofile="${build.dir}/items.xml" failonerror="true"/>
-	<copy file="locations.xml" tofile="${build.dir}/locations.xml" failonerror="true"/>
+        <copy file="items.xml" tofile="${build.dir}/items.xml" failonerror="false"/>
+        <copy file="locations.xml" tofile="${build.dir}/locations.xml" failonerror="false"/>
     </target>
     <target name="compile" depends="prepare" >
         <javac destdir="${build.dir}">
             <src path="${src.dir}" />
             <classpath>
-                <pathelement path="${build.dir}" />
-                <pathelement location="libs/junit-4.10.jar" />
+                <fileset dir="libs">
+                    <include name="**/*.jar"/>
+                </fileset>
             </classpath>
         </javac>
     </target>
@@ -42,6 +43,9 @@
                 <attribute name="Main-Class" value="edu.gatech.cs2340.shlat.controllers.Game"/>
             </manifest>
         </jar>
+        <jar destfile="${build.dir}/${appname}Test.jar" basedir="${build.dir}" includes="**/*Test*.class">
+            
+        </jar>
     </target>
     <target name="run" depends="jar" >
         <java jar="${build.dir}/${appname}.jar" fork="true">
@@ -54,20 +58,23 @@
     </target>
 
     <!-- Source: http://shareyourknowlege.blogspot.com/2008/03/ant-simple-junit-test.html -->
-    <target name="run-tests" depends="compile" description="run your test suite" >
+    <target name="run-tests" depends="jar" description="run your test suite" >
         <junit printsummary="yes" showoutput="yes" >
             <classpath>
                 <pathelement path="${build.dir}"/>
                 <fileset dir="libs">
                     <include name="**/*.jar"/>
                 </fileset>
+                <fileset dir="${build.dir}">
+                    <include name="**/*.jar"/>
+                </fileset>
             </classpath>
-          <batchtest fork="yes" todir="${reports.dir}/raw/">
-            <formatter type="xml"/>
-        <fileset dir="${src.dir}">
-          <include name="**/*Test*.java"/>
-        </fileset>
-          </batchtest>
+            <batchtest fork="no" todir="${reports.dir}/raw/">
+                <formatter type="xml"/>
+                <fileset dir="${src.dir}">
+                    <include name="**/*Test*.java"/>
+                </fileset>
+            </batchtest>
         </junit>
     </target>
 

@@ -16,6 +16,7 @@
             <src path="${src.dir}" />
             <classpath>
                 <pathelement path="${build.dir}" />
+                <pathelement location="libs/junit-4.10.jar" />
             </classpath>
         </javac>
     </target>

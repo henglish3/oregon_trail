@@ -1,4 +1,4 @@
-package edu.gatech.cs2340.shlat.test;
+package edu.gatech.cs2340.shlat.tests;
 
 import org.junit.Before;
 import org.junit.Test;

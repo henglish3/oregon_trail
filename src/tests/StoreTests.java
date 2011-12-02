@@ -25,10 +25,22 @@ public class StoreTests {
   }
 
   @Test public void testCost() {
+    Player p = new Player();
+    p.initializeInventory();
+    Item i = new Item("Food", 1, 1, 800);
 
+    String expected = "Purchased.";
+    String result = s.purchase(p, w, i, 1);
+    Assert.assertTrue(expected.equals(result));
   }
   
   @Test public void testWeight() {
+    Player p = new Player();
+    p.initializeInventory();
+    Item i = new Item("Food", 1, 1, 10);
 
+    String expected = "Purchased.";
+    String result = s.purchase(p, w, i, 10);
+    Assert.assertTrue(expected.equals(result));
   }
 }

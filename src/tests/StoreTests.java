@@ -17,10 +17,10 @@ public class StoreTests {
   @Test public void testAmount() {
     Player p = new Player();
     p.initializeInventory();
-    Item i = new Item("Pimp Wagon", 1, 2500, 100);
+    Item i = new Item("Food", 1, 1, 10);
 
     String expected = "Purchased.";
-    String result = s.purchase(p, w, i, 100);
+    String result = s.purchase(p, w, i, 1);
     Assert.assertTrue(expected.equals(result));
   }
 

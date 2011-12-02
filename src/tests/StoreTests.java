@@ -1,6 +1,7 @@
 package edu.gatech.cs2340.shlat.tests;
 
-import org.junit.*;
+import org.junit.Test;
+import org.junit.Assert;
 import edu.gatech.cs2340.shlat.models.*;
 
 public class StoreTests {
@@ -9,18 +10,17 @@ public class StoreTests {
   private Item i = new Item();
   private Store s = new Store();
 
-  @Test 
-  public void testAmount() {
-    
+  @Test public void testAmount() {
+    String expected = "Purchased.";
+    String result = s.purchase(p, w, i, 100);
+    Assert.assertTrue(expected.equals(result));
   }
 
-  @Test 
-  public void testCost() {
+  @Test public void testCost() {
 
   }
   
-  @Test
-  public void testWeight() {
+  @Test public void testWeight() {
 
   }
 }

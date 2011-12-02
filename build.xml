@@ -53,6 +53,7 @@
         </java>
     </target>
 
+    <!-- Source: http://shareyourknowlege.blogspot.com/2008/03/ant-simple-junit-test.html -->
     <target name="run-tests" depends="compile" description="run your test suite" >
         <junit printsummary="yes" showoutput="yes" >
             <classpath>

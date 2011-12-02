@@ -20,7 +20,7 @@ public class Store {
    * @param item The item being purchased
    * @param amount The amount of the item being purchased
    */
-  public void purchase(Player player, Wagon wagon, Item item, int amount) {   
+  public String purchase(Player player, Wagon wagon, Item item, int amount) {   
     int playerMoney = player.getMoney();
     int price = (int)item.getPrice();
     int cost = amount * price;
@@ -47,14 +47,16 @@ public class Store {
           }
           player.setMoney(playerMoney - cost);
           playerInventory.setWeight(weight);
+
+          return "Purchased.";
         } else {
-          System.out.println("You cannot carry this much weight.");
+          return "You cannot carry this much weight." ;
         }
       } else {
-        System.out.println("You cannot afford this.");
+        return "You cannot afford this." ;
       }
     } else {
-      System.out.println("You cannot purchase more than the store currently has in stock.");
+      return "You cannot purchase more than the store currently has in stock." ;
     }
   }
   /**

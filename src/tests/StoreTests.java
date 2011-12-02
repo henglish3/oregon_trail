@@ -58,7 +58,7 @@ public class StoreTests extends TestCase {
     Item i = new Item("Food", 1, 1, 10);
 
     String expected = "Purchased.";
-    String result = s.purchase(p, w, i, 10);
+    String result = s.purchase(p, w, i, 1);
     Assert.assertTrue(expected.equals(result));
   }
 }

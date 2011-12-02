@@ -41,7 +41,7 @@ public class Item implements Serializable{
         this.amount = amount;
         this.weight = item.getWeight();
         this.id = item.getId();
-    }
+    } 
     
     /**
      * This constructor creates an Item object with a name, amount, weight, and price
@@ -56,6 +56,23 @@ public class Item implements Serializable{
         this.amount = amount;
         this.weight = weight;
         this.price = price;
+    }
+    
+    /**
+     * This constructor creates an Item object with a name, amount, weight, and price
+     *
+     * @param name The name of this Item
+     * @param amount The amount of this Item
+     * @param weight The weight of this Item
+     * @param price The price of this Item
+     * @param id the id of this Item
+     */
+    public Item(String name, int amount, int weight, int price, int id){
+        this.name = name;
+        this.amount = amount;
+        this.weight = weight;
+        this.price = price;
+        this.id = id;
     }
     
     /**

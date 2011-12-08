@@ -52,7 +52,7 @@ public class Event {
    * @param date The date.
    */
   public void selectEvent(Location location, Pace pace, Rations rations, Player player, Party party, Wagon wagon, Date date) {
-      int ID = ((int)(Math.random()*5)) + 1;
+      int ID = ((int)(Math.random()*6)) + 1;
       doEvent(ID, pace, rations, player, party, wagon, date);
   } //ends selectEvent method.
   
@@ -123,41 +123,49 @@ public class Event {
               }
           }
       } 
-      /*
       if(ID == 4) { //EVENT: WAGON DAMAGE
           int partBroke = (int)(Math.random()*3);
           if(partBroke == 0) {
               wagon.setWheel(false);
-            if(player.getJob() == FARMER) {
+            if(player.getJob() == Player.Job.FARMER) {
                   wagon.setWheel(true);
+                  message = "A wheel has been damaged. However since " + party.getCharacterName(0) + " is a farmer it has been repaired.";
               }
-              else if(player.getInventory(WHEEL INVENTORY) > 0) {
+              else if(player.getInventory().getItemById(6).getAmount() > 0) {
                   wagon.setWheel(true);
+                  player.getInventory().getItemById(6).changeAmount(-1);
+                  player.getInventory().update(player.getInventory().getItemById(6));
+                  message = "A wheel has been damaged. " + party.getCharacterName(0) + " has replaced the wheel.";
               }
           }
-
-          else if(partBroke == 1) {
+          if(partBroke == 1) {
               wagon.setAxle(false);
-             if(player.getJob() == FARMER) {
+            if(player.getJob() == Player.Job.FARMER) {
                   wagon.setAxle(true);
+                  message = "An axle has been damaged. However since " + party.getCharacterName(0) + " is a farmer it has been repaired.";
               }
-              else if(player.getInventory(find if there is at least 1 of that part in inventory) {
+              else if(player.getInventory().getItemById(6).getAmount() > 0) {
                   wagon.setAxle(true);
+                  player.getInventory().getItemById(6).changeAmount(-1);
+                  player.getInventory().update(player.getInventory().getItemById(6));
+                  message = "A axle has been damaged. " + party.getCharacterName(0) + " has replaced the axle.";
               }
-              
           }
           else {
               wagon.setTongue(false);
-              if(player.getJob() == FARMER) {
+            if(player.getJob() == Player.Job.FARMER) {
                   wagon.setTongue(true);
+                  message = "An tongue has been damaged. However since " + party.getCharacterName(0) + " is a farmer it has been repaired.";
               }
-              else if(player.getInventory(find if there is at least 1 of that part in inventory) {
+              else if(player.getInventory().getItemById(6).getAmount() > 0) {
                   wagon.setTongue(true);
+                  player.getInventory().getItemById(6).changeAmount(-1);
+                  player.getInventory().update(player.getInventory().getItemById(6));
+                  message = "A tongue has been damaged. " + party.getCharacterName(0) + " has replaced the tongue.";
               }
-              
           }
-          */
-          if(ID == 4) { //EVENT: RANDOM ITEM STOLEN EVENT.
+      }
+          if(ID == 5) { //EVENT: RANDOM ITEM STOLEN EVENT.
               boolean a = false;
               while(!a) {
                   double t = Math.random();
@@ -170,7 +178,7 @@ public class Event {
                   }
               }
           }
-          if(ID == 5) { //EVENT: FREE 10-100 RATIONS EVENT.
+          if(ID == 6) { //EVENT: FREE 10-100 RATIONS EVENT.
               boolean a = false;
               int freeAmount = (int)((Math.random()*90) + 10);
               while(!a) {

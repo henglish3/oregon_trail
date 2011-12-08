@@ -52,7 +52,7 @@ public enum Status {
     /**
      * Method changes the character's status
      *
-     * @param int status The new int value for the status
+     * @param status The new int value for the status
      */
     public void setStatus(int status){
         this.status = status;

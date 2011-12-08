@@ -63,7 +63,7 @@ public enum Weather {
   /**
    * This method changes the String representation of this Weather object
    * 
-   * @param condition The int condition value used to set the the weather label field
+   * @param weather condition value used to set the the weather label field
    */
   public void setWeatherLabel(Weather weather){
     switch (weather) {

@@ -58,8 +58,7 @@ public class Date implements Serializable {
   }
   /**
    * This method returns the current day of the month
-   * @param day
-   *      The current day of the month during the gameplay
+   * @return day The current day of the month during the gameplay
    */
   public int getDay(){
     return day;
@@ -121,8 +120,7 @@ public class Date implements Serializable {
   }
   /**
    * This method sets a new year for this Date object
-   * @param month
-   *      The new month for this Date object
+   * @param year The new year for this Date object
    */
   public void setYear(int year){
     this.year = year;

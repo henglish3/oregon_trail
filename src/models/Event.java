@@ -144,9 +144,9 @@ public class Event {
                   wagon.setAxle(true);
                   message = "An axle has been damaged. However since " + party.getCharacterName(0) + " is a farmer it has been repaired.";
               }
-              else if(player.getInventory().getItemById(6).getAmount() > 0) {
+              else if(player.getInventory().getItemById(7).getAmount() > 0) {
                   wagon.setAxle(true);
-                  player.getInventory().getItemById(6).changeAmount(-1);
+                  player.getInventory().getItemById(7).changeAmount(-1);
                   player.getInventory().update(player.getInventory().getItemById(6));
                   message = "A axle has been damaged. " + party.getCharacterName(0) + " has replaced the axle.";
               }
@@ -157,9 +157,9 @@ public class Event {
                   wagon.setTongue(true);
                   message = "An tongue has been damaged. However since " + party.getCharacterName(0) + " is a farmer it has been repaired.";
               }
-              else if(player.getInventory().getItemById(6).getAmount() > 0) {
+              else if(player.getInventory().getItemById(8).getAmount() > 0) {
                   wagon.setTongue(true);
-                  player.getInventory().getItemById(6).changeAmount(-1);
+                  player.getInventory().getItemById(8).changeAmount(-1);
                   player.getInventory().update(player.getInventory().getItemById(6));
                   message = "A tongue has been damaged. " + party.getCharacterName(0) + " has replaced the tongue.";
               }
@@ -195,8 +195,16 @@ public class Event {
                   }
               }
           }
-          //if(ID == 7) { //EVENT: OXEN DEATH EVENT.
-         //}
+          if(ID == 7) { //EVENT: OXEN DEATH EVENT.
+              wagon.setOxen(false);
+              if(player.getInventory().getItemById(3).getAmount() > 1) {
+                  wagon.setOxen(true);
+                  player.getInventory().getItemById(3).changeAmount(-1);
+                  player.getInventory().update(player.getInventory().getItemById(3));
+                  message = "An oxen has died.";
+              }
+          }
+          
           //if(ID == 8) { //EVENT: OXEN TIRED EVENT. MOVE SLOWER FOR 3 DAYS.
           //}
           

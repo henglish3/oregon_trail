@@ -13,9 +13,8 @@ public class Event {
   private String message;
   
   /**
-   * CURRENTLY NOT USED This constructor creates an Event object
-   * @param int
-   *      The integer corresponding to the event action
+   * This constructor creates an Event object
+   * @param party The party used to handle events.
    */
   public Event(Party party){
     partyMembers = party;
@@ -102,7 +101,7 @@ public class Event {
               }
           }
       }    
-      if(ID == 3) { //EVENT: A CHARACTER WILL RECOVER IF SICK EVENT.
+      if(ID == 3) { //EVENT: A CHARACTER WILL RECOVER IF SICK.
           int i = 0;
           int j = party.getCharacters().length - 1;
           boolean a = false;
@@ -123,7 +122,7 @@ public class Event {
               }
           }
       } 
-      if(ID == 4) { //EVENT: WAGON DAMAGE
+      if(ID == 4) { //EVENT: WAGON DAMAGE.
           int partBroke = (int)(Math.random()*3);
           if(partBroke == 0) {
               wagon.setWheel(false);
@@ -165,7 +164,7 @@ public class Event {
               }
           }
       }
-          if(ID == 5) { //EVENT: RANDOM ITEM STOLEN EVENT.
+          if(ID == 5) { //EVENT: RANDOM ITEM STOLEN.
               boolean a = false;
               while(!a) {
                   double t = Math.random();
@@ -178,7 +177,7 @@ public class Event {
                   }
               }
           }
-          if(ID == 6) { //EVENT: FREE 10-100 RATIONS EVENT.
+          if(ID == 6) { //EVENT: FREE 10-100 RATIONS.
               boolean a = false;
               int freeAmount = (int)((Math.random()*90) + 10);
               while(!a) {
@@ -195,20 +194,15 @@ public class Event {
                   }
               }
           }
-          if(ID == 7) { //EVENT: OXEN DEATH EVENT.
+          if(ID == 7) { //EVENT: OXEN DEATH.
               wagon.setOxen(false);
-              if(player.getInventory().getItemById(3).getAmount() > 1) {
+              player.getInventory().getItemById(3).changeAmount(-1);
+              player.getInventory().update(player.getInventory().getItemById(3));
+              message = "An oxen has died.";
+              if(player.getInventory().getItemById(3).getAmount() > 0) {
                   wagon.setOxen(true);
-                  player.getInventory().getItemById(3).changeAmount(-1);
-                  player.getInventory().update(player.getInventory().getItemById(3));
-                  message = "An oxen has died.";
               }
           }
-          
-          //if(ID == 8) { //EVENT: OXEN TIRED EVENT. MOVE SLOWER FOR 3 DAYS.
-          //}
-          
-      
   } //ends doEvent method.
   
   /**
